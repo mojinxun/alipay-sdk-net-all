@@ -25,77 +25,77 @@ namespace AlipaySDKNet.OpenAPI.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAlipayEbppInvoiceApplystatusApiSync : IApiAccessor
+    public interface IAlipayEbppInvoiceApplyStatusApiSync : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// 根据外部订单号查询开票状态
+        /// 发票申请状态变更
         /// </summary>
         /// <remarks>
-        /// 根据外部订单号查询开票状态，仅有申请状态无完整票据信息
+        /// 发票申请状态变更通知
         /// </remarks>
         /// <exception cref="AlipaySDKNet.OpenAPI.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alipayEbppInvoiceApplystatusQueryModel"> (optional)</param>
+        /// <param name="alipayEbppInvoiceApplyStatusNotifyModel"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="customizedParams">customizedParams</param>
-        /// <returns>AlipayEbppInvoiceApplystatusQueryResponseModel</returns>
-        AlipayEbppInvoiceApplystatusQueryResponseModel Query(AlipayEbppInvoiceApplystatusQueryModel alipayEbppInvoiceApplystatusQueryModel = default(AlipayEbppInvoiceApplystatusQueryModel), int operationIndex = 0, CustomizedParams customizedParams = null);
+        /// <returns>AlipayEbppInvoiceApplyStatusNotifyResponseModel</returns>
+        AlipayEbppInvoiceApplyStatusNotifyResponseModel Notify(AlipayEbppInvoiceApplyStatusNotifyModel alipayEbppInvoiceApplyStatusNotifyModel = default(AlipayEbppInvoiceApplyStatusNotifyModel), int operationIndex = 0, CustomizedParams customizedParams = null);
 
         /// <summary>
-        /// 根据外部订单号查询开票状态
+        /// 发票申请状态变更
         /// </summary>
         /// <remarks>
-        /// 根据外部订单号查询开票状态，仅有申请状态无完整票据信息
+        /// 发票申请状态变更通知
         /// </remarks>
         /// <exception cref="AlipaySDKNet.OpenAPI.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alipayEbppInvoiceApplystatusQueryModel"> (optional)</param>
+        /// <param name="alipayEbppInvoiceApplyStatusNotifyModel"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="customizedParams">customizedParams</param>
-        /// <returns>ApiResponse of AlipayEbppInvoiceApplystatusQueryResponseModel</returns>
-        ApiResponse<AlipayEbppInvoiceApplystatusQueryResponseModel> QueryWithHttpInfo(AlipayEbppInvoiceApplystatusQueryModel alipayEbppInvoiceApplystatusQueryModel = default(AlipayEbppInvoiceApplystatusQueryModel), int operationIndex = 0, CustomizedParams customizedParams = null);
+        /// <returns>ApiResponse of AlipayEbppInvoiceApplyStatusNotifyResponseModel</returns>
+        ApiResponse<AlipayEbppInvoiceApplyStatusNotifyResponseModel> NotifyWithHttpInfo(AlipayEbppInvoiceApplyStatusNotifyModel alipayEbppInvoiceApplyStatusNotifyModel = default(AlipayEbppInvoiceApplyStatusNotifyModel), int operationIndex = 0, CustomizedParams customizedParams = null);
         #endregion Synchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAlipayEbppInvoiceApplystatusApiAsync : IApiAccessor
+    public interface IAlipayEbppInvoiceApplyStatusApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
         /// <summary>
-        /// 根据外部订单号查询开票状态
+        /// 发票申请状态变更
         /// </summary>
         /// <remarks>
-        /// 根据外部订单号查询开票状态，仅有申请状态无完整票据信息
+        /// 发票申请状态变更通知
         /// </remarks>
         /// <exception cref="AlipaySDKNet.OpenAPI.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alipayEbppInvoiceApplystatusQueryModel"> (optional)</param>
+        /// <param name="alipayEbppInvoiceApplyStatusNotifyModel"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="customizedParams">customizedParams</param>
-        /// <returns>Task of AlipayEbppInvoiceApplystatusQueryResponseModel</returns>
-        System.Threading.Tasks.Task<AlipayEbppInvoiceApplystatusQueryResponseModel> QueryAsync(AlipayEbppInvoiceApplystatusQueryModel alipayEbppInvoiceApplystatusQueryModel = default(AlipayEbppInvoiceApplystatusQueryModel), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), CustomizedParams customizedParams = null);
+        /// <returns>Task of AlipayEbppInvoiceApplyStatusNotifyResponseModel</returns>
+        System.Threading.Tasks.Task<AlipayEbppInvoiceApplyStatusNotifyResponseModel> NotifyAsync(AlipayEbppInvoiceApplyStatusNotifyModel alipayEbppInvoiceApplyStatusNotifyModel = default(AlipayEbppInvoiceApplyStatusNotifyModel), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), CustomizedParams customizedParams = null);
 
         /// <summary>
-        /// 根据外部订单号查询开票状态
+        /// 发票申请状态变更
         /// </summary>
         /// <remarks>
-        /// 根据外部订单号查询开票状态，仅有申请状态无完整票据信息
+        /// 发票申请状态变更通知
         /// </remarks>
         /// <exception cref="AlipaySDKNet.OpenAPI.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alipayEbppInvoiceApplystatusQueryModel"> (optional)</param>
+        /// <param name="alipayEbppInvoiceApplyStatusNotifyModel"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="customizedParams">customizedParams</param>
-        /// <returns>Task of ApiResponse (AlipayEbppInvoiceApplystatusQueryResponseModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AlipayEbppInvoiceApplystatusQueryResponseModel>> QueryWithHttpInfoAsync(AlipayEbppInvoiceApplystatusQueryModel alipayEbppInvoiceApplystatusQueryModel = default(AlipayEbppInvoiceApplystatusQueryModel), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), CustomizedParams customizedParams = null);
+        /// <returns>Task of ApiResponse (AlipayEbppInvoiceApplyStatusNotifyResponseModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AlipayEbppInvoiceApplyStatusNotifyResponseModel>> NotifyWithHttpInfoAsync(AlipayEbppInvoiceApplyStatusNotifyModel alipayEbppInvoiceApplyStatusNotifyModel = default(AlipayEbppInvoiceApplyStatusNotifyModel), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), CustomizedParams customizedParams = null);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAlipayEbppInvoiceApplystatusApi : IAlipayEbppInvoiceApplystatusApiSync, IAlipayEbppInvoiceApplystatusApiAsync
+    public interface IAlipayEbppInvoiceApplyStatusApi : IAlipayEbppInvoiceApplyStatusApiSync, IAlipayEbppInvoiceApplyStatusApiAsync
     {
 
     }
@@ -103,23 +103,23 @@ namespace AlipaySDKNet.OpenAPI.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class AlipayEbppInvoiceApplystatusApi : IAlipayEbppInvoiceApplystatusApi
+    public partial class AlipayEbppInvoiceApplyStatusApi : IAlipayEbppInvoiceApplyStatusApi
     {
         private AlipaySDKNet.OpenAPI.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AlipayEbppInvoiceApplystatusApi"/> class.
+        /// Initializes a new instance of the <see cref="AlipayEbppInvoiceApplyStatusApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public AlipayEbppInvoiceApplystatusApi() : this((string)null)
+        public AlipayEbppInvoiceApplyStatusApi() : this((string)null)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AlipayEbppInvoiceApplystatusApi"/> class.
+        /// Initializes a new instance of the <see cref="AlipayEbppInvoiceApplyStatusApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public AlipayEbppInvoiceApplystatusApi(string basePath)
+        public AlipayEbppInvoiceApplyStatusApi(string basePath)
         {
             this.Configuration = AlipaySDKNet.OpenAPI.Client.Configuration.MergeConfigurations(
                 AlipaySDKNet.OpenAPI.Client.GlobalConfiguration.Instance,
@@ -131,12 +131,12 @@ namespace AlipaySDKNet.OpenAPI.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AlipayEbppInvoiceApplystatusApi"/> class
+        /// Initializes a new instance of the <see cref="AlipayEbppInvoiceApplyStatusApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public AlipayEbppInvoiceApplystatusApi(AlipaySDKNet.OpenAPI.Client.Configuration configuration)
+        public AlipayEbppInvoiceApplyStatusApi(AlipaySDKNet.OpenAPI.Client.Configuration configuration)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
@@ -150,13 +150,13 @@ namespace AlipaySDKNet.OpenAPI.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AlipayEbppInvoiceApplystatusApi"/> class
+        /// Initializes a new instance of the <see cref="AlipayEbppInvoiceApplyStatusApi"/> class
         /// using a Configuration object and client instance.
         /// </summary>
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public AlipayEbppInvoiceApplystatusApi(AlipaySDKNet.OpenAPI.Client.ISynchronousClient client, AlipaySDKNet.OpenAPI.Client.IAsynchronousClient asyncClient, AlipaySDKNet.OpenAPI.Client.IReadableConfiguration configuration)
+        public AlipayEbppInvoiceApplyStatusApi(AlipaySDKNet.OpenAPI.Client.ISynchronousClient client, AlipaySDKNet.OpenAPI.Client.IAsynchronousClient asyncClient, AlipaySDKNet.OpenAPI.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
             if (asyncClient == null) throw new ArgumentNullException("asyncClient");
@@ -210,28 +210,28 @@ namespace AlipaySDKNet.OpenAPI.Api
         }
 
         /// <summary>
-        /// 根据外部订单号查询开票状态 根据外部订单号查询开票状态，仅有申请状态无完整票据信息
+        /// 发票申请状态变更 发票申请状态变更通知
         /// </summary>
         /// <exception cref="AlipaySDKNet.OpenAPI.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alipayEbppInvoiceApplystatusQueryModel"> (optional)</param>
+        /// <param name="alipayEbppInvoiceApplyStatusNotifyModel"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="customizedParams">customizedParams</param>
-        /// <returns>AlipayEbppInvoiceApplystatusQueryResponseModel</returns>
-        public AlipayEbppInvoiceApplystatusQueryResponseModel Query(AlipayEbppInvoiceApplystatusQueryModel alipayEbppInvoiceApplystatusQueryModel = default(AlipayEbppInvoiceApplystatusQueryModel), int operationIndex = 0, CustomizedParams customizedParams = null)
+        /// <returns>AlipayEbppInvoiceApplyStatusNotifyResponseModel</returns>
+        public AlipayEbppInvoiceApplyStatusNotifyResponseModel Notify(AlipayEbppInvoiceApplyStatusNotifyModel alipayEbppInvoiceApplyStatusNotifyModel = default(AlipayEbppInvoiceApplyStatusNotifyModel), int operationIndex = 0, CustomizedParams customizedParams = null)
         {
-            AlipaySDKNet.OpenAPI.Client.ApiResponse<AlipayEbppInvoiceApplystatusQueryResponseModel> localVarResponse = QueryWithHttpInfo(alipayEbppInvoiceApplystatusQueryModel, operationIndex, customizedParams);
+            AlipaySDKNet.OpenAPI.Client.ApiResponse<AlipayEbppInvoiceApplyStatusNotifyResponseModel> localVarResponse = NotifyWithHttpInfo(alipayEbppInvoiceApplyStatusNotifyModel, operationIndex, customizedParams);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// 根据外部订单号查询开票状态 根据外部订单号查询开票状态，仅有申请状态无完整票据信息
+        /// 发票申请状态变更 发票申请状态变更通知
         /// </summary>
         /// <exception cref="AlipaySDKNet.OpenAPI.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alipayEbppInvoiceApplystatusQueryModel"> (optional)</param>
+        /// <param name="alipayEbppInvoiceApplyStatusNotifyModel"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="customizedParams">customizedParams</param>
-        /// <returns>ApiResponse of AlipayEbppInvoiceApplystatusQueryResponseModel</returns>
-        public AlipaySDKNet.OpenAPI.Client.ApiResponse<AlipayEbppInvoiceApplystatusQueryResponseModel> QueryWithHttpInfo(AlipayEbppInvoiceApplystatusQueryModel alipayEbppInvoiceApplystatusQueryModel = default(AlipayEbppInvoiceApplystatusQueryModel), int operationIndex = 0, CustomizedParams customizedParams = null)
+        /// <returns>ApiResponse of AlipayEbppInvoiceApplyStatusNotifyResponseModel</returns>
+        public AlipaySDKNet.OpenAPI.Client.ApiResponse<AlipayEbppInvoiceApplyStatusNotifyResponseModel> NotifyWithHttpInfo(AlipayEbppInvoiceApplyStatusNotifyModel alipayEbppInvoiceApplyStatusNotifyModel = default(AlipayEbppInvoiceApplyStatusNotifyModel), int operationIndex = 0, CustomizedParams customizedParams = null)
         {
             AlipaySDKNet.OpenAPI.Client.RequestOptions localVarRequestOptions = new AlipaySDKNet.OpenAPI.Client.RequestOptions();
 
@@ -263,10 +263,10 @@ namespace AlipaySDKNet.OpenAPI.Api
             }
             else
             {
-                localVarRequestOptions.Data = alipayEbppInvoiceApplystatusQueryModel;
+                localVarRequestOptions.Data = alipayEbppInvoiceApplyStatusNotifyModel;
             }
 
-            localVarRequestOptions.Operation = "AlipayEbppInvoiceApplystatusApi.Query";
+            localVarRequestOptions.Operation = "AlipayEbppInvoiceApplyStatusApi.Notify";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             
@@ -297,17 +297,17 @@ namespace AlipaySDKNet.OpenAPI.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<AlipayEbppInvoiceApplystatusQueryResponseModel>("/v3/alipay/ebpp/invoice/applystatus/query", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Put<AlipayEbppInvoiceApplyStatusNotifyResponseModel>("/v3/alipay/ebpp/invoice/apply/status/notify", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Query", localVarResponse);
+                Exception _exception = this.ExceptionFactory("Notify", localVarResponse);
                 if (_exception != null)
                 {
                     if (_exception is ApiException exception && exception.ErrorContent != null)
                     {
                         try
                         {
-                            exception.ErrorObject = AlipayEbppInvoiceApplystatusQueryDefaultResponse.FromJson(exception.ErrorContent.ToString());
+                            exception.ErrorObject = AlipayEbppInvoiceApplyStatusNotifyDefaultResponse.FromJson(exception.ErrorContent.ToString());
                         }
                         catch (Exception e)
                         {
@@ -322,30 +322,30 @@ namespace AlipaySDKNet.OpenAPI.Api
         }
 
         /// <summary>
-        /// 根据外部订单号查询开票状态 根据外部订单号查询开票状态，仅有申请状态无完整票据信息
+        /// 发票申请状态变更 发票申请状态变更通知
         /// </summary>
         /// <exception cref="AlipaySDKNet.OpenAPI.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alipayEbppInvoiceApplystatusQueryModel"> (optional)</param>
+        /// <param name="alipayEbppInvoiceApplyStatusNotifyModel"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="customizedParams">customizedParams</param>
-        /// <returns>Task of AlipayEbppInvoiceApplystatusQueryResponseModel</returns>
-        public async System.Threading.Tasks.Task<AlipayEbppInvoiceApplystatusQueryResponseModel> QueryAsync(AlipayEbppInvoiceApplystatusQueryModel alipayEbppInvoiceApplystatusQueryModel = default(AlipayEbppInvoiceApplystatusQueryModel), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), CustomizedParams customizedParams = null)
+        /// <returns>Task of AlipayEbppInvoiceApplyStatusNotifyResponseModel</returns>
+        public async System.Threading.Tasks.Task<AlipayEbppInvoiceApplyStatusNotifyResponseModel> NotifyAsync(AlipayEbppInvoiceApplyStatusNotifyModel alipayEbppInvoiceApplyStatusNotifyModel = default(AlipayEbppInvoiceApplyStatusNotifyModel), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), CustomizedParams customizedParams = null)
         {
-            AlipaySDKNet.OpenAPI.Client.ApiResponse<AlipayEbppInvoiceApplystatusQueryResponseModel> localVarResponse = await QueryWithHttpInfoAsync(alipayEbppInvoiceApplystatusQueryModel, operationIndex, cancellationToken, customizedParams).ConfigureAwait(false);
+            AlipaySDKNet.OpenAPI.Client.ApiResponse<AlipayEbppInvoiceApplyStatusNotifyResponseModel> localVarResponse = await NotifyWithHttpInfoAsync(alipayEbppInvoiceApplyStatusNotifyModel, operationIndex, cancellationToken, customizedParams).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// 根据外部订单号查询开票状态 根据外部订单号查询开票状态，仅有申请状态无完整票据信息
+        /// 发票申请状态变更 发票申请状态变更通知
         /// </summary>
         /// <exception cref="AlipaySDKNet.OpenAPI.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alipayEbppInvoiceApplystatusQueryModel"> (optional)</param>
+        /// <param name="alipayEbppInvoiceApplyStatusNotifyModel"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <param name="customizedParams">customizedParams</param>
-        /// <returns>Task of ApiResponse (AlipayEbppInvoiceApplystatusQueryResponseModel)</returns>
-        public async System.Threading.Tasks.Task<AlipaySDKNet.OpenAPI.Client.ApiResponse<AlipayEbppInvoiceApplystatusQueryResponseModel>> QueryWithHttpInfoAsync(AlipayEbppInvoiceApplystatusQueryModel alipayEbppInvoiceApplystatusQueryModel = default(AlipayEbppInvoiceApplystatusQueryModel), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), CustomizedParams customizedParams = null)
+        /// <returns>Task of ApiResponse (AlipayEbppInvoiceApplyStatusNotifyResponseModel)</returns>
+        public async System.Threading.Tasks.Task<AlipaySDKNet.OpenAPI.Client.ApiResponse<AlipayEbppInvoiceApplyStatusNotifyResponseModel>> NotifyWithHttpInfoAsync(AlipayEbppInvoiceApplyStatusNotifyModel alipayEbppInvoiceApplyStatusNotifyModel = default(AlipayEbppInvoiceApplyStatusNotifyModel), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken), CustomizedParams customizedParams = null)
         {
 
             AlipaySDKNet.OpenAPI.Client.RequestOptions localVarRequestOptions = new AlipaySDKNet.OpenAPI.Client.RequestOptions();
@@ -378,10 +378,10 @@ namespace AlipaySDKNet.OpenAPI.Api
             }
             else
             {
-                localVarRequestOptions.Data = alipayEbppInvoiceApplystatusQueryModel;
+                localVarRequestOptions.Data = alipayEbppInvoiceApplyStatusNotifyModel;
             }
 
-            localVarRequestOptions.Operation = "AlipayEbppInvoiceApplystatusApi.Query";
+            localVarRequestOptions.Operation = "AlipayEbppInvoiceApplyStatusApi.Notify";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             
@@ -412,11 +412,11 @@ namespace AlipaySDKNet.OpenAPI.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<AlipayEbppInvoiceApplystatusQueryResponseModel>("/v3/alipay/ebpp/invoice/applystatus/query", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PutAsync<AlipayEbppInvoiceApplyStatusNotifyResponseModel>("/v3/alipay/ebpp/invoice/apply/status/notify", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Query", localVarResponse);
+                Exception _exception = this.ExceptionFactory("Notify", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
