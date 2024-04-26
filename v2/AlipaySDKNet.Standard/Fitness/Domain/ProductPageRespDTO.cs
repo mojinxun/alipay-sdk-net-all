@@ -90,7 +90,7 @@ public class ProductPageRespDTO
     /// NO: 否
     /// </summary>
     [XmlElement("moreUseMoreDiscount")]
-    public string NoreUseMoreDiscount { get; set; }
+    public string MoreUseMoreDiscount { get; set; }
 
     /// <summary>
     /// 
@@ -134,13 +134,13 @@ public class ProductPageRespDTO
     /// 商户pid
     /// </summary>
     [XmlElement("merchantPid")]
-    public string merchantPid { get; set; }
+    public string MerchantPId { get; set; }
 
 
     /// <summary>
     /// 产品编号
     /// </summary>
     [XmlElement("productNo")]
-    public string productNo { get; set; }
+    public string ProductNo { get; set; }
 
 }

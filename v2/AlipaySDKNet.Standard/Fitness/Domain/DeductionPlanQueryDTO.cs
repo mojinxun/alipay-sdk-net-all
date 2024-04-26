@@ -52,6 +52,15 @@ public class DeductionPlanQueryDTO
     /// 核销超时天数
     /// </summary>
     [XmlElement("verificationOverdueDays")]
-    public int VerificationOverdueDays { get; set; }
+    public string VerificationOverdueDays { get; set; }
+
+    /// <summary>
+    /// 订单类型
+    /// 正常期扣款单: NORMAL
+    /// 优惠追回单: DISCOUNT
+    /// 违约单：DEFAULT
+    /// </summary>
+    [XmlElement("orderType")]
+    public string OrderType { get; set; }
 
 }
