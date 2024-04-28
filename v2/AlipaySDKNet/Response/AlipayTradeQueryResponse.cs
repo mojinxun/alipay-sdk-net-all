@@ -11,6 +11,12 @@ namespace Aop.Api.Response
     public class AlipayTradeQueryResponse : AopResponse
     {
         /// <summary>
+        /// 交易附加状态： SELLER_NOT_RECEIVED（买家已付款，卖家未收款）；
+        /// </summary>
+        [XmlElement("additional_status")]
+        public string AdditionalStatus { get; set; }
+
+        /// <summary>
         /// 支付宝店铺编号
         /// </summary>
         [XmlElement("alipay_store_id")]
@@ -136,6 +142,13 @@ namespace Aop.Api.Response
         /// </summary>
         [XmlElement("ext_infos")]
         public string ExtInfos { get; set; }
+
+        /// <summary>
+        /// 履约详情列表。 只有入参的query_options中指定fulfillment_detail_list并且所查询的交易存在履约明细时才返回该字段信息。
+        /// </summary>
+        [XmlArray("fulfillment_detail_list")]
+        [XmlArrayItem("fulfillment_detail")]
+        public List<FulfillmentDetail> FulfillmentDetailList { get; set; }
 
         /// <summary>
         /// 交易支付使用的资金渠道。 只有在签约中指定需要返回资金明细，或者入参的query_options中指定时才返回该字段信息。

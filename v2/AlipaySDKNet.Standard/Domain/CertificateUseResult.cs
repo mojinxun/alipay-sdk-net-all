@@ -1,5 +1,6 @@
 using System;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace Aop.Api.Domain
 {
@@ -60,8 +61,9 @@ namespace Aop.Api.Domain
         /// <summary>
         /// 本次核销的次序号信息
         /// </summary>
-        [XmlElement("serial_info_list")]
-        public CertificateSerialInfo SerialInfoList { get; set; }
+        [XmlArray("serial_info_list")]
+        [XmlArrayItem("certificate_serial_info")]
+        public List<CertificateSerialInfo> SerialInfoList { get; set; }
 
         /// <summary>
         /// 商品信息
@@ -70,7 +72,7 @@ namespace Aop.Api.Domain
         public CertificateSkuInfo SkuInfo { get; set; }
 
         /// <summary>
-        /// 核销操作单号,核销成功必填,撤销核销使用
+        /// 核销操作单号
         /// </summary>
         [XmlElement("use_order_no")]
         public string UseOrderNo { get; set; }

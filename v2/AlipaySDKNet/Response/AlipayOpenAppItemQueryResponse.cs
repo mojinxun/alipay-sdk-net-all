@@ -54,6 +54,13 @@ namespace Aop.Api.Response
         public string DirectPath { get; set; }
 
         /// <summary>
+        /// 导购信息
+        /// </summary>
+        [XmlArray("guide_info")]
+        [XmlArrayItem("guide_info_v_o")]
+        public List<GuideInfoVO> GuideInfo { get; set; }
+
+        /// <summary>
         /// 商品主图，图片宽高为750px*750px，宽高比1:1，800kb以内。支持jpg、jpeg、png格式的图片。 
         /// </summary>
         [XmlElement("head_img")]
@@ -122,7 +129,7 @@ namespace Aop.Api.Response
         public List<ItemRiskInfo> RiskInfo { get; set; }
 
         /// <summary>
-        /// 商品售价，分为单位。若填写了skus[]数组，此字段不返回值
+        /// 商品售价，分为单位。
         /// </summary>
         [XmlElement("sale_price")]
         public long SalePrice { get; set; }
@@ -148,7 +155,7 @@ namespace Aop.Api.Response
         public string SpuStatus { get; set; }
 
         /// <summary>
-        /// 若填写了skus[]数组，此字段不用填写。 若未填写skus[]数组，此字段必填。 目前支持库存区间0~99999
+        /// 目前支持库存区间0~99999
         /// </summary>
         [XmlElement("stock_num")]
         public long StockNum { get; set; }

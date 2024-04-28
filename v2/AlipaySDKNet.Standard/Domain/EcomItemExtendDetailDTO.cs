@@ -106,19 +106,25 @@ namespace Aop.Api.Domain
         public string ExtInfo { get; set; }
 
         /// <summary>
-        /// 游戏账号
+        /// 商品厂保结束时间
+        /// </summary>
+        [XmlElement("factory_ins_end_time")]
+        public string FactoryInsEndTime { get; set; }
+
+        /// <summary>
+        /// 游戏帐号
         /// </summary>
         [XmlElement("game_account")]
         public string GameAccount { get; set; }
 
         /// <summary>
-        /// 游戏账号所属客户端
+        /// 游戏帐号所属客户端
         /// </summary>
         [XmlElement("game_account_client")]
         public string GameAccountClient { get; set; }
 
         /// <summary>
-        /// 游戏账号所属客户端id
+        /// 游戏帐号所属客户端id
         /// </summary>
         [XmlElement("game_account_client_id")]
         public string GameAccountClientId { get; set; }
@@ -146,6 +152,24 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("lockable_device")]
         public bool LockableDevice { get; set; }
+
+        /// <summary>
+        /// 宠物档案id
+        /// </summary>
+        [XmlElement("pet_id")]
+        public string PetId { get; set; }
+
+        /// <summary>
+        /// 宠物档案类型
+        /// </summary>
+        [XmlElement("pet_type")]
+        public string PetType { get; set; }
+
+        /// <summary>
+        /// 宠物档案版本号
+        /// </summary>
+        [XmlElement("pet_version")]
+        public string PetVersion { get; set; }
 
         /// <summary>
         /// 插座编号

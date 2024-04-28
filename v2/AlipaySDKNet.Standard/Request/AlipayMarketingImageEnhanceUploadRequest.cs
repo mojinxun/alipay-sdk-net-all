@@ -16,6 +16,11 @@ namespace Aop.Api.Request
         public FileItem ImageContent { get; set; }
 
         /// <summary>
+        /// 图片归属图空间目录id。不填时，默认归属到图空间根目录；填写时会保存到图片空间的目录id下；当图片需要保存到根目录下时传"0"。
+        /// </summary>
+        public string ImageDirectoryId { get; set; }
+
+        /// <summary>
         /// 素材字段。本接口必须为图片类型的素材字段。
         /// </summary>
         public string MaterialField { get; set; }
@@ -31,7 +36,7 @@ namespace Aop.Api.Request
         public Nullable<bool> NeedEnhance { get; set; }
 
         /// <summary>
-        /// 图片上传场景，分为默认素材规范场景和介质图片场景。若选择默认素材规范场景，则素材规范id和素材字段必传；若选择其他具体场景，比如商品主图场景，则不需要传。
+        /// 图片上传场景，分为默认素材规范场景和介质图片场景。
         /// </summary>
         public string UploadScene { get; set; }
 
@@ -120,6 +125,7 @@ namespace Aop.Api.Request
         public IDictionary<string, string> GetParameters()
         {
             AopDictionary parameters = new AopDictionary();
+            parameters.Add("image_directory_id", this.ImageDirectoryId);
             parameters.Add("material_field", this.MaterialField);
             parameters.Add("material_spec_id", this.MaterialSpecId);
             parameters.Add("need_enhance", this.NeedEnhance);

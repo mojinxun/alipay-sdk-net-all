@@ -30,6 +30,12 @@ namespace Aop.Api.Domain
         public string CustomerType { get; set; }
 
         /// <summary>
+        /// 证件数量类型：       0：无特殊要求（下单不用证件）      *1：整个订单需一个证件      *2：订单中每个房间需一个证件
+        /// </summary>
+        [XmlElement("identification")]
+        public long Identification { get; set; }
+
+        /// <summary>
         /// 需要的证件类型，多个值标识任意一种证件类型都可以,枚举值见下： IDENTITY_CARD: 身份证 PASSPORT:护照
         /// </summary>
         [XmlArray("identification_type")]
@@ -56,6 +62,12 @@ namespace Aop.Api.Domain
         public List<NightlyRate> NightlyRates { get; set; }
 
         /// <summary>
+        /// 对应ota小程序的跳转链接
+        /// </summary>
+        [XmlElement("ota_url")]
+        public string OtaUrl { get; set; }
+
+        /// <summary>
         /// 付款类型 SELFPAY-前台现付, PREPAY-预付
         /// </summary>
         [XmlElement("pay_type")]
@@ -78,6 +90,13 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("refund_rule_id")]
         public string RefundRuleId { get; set; }
+
+        /// <summary>
+        /// 退款规则列表
+        /// </summary>
+        [XmlArray("refund_rule_ids")]
+        [XmlArrayItem("string")]
+        public List<string> RefundRuleIds { get; set; }
 
         /// <summary>
         /// ratePlan对应的房间id

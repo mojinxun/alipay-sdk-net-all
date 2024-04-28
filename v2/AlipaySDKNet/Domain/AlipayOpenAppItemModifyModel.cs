@@ -24,7 +24,7 @@ namespace Aop.Api.Domain
         public string Barcode { get; set; }
 
         /// <summary>
-        /// 平台类目，填写的类目必须在类目表列出，多级类目只填最后一级。商品类目 ID 及信息可通过<a href="https://opendocs.alipay.com/b/07847b">商品类目表</a>获取。仅叶子类目支持创建商品。
+        /// 平台类目，填写的类目必须在类目表列出，多级类目只填最后一级。商品类目 ID 及信息可通过<a href="https://opendocs.alipay.com/b/0a8xi8">商品类目表</a>获取。仅叶子类目支持创建商品。
         /// </summary>
         [XmlElement("category_id")]
         public string CategoryId { get; set; }
@@ -46,6 +46,13 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("direct_path")]
         public string DirectPath { get; set; }
+
+        /// <summary>
+        /// 导购信息
+        /// </summary>
+        [XmlArray("guide_info")]
+        [XmlArrayItem("guide_info_v_o")]
+        public List<GuideInfoVO> GuideInfo { get; set; }
 
         /// <summary>
         /// 商品主图，图片宽高为750px*750px，宽高比1:1，800kb以内。支持jpg、jpeg、png格式的图片。
@@ -79,7 +86,7 @@ namespace Aop.Api.Domain
         public string ItemType { get; set; }
 
         /// <summary>
-        /// 商品原价，分为单位。若填写了skus[]数组，此字段不用填写。若未填写skus[]数组，此字段必填。如果填写，值必须大于0，且原价不能小于售价。
+        /// 商品原价，分为单位。
         /// </summary>
         [XmlElement("original_price")]
         public long OriginalPrice { get; set; }
@@ -103,13 +110,13 @@ namespace Aop.Api.Domain
         public string PriceUnit { get; set; }
 
         /// <summary>
-        /// 商品售价，分为单位。若填写了skus[]数组，此字段不用填写。若未填写skus[]数组，此字段必填。如果填写，值必须要大于0。
+        /// 商品售价，分为单位。
         /// </summary>
         [XmlElement("sale_price")]
         public long SalePrice { get; set; }
 
         /// <summary>
-        /// 商品的售卖状态，包含以下两种状态 已下架(DELISTING), 可售卖(AVAILABLE),和冻结(FREEZE) 若填写了skus[]数组，此字段不用填写。 若未填写skus[]数组，此字段必填。
+        /// 商品的售卖状态
         /// </summary>
         [XmlElement("sale_status")]
         public string SaleStatus { get; set; }
