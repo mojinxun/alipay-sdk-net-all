@@ -36,13 +36,19 @@ namespace Aop.Api.Domain
         public List<CardPeriodPrice> PeriodPriceList { get; set; }
 
         /// <summary>
+        /// 周期付场景下预约链接，填写小程序地址。当card_type= PERIOD_PAY时生效。
+        /// </summary>
+        [XmlElement("reservation_url")]
+        public string ReservationUrl { get; set; }
+
+        /// <summary>
         /// 可用次数或期数
         /// </summary>
         [XmlElement("usable_count")]
         public long UsableCount { get; set; }
 
         /// <summary>
-        /// 传入指定商品的可用门店ID，不传代表所有门店可用
+        /// 传入指定商品的可用门店ID
         /// </summary>
         [XmlArray("usable_shop_list")]
         [XmlArrayItem("string")]
@@ -53,5 +59,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("use_instruction")]
         public string UseInstruction { get; set; }
+
+        /// <summary>
+        /// 用户可选的使用方式。当card_type= TIMES_CARD时生效。不传默认为到店亮码使用。
+        /// </summary>
+        [XmlArray("use_method")]
+        [XmlArrayItem("card_use_method_info")]
+        public List<CardUseMethodInfo> UseMethod { get; set; }
     }
 }
