@@ -34,6 +34,12 @@ namespace Aop.Api.Domain
         public string BankRuleId { get; set; }
 
         /// <summary>
+        /// 车辆类型； CAR：客车 TRUCK：货车
+        /// </summary>
+        [XmlElement("car_type")]
+        public string CarType { get; set; }
+
+        /// <summary>
         /// 办理人所在地城市编码
         /// </summary>
         [XmlElement("city_code")]
@@ -44,6 +50,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("mobile_no")]
         public string MobileNo { get; set; }
+
+        /// <summary>
+        /// 车辆总车轴数；
+        /// </summary>
+        [XmlElement("number_of_axles")]
+        public string NumberOfAxles { get; set; }
 
         /// <summary>
         /// 蚂蚁会员统一ID
@@ -88,6 +100,12 @@ namespace Aop.Api.Domain
         public string SellerId { get; set; }
 
         /// <summary>
+        /// ETC设备结算周期；
+        /// </summary>
+        [XmlElement("settlement_cycle")]
+        public string SettlementCycle { get; set; }
+
+        /// <summary>
         /// 支付宝ETC办理套餐code。 仅在创建订单时消费，更新订单时不消费。 创建订单：alipay_order_id为空；更新订单：alipay_order_id不为空。
         /// </summary>
         [XmlElement("spu_code")]
@@ -112,6 +130,12 @@ namespace Aop.Api.Domain
         public string ViLicenseApc { get; set; }
 
         /// <summary>
+        /// ETC办理时，可提供行驶证图片以便审核。此处需要提供上传图片后得到图片ID。
+        /// </summary>
+        [XmlElement("vi_license_back_img")]
+        public string ViLicenseBackImg { get; set; }
+
+        /// <summary>
         /// 行驶证信息-品牌车型
         /// </summary>
         [XmlElement("vi_license_brand_model")]
@@ -128,6 +152,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("vi_license_engine")]
         public string ViLicenseEngine { get; set; }
+
+        /// <summary>
+        /// ETC办理时，可提供行驶证图片以便审核。此处需要提供上传图片后得到图片ID。
+        /// </summary>
+        [XmlElement("vi_license_front_img")]
+        public string ViLicenseFrontImg { get; set; }
 
         /// <summary>
         /// 行驶证信息-总质量

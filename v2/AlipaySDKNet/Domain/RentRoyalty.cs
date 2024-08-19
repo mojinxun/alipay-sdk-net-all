@@ -10,6 +10,30 @@ namespace Aop.Api.Domain
     public class RentRoyalty : AopObject
     {
         /// <summary>
+        /// 订单id
+        /// </summary>
+        [XmlElement("biz_order_id")]
+        public string BizOrderId { get; set; }
+
+        /// <summary>
+        /// 买家支付宝用户唯一标识
+        /// </summary>
+        [XmlElement("buyer_id")]
+        public string BuyerId { get; set; }
+
+        /// <summary>
+        /// 买家支付宝用户唯一标识
+        /// </summary>
+        [XmlElement("buyer_open_id")]
+        public string BuyerOpenId { get; set; }
+
+        /// <summary>
+        /// 本期对应的买断分账金
+        /// </summary>
+        [XmlElement("current_buyout_price")]
+        public string CurrentBuyoutPrice { get; set; }
+
+        /// <summary>
         /// 代表某一个阶段的第几期的还款计划，要结合stage进行锁定某一期计划
         /// </summary>
         [XmlElement("period")]
@@ -44,6 +68,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("stage")]
         public string Stage { get; set; }
+
+        /// <summary>
+        /// 分账成功之后对应的交易号
+        /// </summary>
+        [XmlElement("trade_no")]
+        public string TradeNo { get; set; }
 
         /// <summary>
         /// 租金类型

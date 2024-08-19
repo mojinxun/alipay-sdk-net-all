@@ -11,31 +11,43 @@ namespace Aop.Api.Domain
     public class CardOrderInfo : AopObject
     {
         /// <summary>
+        /// 金额卡余额面值，单位分
+        /// </summary>
+        [XmlElement("available_amount")]
+        public long AvailableAmount { get; set; }
+
+        /// <summary>
         /// 用于区分订购单的取消类型
         /// </summary>
         [XmlElement("cancel_type")]
         public string CancelType { get; set; }
 
         /// <summary>
-        /// 订购单ID
+        /// 已解约金额，单位：分 (金额卡无效)
+        /// </summary>
+        [XmlElement("cancelled_cash")]
+        public long CancelledCash { get; set; }
+
+        /// <summary>
+        /// 售卖订单ID
         /// </summary>
         [XmlElement("card_id")]
         public string CardId { get; set; }
 
         /// <summary>
-        /// 订购单状态
+        /// 售卖订单状态 ● 次卡/周期卡   ○ 订购中:init   ○ 可使用:available   ○ 已用完:used_up   ○ 关闭中:closing   ○ 已关闭:closed ● 金额卡   ○ 可使用:available   ○ 已失效：invalid   ○ 已支付：paid   ○ 已退款：refund   ○ 超时关闭：timeout_closed   ○ 已用完:used_up
         /// </summary>
         [XmlElement("card_status")]
         public string CardStatus { get; set; }
 
         /// <summary>
-        /// 商品ID
+        /// 卡ID
         /// </summary>
         [XmlElement("card_template_id")]
         public string CardTemplateId { get; set; }
 
         /// <summary>
-        /// 商品类型
+        /// 卡类型
         /// </summary>
         [XmlElement("card_type")]
         public string CardType { get; set; }
@@ -54,7 +66,25 @@ namespace Aop.Api.Domain
         public List<DeductionPlanInfo> DeductionPlanList { get; set; }
 
         /// <summary>
-        /// 商品名称
+        /// 订单有效期开始时间
+        /// </summary>
+        [XmlElement("gmt_active")]
+        public string GmtActive { get; set; }
+
+        /// <summary>
+        /// 订单有效期结束时间
+        /// </summary>
+        [XmlElement("gmt_expired")]
+        public string GmtExpired { get; set; }
+
+        /// <summary>
+        /// merchant_pid
+        /// </summary>
+        [XmlElement("merchant_pid")]
+        public string MerchantPid { get; set; }
+
+        /// <summary>
+        /// 卡名称
         /// </summary>
         [XmlElement("name")]
         public string Name { get; set; }
@@ -72,7 +102,7 @@ namespace Aop.Api.Domain
         public string OrderId { get; set; }
 
         /// <summary>
-        /// 购买商品时的原价，单位分
+        /// 用户购买商品时的原价（面额），单位分
         /// </summary>
         [XmlElement("origin_price_total")]
         public long OriginPriceTotal { get; set; }
@@ -84,13 +114,19 @@ namespace Aop.Api.Domain
         public string OutOrderNo { get; set; }
 
         /// <summary>
+        /// 退款金额，单位：分 (金额卡无效)
+        /// </summary>
+        [XmlElement("refund_cash")]
+        public long RefundCash { get; set; }
+
+        /// <summary>
         /// 剩余期数(次数)
         /// </summary>
         [XmlElement("remain_count")]
         public long RemainCount { get; set; }
 
         /// <summary>
-        /// 用户购买商品时的实际价格，单位分
+        /// 用户购买商品时的实际价格（售价），单位分
         /// </summary>
         [XmlElement("sale_price_total")]
         public long SalePriceTotal { get; set; }
@@ -106,6 +142,24 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("total_count")]
         public long TotalCount { get; set; }
+
+        /// <summary>
+        /// 支付宝交易号
+        /// </summary>
+        [XmlElement("trade_no")]
+        public string TradeNo { get; set; }
+
+        /// <summary>
+        /// （1）金额卡余额现金价值，单位：分  （2）周期卡可核销金额，单位：分
+        /// </summary>
+        [XmlElement("usable_cash")]
+        public long UsableCash { get; set; }
+
+        /// <summary>
+        /// 已核销金额，单位：分 (金额卡无效)
+        /// </summary>
+        [XmlElement("used_cash")]
+        public long UsedCash { get; set; }
 
         /// <summary>
         /// 支付宝用户的userId。

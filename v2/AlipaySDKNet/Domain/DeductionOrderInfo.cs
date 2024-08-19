@@ -1,5 +1,6 @@
 using System;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace Aop.Api.Domain
 {
@@ -10,7 +11,14 @@ namespace Aop.Api.Domain
     public class DeductionOrderInfo : AopObject
     {
         /// <summary>
-        /// 订购单ID
+        /// 抽佣信息集合
+        /// </summary>
+        [XmlArray("bill_fee_info_list")]
+        [XmlArrayItem("bill_fee_info")]
+        public List<BillFeeInfo> BillFeeInfoList { get; set; }
+
+        /// <summary>
+        /// 售卖订单ID
         /// </summary>
         [XmlElement("card_id")]
         public string CardId { get; set; }
@@ -46,13 +54,13 @@ namespace Aop.Api.Domain
         public long DeductionFailTimes { get; set; }
 
         /// <summary>
-        /// 扣款单ID
+        /// 核销订单ID
         /// </summary>
         [XmlElement("deduction_order_id")]
         public string DeductionOrderId { get; set; }
 
         /// <summary>
-        /// 订单类型
+        /// 扣款单类型
         /// </summary>
         [XmlElement("deduction_order_type")]
         public string DeductionOrderType { get; set; }
@@ -74,6 +82,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("gmt_create")]
         public string GmtCreate { get; set; }
+
+        /// <summary>
+        /// 商户pid
+        /// </summary>
+        [XmlElement("merchant_pid")]
+        public string MerchantPid { get; set; }
 
         /// <summary>
         /// 用于标记支付宝用户在应用下的唯一标识
@@ -98,6 +112,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("plan_deduction_time")]
         public string PlanDeductionTime { get; set; }
+
+        /// <summary>
+        /// 退款金额，单位：分
+        /// </summary>
+        [XmlElement("refund_cash")]
+        public long RefundCash { get; set; }
 
         /// <summary>
         /// 门店ID
