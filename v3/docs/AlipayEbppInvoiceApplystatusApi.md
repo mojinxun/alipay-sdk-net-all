@@ -1,19 +1,19 @@
-# AlipaySDKNet.OpenAPI.Api.AlipayEbppInvoiceApplystatusApi
+# AlipaySDKNet.OpenAPI.Api.AlipayEbppInvoiceApplyStatusApi
 
 All URIs are relative to *https://openapi.alipay.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Query**](AlipayEbppInvoiceApplystatusApi.md#query) | **POST** /v3/alipay/ebpp/invoice/applystatus/query | 根据外部订单号查询开票状态
+[**Notify**](AlipayEbppInvoiceApplyStatusApi.md#notify) | **PUT** /v3/alipay/ebpp/invoice/apply/status/notify | 发票申请状态变更
 
 
-<a name="query"></a>
-# **Query**
-> AlipayEbppInvoiceApplystatusQueryResponseModel Query (AlipayEbppInvoiceApplystatusQueryModel alipayEbppInvoiceApplystatusQueryModel = null)
+<a name="notify"></a>
+# **Notify**
+> AlipayEbppInvoiceApplyStatusNotifyResponseModel Notify (AlipayEbppInvoiceApplyStatusNotifyModel alipayEbppInvoiceApplyStatusNotifyModel = null)
 
-根据外部订单号查询开票状态
+发票申请状态变更
 
-根据外部订单号查询开票状态，仅有申请状态无完整票据信息
+发票申请状态变更通知
 
 ### Example
 ```csharp
@@ -27,13 +27,13 @@ using AlipaySDKNet.OpenAPI.Util.Model;
 
 namespace Example
 {
-    public class QueryExample
+    public class NotifyExample
     {
         public static void Main()
         {
             Configuration config = new Configuration();
             config.BasePath = "https://openapi.alipay.com";
-            var apiInstance = new AlipayEbppInvoiceApplystatusApi(config);
+            var apiInstance = new AlipayEbppInvoiceApplyStatusApi(config);
 
             // 设置alipayConfig参数
             AlipayConfig alipayConfig = new AlipayConfig();
@@ -49,17 +49,17 @@ namespace Example
             AlipayConfigUtil alipayConfigUtil = new AlipayConfigUtil(alipayConfig);
             apiInstance.Client.SetAlipayConfigUtil(alipayConfigUtil);
 
-            var alipayEbppInvoiceApplystatusQueryModel = new AlipayEbppInvoiceApplystatusQueryModel(); // AlipayEbppInvoiceApplystatusQueryModel |  (optional) 
+            var alipayEbppInvoiceApplyStatusNotifyModel = new AlipayEbppInvoiceApplyStatusNotifyModel(); // AlipayEbppInvoiceApplyStatusNotifyModel |  (optional) 
 
             try
             {
-                // 根据外部订单号查询开票状态
-                AlipayEbppInvoiceApplystatusQueryResponseModel result = apiInstance.Query(alipayEbppInvoiceApplystatusQueryModel);
+                // 发票申请状态变更
+                AlipayEbppInvoiceApplyStatusNotifyResponseModel result = apiInstance.Notify(alipayEbppInvoiceApplyStatusNotifyModel);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling AlipayEbppInvoiceApplystatusApi.Query: " + e.Message );
+                Debug.Print("Exception when calling AlipayEbppInvoiceApplyStatusApi.Notify: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -72,11 +72,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **alipayEbppInvoiceApplystatusQueryModel** | **AlipayEbppInvoiceApplystatusQueryModel**|  | [optional] 
+ **alipayEbppInvoiceApplyStatusNotifyModel** | **AlipayEbppInvoiceApplyStatusNotifyModel**|  | [optional] 
 
 ### Return type
 
-**AlipayEbppInvoiceApplystatusQueryResponseModel**
+**AlipayEbppInvoiceApplyStatusNotifyResponseModel**
 
 ### Authorization
 
