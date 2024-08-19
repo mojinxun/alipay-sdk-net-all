@@ -18,6 +18,13 @@ namespace Aop.Api.Domain
         public List<MedicalLlmAnswerDTO> Answer { get; set; }
 
         /// <summary>
+        /// 卡片返回内容
+        /// </summary>
+        [XmlArray("answer_card")]
+        [XmlArrayItem("llm_answer_card_d_t_o")]
+        public List<LlmAnswerCardDTO> AnswerCard { get; set; }
+
+        /// <summary>
         /// 表示回答内容类型
         /// </summary>
         [XmlElement("answer_type")]
@@ -71,6 +78,12 @@ namespace Aop.Api.Domain
         [XmlArray("service_result")]
         [XmlArrayItem("external_service_d_t_o")]
         public List<ExternalServiceDTO> ServiceResult { get; set; }
+
+        /// <summary>
+        /// 推荐问题。
+        /// </summary>
+        [XmlElement("suggest_questions")]
+        public SuggestQuestionsDTO SuggestQuestions { get; set; }
 
         /// <summary>
         /// 目前只有文字模板

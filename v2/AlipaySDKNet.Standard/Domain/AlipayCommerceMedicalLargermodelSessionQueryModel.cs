@@ -22,6 +22,12 @@ namespace Aop.Api.Domain
         public string ChatId { get; set; }
 
         /// <summary>
+        /// 用户城市编码
+        /// </summary>
+        [XmlElement("city_code")]
+        public string CityCode { get; set; }
+
+        /// <summary>
         /// 城市名称
         /// </summary>
         [XmlElement("city_name")]
@@ -44,6 +50,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("open_id")]
         public string OpenId { get; set; }
+
+        /// <summary>
+        /// 用于区分同一个app下的机构
+        /// </summary>
+        [XmlElement("org_id")]
+        public string OrgId { get; set; }
 
         /// <summary>
         /// 用户的userId。
@@ -76,7 +88,7 @@ namespace Aop.Api.Domain
         public string QueryType { get; set; }
 
         /// <summary>
-        /// 区分当前对话场景意图 卫健委通用助理——WJWCOMASS
+        /// 区分当前对话场景意图 前缀不同，不做强枚举校验
         /// </summary>
         [XmlElement("scene_code")]
         public string SceneCode { get; set; }

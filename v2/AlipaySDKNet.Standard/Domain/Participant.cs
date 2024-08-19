@@ -16,6 +16,18 @@ namespace Aop.Api.Domain
         public BankcardExtInfo BankcardExtInfo { get; set; }
 
         /// <summary>
+        /// 参与方的证件号，支持身份证号、护照号。
+        /// </summary>
+        [XmlElement("cert_no")]
+        public string CertNo { get; set; }
+
+        /// <summary>
+        /// 参与方的证件类型。
+        /// </summary>
+        [XmlElement("cert_type")]
+        public string CertType { get; set; }
+
+        /// <summary>
         /// 描述参与方信息的扩展属性，使用前请与支付宝工程师确认
         /// </summary>
         [XmlElement("ext_info")]
@@ -28,7 +40,7 @@ namespace Aop.Api.Domain
         public string Identity { get; set; }
 
         /// <summary>
-        /// 参与方的标识类型，目前支持如下类型： 1、ALIPAY_USER_ID 支付宝的会员ID 2、ALIPAY_LOGON_ID：支付宝登录号，支持邮箱和手机号格式 3、ALIPAY_OPEN_ID：支付宝openid
+        /// 参与方的标识类型，目前支持如下类型： 1、ALIPAY_USER_ID 支付宝的会员ID 2、ALIPAY_LOGON_ID：支付宝登录号，支持邮箱和手机号格式 3、ALIPAY_OPEN_ID：支付宝openid 4、EXPRESS_DC_STFA：对公快捷银行卡
         /// </summary>
         [XmlElement("identity_type")]
         public string IdentityType { get; set; }

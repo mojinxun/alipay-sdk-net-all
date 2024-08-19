@@ -10,6 +10,12 @@ namespace Aop.Api.Domain
     public class CardCycle : AopObject
     {
         /// <summary>
+        /// 1.当该参数配置为true时，在用户下单时立即扣第一期的金额 2.默认没有权限，需要找客户经理申请权限
+        /// </summary>
+        [XmlElement("charge_now")]
+        public bool ChargeNow { get; set; }
+
+        /// <summary>
         /// 指定周期付首期扣款的方式
         /// </summary>
         [XmlElement("cycle_charge_type")]
@@ -26,6 +32,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("cycle_value")]
         public string CycleValue { get; set; }
+
+        /// <summary>
+        /// 周期卡商品类型，用于业务标识，年卡/季卡 当前字段已废弃(支持自定义期数，不需要该字段)
+        /// </summary>
+        [XmlElement("period_item_type")]
+        public string PeriodItemType { get; set; }
 
         /// <summary>
         /// 周期计费类型为USER_DESIGN，即用户可指定固定日期开始扣费的场景下，商家可以控制用户下单可选择时间范围，如下单时用户只能选0-30天范围内的时间作为首期计费时间，则该参数传0
