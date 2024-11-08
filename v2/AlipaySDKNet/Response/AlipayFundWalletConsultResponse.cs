@@ -9,7 +9,7 @@ namespace Aop.Api.Response
     public class AlipayFundWalletConsultResponse : AopResponse
     {
         /// <summary>
-        /// 实际可以提现/销户后退的金额，单位：元
+        /// search_type=WALLET_INFO（钱包查询）时为可用金额，search_type=WITHDRAW_INFO（提现查询）时为可提现金额，search_type=DESTROY_INFO（退卡查询）时为可退款金额，单位：元
         /// </summary>
         [XmlElement("actual_available_amount")]
         public string ActualAvailableAmount { get; set; }
@@ -21,7 +21,7 @@ namespace Aop.Api.Response
         public string AmountDetails { get; set; }
 
         /// <summary>
-        /// 2023122000392001363140394362
+        /// 卡号：2023122000392001363140394362
         /// </summary>
         [XmlElement("asset_no")]
         public string AssetNo { get; set; }
@@ -45,10 +45,16 @@ namespace Aop.Api.Response
         public string ErrorMsg { get; set; }
 
         /// <summary>
-        /// 总金额
+        /// 历史总充值金额
         /// </summary>
         [XmlElement("total_amount")]
         public string TotalAmount { get; set; }
+
+        /// <summary>
+        /// 钱包总余额=可用余额+冻结金额
+        /// </summary>
+        [XmlElement("total_balance")]
+        public string TotalBalance { get; set; }
 
         /// <summary>
         /// 钱包id
