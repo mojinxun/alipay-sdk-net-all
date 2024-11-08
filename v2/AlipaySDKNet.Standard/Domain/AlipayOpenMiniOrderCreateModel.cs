@@ -17,6 +17,12 @@ namespace Aop.Api.Domain
         public MiniReceiverAddressInfoDTO AddressInfo { get; set; }
 
         /// <summary>
+        /// 个人协议页面签约信息
+        /// </summary>
+        [XmlElement("agreement_sign_info")]
+        public AgreementSignInfoDTO AgreementSignInfo { get; set; }
+
+        /// <summary>
         /// 分账条款
         /// </summary>
         [XmlElement("alloc_amount_info")]
@@ -83,6 +89,12 @@ namespace Aop.Api.Domain
         public MiniOrderExtInfoDTO ExtInfo { get; set; }
 
         /// <summary>
+        /// 线上资金预授权冻结信息
+        /// </summary>
+        [XmlElement("fund_auth_freeze_info")]
+        public FundAuthFreezeInfoDTO FundAuthFreezeInfo { get; set; }
+
+        /// <summary>
         /// 订单类型
         /// </summary>
         [XmlElement("merchant_biz_type")]
@@ -117,6 +129,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("seller_id")]
         public string SellerId { get; set; }
+
+        /// <summary>
+        /// 签约资商通直付通平台商分账产品后，下单时传入平台模式，smid必传；此模式下支持服务商派单模式
+        /// </summary>
+        [XmlElement("service_provider_model")]
+        public string ServiceProviderModel { get; set; }
 
         /// <summary>
         /// 门店信息

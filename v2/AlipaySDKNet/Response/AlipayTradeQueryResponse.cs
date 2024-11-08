@@ -95,6 +95,12 @@ namespace Aop.Api.Response
         public string BuyerUserType { get; set; }
 
         /// <summary>
+        /// 收银台类型。  用户支付的收银台类型，取值如下：  APP：支付宝APP收银台支付；  WAP：支付H5收银台支付；  注：只有在无线产品支付接口请求中query_options指定cashier_type才返回该字段。
+        /// </summary>
+        [XmlElement("cashier_type")]
+        public string CashierType { get; set; }
+
+        /// <summary>
         /// 该笔交易针对收款方的收费金额；单位：元。  只在银行间联交易场景下返回该信息；
         /// </summary>
         [XmlElement("charge_amount")]
@@ -268,6 +274,12 @@ namespace Aop.Api.Response
         public string PointAmount { get; set; }
 
         /// <summary>
+        /// 当用户使用芝麻信用先享后付时，会返回该字段，代表整笔交易的原始待履约金额，单位元。
+        /// </summary>
+        [XmlElement("pre_auth_pay_amount")]
+        public string PreAuthPayAmount { get; set; }
+
+        /// <summary>
         /// 实收金额，单位为元，两位小数。该金额为本笔交易，商户账户能够实际收到的金额
         /// </summary>
         [XmlElement("receipt_amount")]
@@ -333,6 +345,12 @@ namespace Aop.Api.Response
         /// </summary>
         [XmlElement("subject")]
         public string Subject { get; set; }
+
+        /// <summary>
+        /// 碰一下支付信息
+        /// </summary>
+        [XmlElement("tap_pay_info")]
+        public TapPayInfo TapPayInfo { get; set; }
 
         /// <summary>
         /// 商户机具终端编号
