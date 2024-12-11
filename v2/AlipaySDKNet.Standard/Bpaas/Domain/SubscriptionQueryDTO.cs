@@ -27,4 +27,10 @@ public class SubscriptionQueryDTO
     [XmlElement("subscriptionNo")]
     public string SubscriptionNo { get; set; }
 
+    /// <summary>
+    /// √≈µÍID
+    /// </summary>
+    [XmlElement("shopId")]
+    public string ShopId { get; set; }
+
 }
