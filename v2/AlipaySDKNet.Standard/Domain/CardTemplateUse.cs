@@ -66,5 +66,12 @@ namespace Aop.Api.Domain
         [XmlArray("use_method")]
         [XmlArrayItem("card_use_method_info")]
         public List<CardUseMethodInfo> UseMethod { get; set; }
+
+        /// <summary>
+        /// 周期卡是否全部门店 部分门店: 0 全部门店: 1
+		/// 搭配usable_shop_list使用，当show_shop=1时，usable_shop_list可不传。
+        /// </summary>
+        [XmlElement("show_shop")]
+        public string ShowShop { get; set; }
     }
 }
