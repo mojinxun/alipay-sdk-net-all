@@ -1,5 +1,6 @@
 using System;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace Aop.Api.Domain
 {
@@ -22,6 +23,12 @@ namespace Aop.Api.Domain
         public string AlipayUserId { get; set; }
 
         /// <summary>
+        /// 授信类型
+        /// </summary>
+        [XmlElement("credit_type")]
+        public string CreditType { get; set; }
+
+        /// <summary>
         /// 传入拉取代签协议列表前, 扩展信息透传相关业务场景的咨询结果信息
         /// </summary>
         [XmlElement("extension")]
@@ -32,6 +39,13 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("fund_supplier_code")]
         public string FundSupplierCode { get; set; }
+
+        /// <summary>
+        /// 授信机构id列表
+        /// </summary>
+        [XmlArray("fund_supplier_code_list")]
+        [XmlArrayItem("string")]
+        public List<string> FundSupplierCodeList { get; set; }
 
         /// <summary>
         /// 用于标记支付宝用户在应用下的唯一标识

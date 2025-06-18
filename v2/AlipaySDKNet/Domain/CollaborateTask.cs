@@ -29,7 +29,7 @@ namespace Aop.Api.Domain
         public string ActivityType { get; set; }
 
         /// <summary>
-        /// 任务拉取时该字段无返回内容，确认领取时会返回该字段。
+        /// 任务拉取时该字段无返回内容，确认商户有安装意图时返回该字段
         /// </summary>
         [XmlElement("address")]
         public string Address { get; set; }
@@ -45,6 +45,18 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("city_name")]
         public string CityName { get; set; }
+
+        /// <summary>
+        /// pull接口返回脱敏后的联系人姓名，如刘*,confirm接口确认商家有意愿安装，则返回完整的联系人姓名。
+        /// </summary>
+        [XmlElement("contact_name")]
+        public string ContactName { get; set; }
+
+        /// <summary>
+        /// 如果为空默认是N7，商户需要铺设设备的类型
+        /// </summary>
+        [XmlElement("device_type")]
+        public string DeviceType { get; set; }
 
         /// <summary>
         /// 任务分配的时间。
@@ -102,6 +114,12 @@ namespace Aop.Api.Domain
         public string ProvinceName { get; set; }
 
         /// <summary>
+        /// 线上强leads签约了必有
+        /// </summary>
+        [XmlElement("sales_order_id")]
+        public string SalesOrderId { get; set; }
+
+        /// <summary>
         /// 任务拉取时该字段无返回内容，确认领取时会返回该字段。
         /// </summary>
         [XmlElement("shop_name")]
@@ -115,20 +133,26 @@ namespace Aop.Api.Domain
         public List<string> SmidList { get; set; }
 
         /// <summary>
+        /// 线上有参与活动的必有
+        /// </summary>
+        [XmlElement("solution_id")]
+        public string SolutionId { get; set; }
+
+        /// <summary>
         /// 任务编号
         /// </summary>
         [XmlElement("task_no")]
         public string TaskNo { get; set; }
 
         /// <summary>
-        /// 任务标签，如：强意愿用户
+        /// WILLNGNESS-强意愿用户（多次提报） NOT_SIGNING-未签约 HAS_SIGNED-已签约 STOCK-存量摸排
         /// </summary>
         [XmlArray("task_tags")]
         [XmlArrayItem("string")]
         public List<string> TaskTags { get; set; }
 
         /// <summary>
-        /// 任务拉取时该字段无返回内容，确认领取时会返回该字段。
+        /// 任务拉取时无该内容返回，确认领取时返回脱敏内容，如131****2222，确认商户有意图或呼叫商户N次未接通的情况会返回该字段未脱敏数据，N以实际业务沟通为准
         /// </summary>
         [XmlElement("tel")]
         public string Tel { get; set; }

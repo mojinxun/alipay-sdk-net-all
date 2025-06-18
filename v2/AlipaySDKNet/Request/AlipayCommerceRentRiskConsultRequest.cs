@@ -10,7 +10,7 @@ namespace Aop.Api.Request
     public class AlipayCommerceRentRiskConsultRequest : IAopRequest<AlipayCommerceRentRiskConsultResponse>
     {
         /// <summary>
-        /// 智安通风险咨询API
+        /// 租赁行业风险咨询接口，通过商家侧唯一订单号 out_biz_no、uid/openid，查询当前订单用户的共租风险等级、小程序交易健康度等数据信息。
         /// </summary>
         public string BizContent { get; set; }
 

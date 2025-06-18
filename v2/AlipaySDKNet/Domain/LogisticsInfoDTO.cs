@@ -12,6 +12,24 @@ namespace Aop.Api.Domain
         /// <summary>
         /// 配送时间,格式为 yyyy-MM-dd HH:mm:ss
         /// </summary>
+        [XmlElement("delivery_end_time")]
+        public string DeliveryEndTime { get; set; }
+
+        /// <summary>
+        /// 履约商家信息，具体是由哪个商家履约的
+        /// </summary>
+        [XmlElement("delivery_merchant_info")]
+        public DeliveryMerchantInfoDTO DeliveryMerchantInfo { get; set; }
+
+        /// <summary>
+        /// 配送时间,格式为 yyyy-MM-dd HH:mm:ss
+        /// </summary>
+        [XmlElement("delivery_start_time")]
+        public string DeliveryStartTime { get; set; }
+
+        /// <summary>
+        /// 配送时间,格式为 yyyy-MM-dd HH:mm:ss
+        /// </summary>
         [XmlElement("delivery_time")]
         public string DeliveryTime { get; set; }
 
