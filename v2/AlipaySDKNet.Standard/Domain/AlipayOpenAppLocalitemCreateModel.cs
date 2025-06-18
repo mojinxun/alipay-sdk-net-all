@@ -62,7 +62,7 @@ namespace Aop.Api.Domain
         public string ItemDetailsPageModel { get; set; }
 
         /// <summary>
-        /// 商品模版类型：1. 团购 2. 代金券 3. 日历房
+        /// 商品类型
         /// </summary>
         [XmlElement("item_type")]
         public string ItemType { get; set; }
@@ -86,6 +86,12 @@ namespace Aop.Api.Domain
         public string Path { get; set; }
 
         /// <summary>
+        /// 商品的售卖状态，默认：可售卖(AVAILABLE)。
+        /// </summary>
+        [XmlElement("sale_status")]
+        public string SaleStatus { get; set; }
+
+        /// <summary>
         /// sku数组
         /// </summary>
         [XmlArray("skus")]
@@ -105,7 +111,7 @@ namespace Aop.Api.Domain
         public string SpuId { get; set; }
 
         /// <summary>
-        /// 商品名称。 商品名称，字符类型，最少不低于3，最长不超过60个字。注：1.商品名称只允许汉字、数字、英文字母、特殊字符集；2.商品名称不得仅为数字、字母、特殊字符集或上述三种的组合。
+        /// 商品名称。 商品名称，字符类型，最少不低于3，最长不超过100个字。注：1.商品名称只允许汉字、数字、英文字母、特殊字符集；2.商品名称不得仅为数字、字母、特殊字符集或上述三种的组合。
         /// </summary>
         [XmlElement("title")]
         public string Title { get; set; }

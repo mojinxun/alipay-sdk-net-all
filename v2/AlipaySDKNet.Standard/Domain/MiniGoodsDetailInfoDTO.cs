@@ -36,7 +36,7 @@ namespace Aop.Api.Domain
         public List<EffectiveDatesDTO> EffectiveDates { get; set; }
 
         /// <summary>
-        /// 商品类目 当前字段已废弃(暂时未使用)
+        /// 商品类目
         /// </summary>
         [XmlElement("goods_category")]
         public string GoodsCategory { get; set; }
@@ -66,10 +66,22 @@ namespace Aop.Api.Domain
         public string ImageMaterialId { get; set; }
 
         /// <summary>
+        /// 品牌编号；商品品牌信息参<a href="https://xfpzl.yuque.com/dgw58m/apg2ie/qlqvdv0dhsbldyhv#kIy4">https://xfpzl.yuque.com/dgw58m/apg2ie/qlqvdv0dhsbldyhv#kIy4 </a>考此文档传入品牌编号
+        /// </summary>
+        [XmlElement("item_brand")]
+        public string ItemBrand { get; set; }
+
+        /// <summary>
         /// 商品数量
         /// </summary>
         [XmlElement("item_cnt")]
         public string ItemCnt { get; set; }
+
+        /// <summary>
+        /// 商品成色 当前字段已废弃(商品成色有成色和等级两个信息。该字段定义模糊。)
+        /// </summary>
+        [XmlElement("item_condition")]
+        public string ItemCondition { get; set; }
 
         /// <summary>
         /// 单位元有优惠信息时需要传入，优惠方式sale_real_price与item_discount二选一sale_real_price使用场景：商品有单价优惠，传入商品实际成交单价item_discount使用场景：同时购买多件商品时存在优惠，传入优惠总额优惠计算参考：<a href="https://opendocs.alipay.com/mini/0ag2e1?pathHash=20b9a409">文档</a> 中资金平衡校验
@@ -78,10 +90,34 @@ namespace Aop.Api.Domain
         public string ItemDiscount { get; set; }
 
         /// <summary>
+        /// 商品成色
+        /// </summary>
+        [XmlElement("item_fineness")]
+        public string ItemFineness { get; set; }
+
+        /// <summary>
+        /// 成色等级，成色为二手时需传入此字段
+        /// </summary>
+        [XmlElement("item_fineness_grade")]
+        public string ItemFinenessGrade { get; set; }
+
+        /// <summary>
         /// 商品分期信息
         /// </summary>
         [XmlElement("item_installment_info")]
         public ItemInstallmentInfoDTO ItemInstallmentInfo { get; set; }
+
+        /// <summary>
+        /// 最大售价，单位：元，保留两位小数
+        /// </summary>
+        [XmlElement("max_sale_price")]
+        public string MaxSalePrice { get; set; }
+
+        /// <summary>
+        /// 最低售价，单位：元，保留两位小数
+        /// </summary>
+        [XmlElement("min_sale_price")]
+        public string MinSalePrice { get; set; }
 
         /// <summary>
         /// 商户侧商品id，用于公域场景结算，会影响主播归因。私域场景无需传入，公域场景未传入会影响后续结算
@@ -100,6 +136,18 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("platform_item_version_id")]
         public string PlatformItemVersionId { get; set; }
+
+        /// <summary>
+        /// 默认值：FIXED
+        /// </summary>
+        [XmlElement("price_mode")]
+        public string PriceMode { get; set; }
+
+        /// <summary>
+        /// 租赁商品扩展信息
+        /// </summary>
+        [XmlElement("rent_goods_info")]
+        public RentGoodsInfoDTO RentGoodsInfo { get; set; }
 
         /// <summary>
         /// 租金信息，租赁商品特有

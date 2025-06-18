@@ -86,7 +86,7 @@ namespace Aop.Api.Domain
         public List<LandingTypeDto> Landing { get; set; }
 
         /// <summary>
-        /// 商品原价，分为单位
+        /// 商品原价，单位为分（人民币）
         /// </summary>
         [XmlElement("original_price")]
         public long OriginalPrice { get; set; }
@@ -104,6 +104,12 @@ namespace Aop.Api.Domain
         public string OutSource { get; set; }
 
         /// <summary>
+        /// 商品归属的商户oid, 传入oid时优先使用oid，否则使用pid
+        /// </summary>
+        [XmlElement("owner_oid")]
+        public string OwnerOid { get; set; }
+
+        /// <summary>
         /// 商品归属的商户pid
         /// </summary>
         [XmlElement("owner_pid")]
@@ -116,7 +122,7 @@ namespace Aop.Api.Domain
         public string Path { get; set; }
 
         /// <summary>
-        /// 价格单元
+        /// 价格单位
         /// </summary>
         [XmlElement("price_unit")]
         public string PriceUnit { get; set; }

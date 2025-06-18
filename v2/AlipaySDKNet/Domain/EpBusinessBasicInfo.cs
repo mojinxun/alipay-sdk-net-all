@@ -72,6 +72,12 @@ namespace Aop.Api.Domain
         public string Frdb { get; set; }
 
         /// <summary>
+        /// 企业所属行业信息
+        /// </summary>
+        [XmlElement("industry_model")]
+        public EpIndustryModel IndustryModel { get; set; }
+
+        /// <summary>
         /// 投资人
         /// </summary>
         [XmlElement("investors")]
@@ -215,6 +221,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("tyshxydm")]
         public string Tyshxydm { get; set; }
+
+        /// <summary>
+        /// 注册资本币种
+        /// </summary>
+        [XmlElement("zczbbz")]
+        public string Zczbbz { get; set; }
 
         /// <summary>
         /// 执行合伙人

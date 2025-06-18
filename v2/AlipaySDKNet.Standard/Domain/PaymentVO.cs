@@ -76,9 +76,27 @@ namespace Aop.Api.Domain
         public string PackingFee { get; set; }
 
         /// <summary>
+        /// 购药saas平台支付单号，对应医保对账单中的平台订单号
+        /// </summary>
+        [XmlElement("pay_num")]
+        public string PayNum { get; set; }
+
+        /// <summary>
+        /// 自费支付产生费用时的订单号
+        /// </summary>
+        [XmlElement("self_trade_no")]
+        public string SelfTradeNo { get; set; }
+
+        /// <summary>
         /// 特殊时段加价费用，单位：元，保留2位小数
         /// </summary>
         [XmlElement("time_markup_price")]
         public string TimeMarkupPrice { get; set; }
+
+        /// <summary>
+        /// 此字段对应B站对账单中的商家订单号
+        /// </summary>
+        [XmlElement("yk_pay_no")]
+        public string YkPayNo { get; set; }
     }
 }

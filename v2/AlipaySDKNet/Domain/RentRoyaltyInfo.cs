@@ -23,6 +23,24 @@ namespace Aop.Api.Domain
         public string BuyerOpenId { get; set; }
 
         /// <summary>
+        /// 提前结清标志
+        /// </summary>
+        [XmlElement("early_settle")]
+        public bool EarlySettle { get; set; }
+
+        /// <summary>
+        /// 提前结清金额,单位：元
+        /// </summary>
+        [XmlElement("early_settle_price")]
+        public string EarlySettlePrice { get; set; }
+
+        /// <summary>
+        /// 资方appid
+        /// </summary>
+        [XmlElement("invest_app_id")]
+        public string InvestAppId { get; set; }
+
+        /// <summary>
         /// 订单分配给的资方的id
         /// </summary>
         [XmlElement("invest_pid")]
@@ -39,6 +57,13 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("out_order_id")]
         public string OutOrderId { get; set; }
+
+        /// <summary>
+        /// 租赁分期计划，每一期分期计划详情
+        /// </summary>
+        [XmlArray("plan_list")]
+        [XmlArrayItem("rent_plan")]
+        public List<RentPlan> PlanList { get; set; }
 
         /// <summary>
         /// 分账信息列表，每一期的分账详情

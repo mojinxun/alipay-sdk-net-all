@@ -70,6 +70,12 @@ namespace Aop.Api.Domain
         public string OpenId { get; set; }
 
         /// <summary>
+        /// 支付宝转账订单id
+        /// </summary>
+        [XmlElement("order_id")]
+        public string OrderId { get; set; }
+
+        /// <summary>
         /// 外部业务编号
         /// </summary>
         [XmlElement("out_biz_no")]
@@ -92,5 +98,11 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("user_id")]
         public string UserId { get; set; }
+
+        /// <summary>
+        /// 支付宝账户对应的用户姓名
+        /// </summary>
+        [XmlElement("user_name")]
+        public string UserName { get; set; }
     }
 }

@@ -64,6 +64,12 @@ namespace Aop.Api.Domain
         public string OutProductId { get; set; }
 
         /// <summary>
+        /// 用于商户核销时，需要携带特殊业务参数场景
+        /// </summary>
+        [XmlElement("special_biz_info")]
+        public string SpecialBizInfo { get; set; }
+
+        /// <summary>
         /// status核销或确认场景使用，枚举值为S\C\R\N，正常核销或确认商品时传S、核销权益次数完结传C、拒绝核销或确认传入N、逆向核销回补使用次数时传递R。 不传默认为S
         /// </summary>
         [XmlElement("status")]
@@ -82,7 +88,13 @@ namespace Aop.Api.Domain
         public string UsageCount { get; set; }
 
         /// <summary>
-        /// 确认场景类型，枚举值用户核销，USER_PERFORMANCE。取消预约，RESERVE_CANCEL。修改预约，RESERVE_MODIFY。上传报告，REPORT_UPLOAD。 不传，默认为用户核销
+        /// 用于记录实物发货的物流单号、物流公司等信息，并回传给医疗行业侧
+        /// </summary>
+        [XmlElement("verify_logistics_detail")]
+        public VerifyLogisticsDetail VerifyLogisticsDetail { get; set; }
+
+        /// <summary>
+        /// 确认场景类型，枚举值： 确认预约，RESERVE。 用户核销，USER_PERFORMANCE。 确认取消预约，RESERVE_CANCEL。 确认修改预约，RESERVE_MODIFY。 上传报告，REPORT_UPLOAD。 商家确认发货，DELIVERY。 用户已收到货，DELIVERIED。 商家收到退货或退款确认，REFUND_CONFIRM。 商家待确认预约，WAIT_CONFIRM_RESERVE。 该字段为空值默认动作为用户核销 ：USER_PERFORMANCE。
         /// </summary>
         [XmlElement("verify_type")]
         public string VerifyType { get; set; }

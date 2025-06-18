@@ -48,6 +48,12 @@ namespace Aop.Api.Domain
         public EcomItemDTO Item { get; set; }
 
         /// <summary>
+        /// 蚂蚁保系统生成的责任编号
+        /// </summary>
+        [XmlElement("liability_no")]
+        public string LiabilityNo { get; set; }
+
+        /// <summary>
         /// 订单
         /// </summary>
         [XmlElement("order_dto")]
@@ -77,6 +83,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("refund_dispute")]
         public EcomRefundDisputeDTO RefundDispute { get; set; }
+
+        /// <summary>
+        /// 退货物流信息
+        /// </summary>
+        [XmlElement("refund_logistics_order")]
+        public EcomLogisticsOrderDTO RefundLogisticsOrder { get; set; }
 
         /// <summary>
         /// 报案操作人类型

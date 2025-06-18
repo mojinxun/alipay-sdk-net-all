@@ -42,6 +42,19 @@ namespace Aop.Api.Domain
         public string ReservationUrl { get; set; }
 
         /// <summary>
+        /// 是否全部门店
+        /// </summary>
+        [XmlElement("show_shop")]
+        public string ShowShop { get; set; }
+
+        /// <summary>
+        /// 对顾客展示的门店，传入门店id。
+        /// </summary>
+        [XmlArray("show_shop_ids")]
+        [XmlArrayItem("string")]
+        public List<string> ShowShopIds { get; set; }
+
+        /// <summary>
         /// 可用次数或期数
         /// </summary>
         [XmlElement("usable_count")]
@@ -66,12 +79,5 @@ namespace Aop.Api.Domain
         [XmlArray("use_method")]
         [XmlArrayItem("card_use_method_info")]
         public List<CardUseMethodInfo> UseMethod { get; set; }
-
-        /// <summary>
-        /// 周期卡是否全部门店 部分门店: 0 全部门店: 1
-		/// 搭配usable_shop_list使用，当show_shop=1时，usable_shop_list可不传。
-        /// </summary>
-        [XmlElement("show_shop")]
-        public string ShowShop { get; set; }
     }
 }

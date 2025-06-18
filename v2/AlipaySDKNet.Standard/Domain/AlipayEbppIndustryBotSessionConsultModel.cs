@@ -22,7 +22,7 @@ namespace Aop.Api.Domain
         public string BotId { get; set; }
 
         /// <summary>
-        /// 业务请求的来源。 alipay：支付宝端内请求 pc：pc端内请求 app：业务机构自研app请求
+        /// 机构用户在政务AI开放平台录入服务数据时选择的渠道参数，如：alipay。由于各机构数据有差异渠道数据不可枚举，具体以导入数据为准。
         /// </summary>
         [XmlElement("channel")]
         public string Channel { get; set; }
@@ -68,6 +68,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("stream_output")]
         public bool StreamOutput { get; set; }
+
+        /// <summary>
+        /// true为用户选择「深度思考」，在回答内容中会返回思维链内容，具体解析逻辑参考spi：spi.alipay.ebpp.industry.bot.answer.send接口说明。
+        /// </summary>
+        [XmlElement("think_output")]
+        public bool ThinkOutput { get; set; }
 
         /// <summary>
         /// 支付宝用户的userId。

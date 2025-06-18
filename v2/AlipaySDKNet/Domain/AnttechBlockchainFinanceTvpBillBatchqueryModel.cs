@@ -10,19 +10,25 @@ namespace Aop.Api.Domain
     public class AnttechBlockchainFinanceTvpBillBatchqueryModel : AopObject
     {
         /// <summary>
-        /// 分页查询，页码。默认 1
+        /// 分页查询，页码。从 0 开始
         /// </summary>
         [XmlElement("page_index")]
         public long PageIndex { get; set; }
 
         /// <summary>
-        /// 分页大小，默认500
+        /// 分页大小
         /// </summary>
         [XmlElement("page_size")]
         public long PageSize { get; set; }
 
         /// <summary>
-        /// 收款方
+        /// 收款方账号
+        /// </summary>
+        [XmlElement("payee_account")]
+        public TrustAccountInfo PayeeAccount { get; set; }
+
+        /// <summary>
+        /// 收款方主体
         /// </summary>
         [XmlElement("payee_entity")]
         public TrustEntityInfo PayeeEntity { get; set; }

@@ -1,5 +1,6 @@
 using System;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace Aop.Api.Domain
 {
@@ -22,6 +23,12 @@ namespace Aop.Api.Domain
         public string CreditApplyNo { get; set; }
 
         /// <summary>
+        /// SIMPLE_CREDIT，极简授信
+        /// </summary>
+        [XmlElement("credit_type")]
+        public string CreditType { get; set; }
+
+        /// <summary>
         /// 淘宝会员id
         /// </summary>
         [XmlElement("customer_id")]
@@ -38,6 +45,13 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("fund_supplier_code")]
         public string FundSupplierCode { get; set; }
+
+        /// <summary>
+        /// 授信机构列表
+        /// </summary>
+        [XmlArray("fund_supplier_code_list")]
+        [XmlArrayItem("string")]
+        public List<string> FundSupplierCodeList { get; set; }
 
         /// <summary>
         /// 用于标记支付宝用户在应用下的唯一标识

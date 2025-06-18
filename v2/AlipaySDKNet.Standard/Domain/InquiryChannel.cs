@@ -30,6 +30,12 @@ namespace Aop.Api.Domain
         public string InquiryPrice { get; set; }
 
         /// <summary>
+        /// 问诊服务状态
+        /// </summary>
+        [XmlElement("inquiry_status")]
+        public string InquiryStatus { get; set; }
+
+        /// <summary>
         /// 问诊类型
         /// </summary>
         [XmlElement("inquiry_type")]
@@ -46,5 +52,11 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("register_flag")]
         public bool RegisterFlag { get; set; }
+
+        /// <summary>
+        /// 服务时长（单位小时）
+        /// </summary>
+        [XmlElement("service_duration")]
+        public string ServiceDuration { get; set; }
     }
 }

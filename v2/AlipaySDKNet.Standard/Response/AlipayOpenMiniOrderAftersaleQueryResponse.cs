@@ -23,6 +23,12 @@ namespace Aop.Api.Response
         public string AdditionalReason { get; set; }
 
         /// <summary>
+        /// 退货地址信息
+        /// </summary>
+        [XmlElement("address_info")]
+        public AftersaleAddressInfoVO AddressInfo { get; set; }
+
+        /// <summary>
         /// 商品列表
         /// </summary>
         [XmlArray("aftersale_goods_info_list")]
@@ -53,6 +59,12 @@ namespace Aop.Api.Response
         /// </summary>
         [XmlElement("apply_refund_amount")]
         public string ApplyRefundAmount { get; set; }
+
+        /// <summary>
+        /// 创建时间，yyyy-MM-dd HH:mm:ss
+        /// </summary>
+        [XmlElement("create_time")]
+        public string CreateTime { get; set; }
 
         /// <summary>
         /// 最终退款金额，单位：元,精确到小数点后两位

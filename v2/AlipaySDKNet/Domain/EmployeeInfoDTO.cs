@@ -11,6 +11,13 @@ namespace Aop.Api.Domain
     public class EmployeeInfoDTO : AopObject
     {
         /// <summary>
+        /// 员工所属核算主体列表
+        /// </summary>
+        [XmlArray("accounting_entity_list")]
+        [XmlArrayItem("employee_accounting_entity_d_t_o")]
+        public List<EmployeeAccountingEntityDTO> AccountingEntityList { get; set; }
+
+        /// <summary>
         /// 是否激活
         /// </summary>
         [XmlElement("activate")]
@@ -84,6 +91,12 @@ namespace Aop.Api.Domain
         public string GmtModified { get; set; }
 
         /// <summary>
+        /// 员工收票邮箱
+        /// </summary>
+        [XmlElement("invoice_email")]
+        public string InvoiceEmail { get; set; }
+
+        /// <summary>
         /// 员工是否人脸在库
         /// </summary>
         [XmlElement("iot_face_status")]
@@ -100,6 +113,19 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("iot_vid")]
         public string IotVid { get; set; }
+
+        /// <summary>
+        /// 员工职级
+        /// </summary>
+        [XmlElement("job_level_show")]
+        public string JobLevelShow { get; set; }
+
+        /// <summary>
+        /// 员工标签
+        /// </summary>
+        [XmlArray("label_names")]
+        [XmlArrayItem("string")]
+        public List<string> LabelNames { get; set; }
 
         /// <summary>
         /// 手机号码
@@ -125,6 +151,12 @@ namespace Aop.Api.Domain
         [XmlArray("role_list")]
         [XmlArrayItem("string")]
         public List<string> RoleList { get; set; }
+
+        /// <summary>
+        /// 直属主管员工ID
+        /// </summary>
+        [XmlElement("tl_employee_id")]
+        public string TlEmployeeId { get; set; }
 
         /// <summary>
         /// 用户ID（绑定支付宝账号的uid）

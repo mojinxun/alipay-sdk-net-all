@@ -16,7 +16,7 @@ namespace Aop.Api.Domain
         public string AmountItem { get; set; }
 
         /// <summary>
-        /// APP方商品ID
+        /// APP方商品编码，对应商品接口的sku_code｜商品编码
         /// </summary>
         [XmlElement("app_item_code")]
         public string AppItemCode { get; set; }
@@ -28,25 +28,37 @@ namespace Aop.Api.Domain
         public long IsMiItem { get; set; }
 
         /// <summary>
+        /// 1是处方药品，2不是处方药品
+        /// </summary>
+        [XmlElement("is_rx_item")]
+        public long IsRxItem { get; set; }
+
+        /// <summary>
         /// 商品名称
         /// </summary>
         [XmlElement("item_name")]
         public string ItemName { get; set; }
 
         /// <summary>
-        /// 商品原价
+        /// 商品医保编码
+        /// </summary>
+        [XmlElement("mi_code")]
+        public string MiCode { get; set; }
+
+        /// <summary>
+        /// 商品原价，单位：元
         /// </summary>
         [XmlElement("price_original")]
         public string PriceOriginal { get; set; }
 
         /// <summary>
-        /// 商品单价
+        /// 商品单价，单位：元
         /// </summary>
         [XmlElement("price_sale")]
         public string PriceSale { get; set; }
 
         /// <summary>
-        /// 购买数量
+        /// 购买数量，单位：件
         /// </summary>
         [XmlElement("quantity_item")]
         public long QuantityItem { get; set; }

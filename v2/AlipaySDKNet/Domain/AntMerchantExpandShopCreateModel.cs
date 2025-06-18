@@ -137,6 +137,13 @@ namespace Aop.Api.Domain
         public string Memo { get; set; }
 
         /// <summary>
+        /// 门店营业时间，支持一周7天，支持1天内多时间段
+        /// </summary>
+        [XmlArray("new_business_time")]
+        [XmlArrayItem("complex_business_time")]
+        public List<ComplexBusinessTime> NewBusinessTime { get; set; }
+
+        /// <summary>
         /// 需传入<a href="https://opendocs.alipay.com/apis/api_1/ant.merchant.expand.indirect.image.upload">ant.merchant.expand.indirect.image.upload</a> 接口上传图片后得到的 image_id。
         /// </summary>
         [XmlArray("out_door_images")]
@@ -167,6 +174,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("shop_category")]
         public string ShopCategory { get; set; }
+
+        /// <summary>
+        /// 主要针对医疗行业门店主体类型进件使用，不同门店认证主体需要相应的主体资质证书。  企业营业执照: ENTERPRISE;  事业单位法人证书: INST_RGST_CTF;  民办非企业单位登记证书 PRIVATE_NON_ENTERPRISE
+        /// </summary>
+        [XmlElement("shop_main_type")]
+        public string ShopMainType { get; set; }
 
         /// <summary>
         /// 店铺名称, 由商户定义在支付宝内的店铺名称
