@@ -35,6 +35,24 @@ namespace Aop.Api.Domain
         public string BuyoutPrice { get; set; }
 
         /// <summary>
+        /// 本次分账金额，单位：元。此字段只有在分账成功才有值
+        /// </summary>
+        [XmlElement("current_royalty_amount")]
+        public string CurrentRoyaltyAmount { get; set; }
+
+        /// <summary>
+        /// 本次分账模式，此字段只有在分账成功才有值。
+        /// </summary>
+        [XmlElement("current_royalty_mode")]
+        public string CurrentRoyaltyMode { get; set; }
+
+        /// <summary>
+        /// 本次分账时间，此字段只有在分账成功才有值。
+        /// </summary>
+        [XmlElement("current_royalty_time")]
+        public string CurrentRoyaltyTime { get; set; }
+
+        /// <summary>
         /// 提前结清,true表示提前结清
         /// </summary>
         [XmlElement("early_settle")]
@@ -63,6 +81,18 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("loan_time")]
         public string LoanTime { get; set; }
+
+        /// <summary>
+        /// 商家下单APPID
+        /// </summary>
+        [XmlElement("merchant_app_id")]
+        public string MerchantAppId { get; set; }
+
+        /// <summary>
+        /// 商家统一社会信用代码
+        /// </summary>
+        [XmlElement("merchant_uscc")]
+        public string MerchantUscc { get; set; }
 
         /// <summary>
         /// 商户订单号

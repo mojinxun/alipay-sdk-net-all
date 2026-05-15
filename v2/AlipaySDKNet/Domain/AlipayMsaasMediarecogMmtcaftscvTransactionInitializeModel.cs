@@ -11,7 +11,13 @@ namespace Aop.Api.Domain
     public class AlipayMsaasMediarecogMmtcaftscvTransactionInitializeModel : AopObject
     {
         /// <summary>
-        /// 货柜类型，STATIC-静态柜，DYNAMIC-动态重力柜，PURE_DYNAMIC-动态视觉货柜
+        /// 该参数用于明确指定货柜 air 是否开启识别。  非air 柜默认开启识别。
+        /// </summary>
+        [XmlElement("air_identify")]
+        public bool AirIdentify { get; set; }
+
+        /// <summary>
+        /// 货柜类型，STATIC-静态柜，DYNAMIC-动态重力柜，PURE_DYNAMIC-动态视觉货柜，STATIC_STATE_WEIGHT-静态重力柜
         /// </summary>
         [XmlElement("device_identify_type")]
         public string DeviceIdentifyType { get; set; }
@@ -36,10 +42,23 @@ namespace Aop.Api.Domain
         public string ReqId { get; set; }
 
         /// <summary>
+        /// 右柜商品清单(仅单pad双门柜)
+        /// </summary>
+        [XmlArray("right_goods_infos")]
+        [XmlArrayItem("good_info")]
+        public List<GoodInfo> RightGoodsInfos { get; set; }
+
+        /// <summary>
         /// 标识是什么场景下的视觉识别请求，visionPay,putInOrder,queryAll
         /// </summary>
         [XmlElement("scene")]
         public string Scene { get; set; }
+
+        /// <summary>
+        /// 单pad左右柜标识
+        /// </summary>
+        [XmlElement("single_pad_door_pos")]
+        public string SinglePadDoorPos { get; set; }
 
         /// <summary>
         /// 二级商户ID

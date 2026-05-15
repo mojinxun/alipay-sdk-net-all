@@ -17,6 +17,13 @@ namespace Aop.Api.Domain
         public ActivityInfoDTO ActivityInfo { get; set; }
 
         /// <summary>
+        /// 商品属性信息列表
+        /// </summary>
+        [XmlArray("attr_ext_info_list")]
+        [XmlArrayItem("attr_ext_info_d_t_o")]
+        public List<AttrExtInfoDTO> AttrExtInfoList { get; set; }
+
+        /// <summary>
         /// 商品描述信息
         /// </summary>
         [XmlElement("body")]
@@ -172,6 +179,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("show_url")]
         public string ShowUrl { get; set; }
+
+        /// <summary>
+        /// 购物车下单页商品维度回调信息，传入一个json化的mp
+        /// </summary>
+        [XmlElement("submit_order_callback_item_ext_str")]
+        public string SubmitOrderCallbackItemExtStr { get; set; }
 
         /// <summary>
         /// 演出票务信息

@@ -16,6 +16,12 @@ namespace Aop.Api.Response
         public string Asset { get; set; }
 
         /// <summary>
+        /// 在配置阈值时，返回是否超过阈值，和小荷包id
+        /// </summary>
+        [XmlElement("asset_info")]
+        public string AssetInfo { get; set; }
+
+        /// <summary>
         /// 业务场景类型标识
         /// </summary>
         [XmlElement("biz_code")]
@@ -50,6 +56,18 @@ namespace Aop.Api.Response
         /// </summary>
         [XmlElement("parent_user_id")]
         public string ParentUserId { get; set; }
+
+        /// <summary>
+        /// 支付账户uid
+        /// </summary>
+        [XmlElement("pay_open_id")]
+        public string PayOpenId { get; set; }
+
+        /// <summary>
+        /// 支付账户uid
+        /// </summary>
+        [XmlElement("pay_uid")]
+        public string PayUid { get; set; }
 
         /// <summary>
         /// 用户已签约的 PID 列表

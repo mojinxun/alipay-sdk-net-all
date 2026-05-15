@@ -35,6 +35,12 @@ namespace Aop.Api.Domain
         public AxfCardBindInfo AxfCardBindInfo { get; set; }
 
         /// <summary>
+        /// 订单备注信息
+        /// </summary>
+        [XmlElement("axf_order_memo_info")]
+        public AxfOrderMemoInfo AxfOrderMemoInfo { get; set; }
+
+        /// <summary>
         /// 用于区分订购单的取消类型
         /// </summary>
         [XmlElement("cancel_type")]
@@ -132,6 +138,12 @@ namespace Aop.Api.Domain
         public string GmtExpired { get; set; }
 
         /// <summary>
+        /// 最近一次延期的延期单
+        /// </summary>
+        [XmlElement("latest_expand_order_info")]
+        public CardExpandOrderInfo LatestExpandOrderInfo { get; set; }
+
+        /// <summary>
         /// merchant_pid
         /// </summary>
         [XmlElement("merchant_pid")]
@@ -150,10 +162,22 @@ namespace Aop.Api.Domain
         public string OpenId { get; set; }
 
         /// <summary>
+        /// 订单金额，单位分
+        /// </summary>
+        [XmlElement("order_amount")]
+        public long OrderAmount { get; set; }
+
+        /// <summary>
         /// 交易组件订单编号
         /// </summary>
         [XmlElement("order_id")]
         public string OrderId { get; set; }
+
+        /// <summary>
+        /// 私域订单展示为非计费渠道
+        /// </summary>
+        [XmlElement("order_scene")]
+        public string OrderScene { get; set; }
 
         /// <summary>
         /// 用户购卡时的卡原价，单位分
@@ -168,10 +192,34 @@ namespace Aop.Api.Domain
         public string OutOrderNo { get; set; }
 
         /// <summary>
+        /// 违约金金额，单位分
+        /// </summary>
+        [XmlElement("penalty_amount")]
+        public long PenaltyAmount { get; set; }
+
+        /// <summary>
+        /// 退卡金额，单位分
+        /// </summary>
+        [XmlElement("refund_amount")]
+        public long RefundAmount { get; set; }
+
+        /// <summary>
         /// 退款金额，单位：分
         /// </summary>
         [XmlElement("refund_cash")]
         public long RefundCash { get; set; }
+
+        /// <summary>
+        /// 退卡时间
+        /// </summary>
+        [XmlElement("refund_time")]
+        public string RefundTime { get; set; }
+
+        /// <summary>
+        /// 剩余金额，单位：分
+        /// </summary>
+        [XmlElement("remain_amount")]
+        public long RemainAmount { get; set; }
 
         /// <summary>
         /// 剩余期数(次数)
@@ -186,10 +234,22 @@ namespace Aop.Api.Domain
         public long SalePriceTotal { get; set; }
 
         /// <summary>
-        /// 购卡时的门店ID
+        /// 售卖门店对应的外部门店编号
+        /// </summary>
+        [XmlElement("sell_rel_shop_id")]
+        public string SellRelShopId { get; set; }
+
+        /// <summary>
+        /// 售卖时的门店ID
         /// </summary>
         [XmlElement("shop_id")]
         public string ShopId { get; set; }
+
+        /// <summary>
+        /// 当前订单再购卡时是否签署了购卡协议
+        /// </summary>
+        [XmlElement("signed_order_agreement")]
+        public bool SignedOrderAgreement { get; set; }
 
         /// <summary>
         /// 总期数(次数)
@@ -210,10 +270,22 @@ namespace Aop.Api.Domain
         public long UsableCash { get; set; }
 
         /// <summary>
+        /// 已使用金额，单位分
+        /// </summary>
+        [XmlElement("used_amount")]
+        public long UsedAmount { get; set; }
+
+        /// <summary>
         /// 已核销金额，包含退款金额，单位：分
         /// </summary>
         [XmlElement("used_cash")]
         public long UsedCash { get; set; }
+
+        /// <summary>
+        /// 已使用次数
+        /// </summary>
+        [XmlElement("used_count")]
+        public long UsedCount { get; set; }
 
         /// <summary>
         /// 支付宝用户的userId。

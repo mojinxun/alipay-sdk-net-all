@@ -7,7 +7,7 @@
       "name" : "开放平台文档中心",
       "url" : "https://opendocs.alipay.com/open-v3/053sd1"
     },
-    "version" : "2025-02-19"
+    "version" : "2025-08-05"
   },
   "servers" : [ {
     "url" : "https://openapi.alipay.com",
@@ -1238,14 +1238,6 @@
             "example" : "2088441363102941"
           }
         }, {
-          "name" : "employee_id",
-          "in" : "query",
-          "description" : "员工id",
-          "schema" : {
-            "type" : "string",
-            "example" : "228420000000057942506"
-          }
-        }, {
           "name" : "open_id",
           "in" : "query",
           "description" : "蚂蚁统一会员ID",
@@ -1256,10 +1248,18 @@
         }, {
           "name" : "user_id",
           "in" : "query",
-          "description" : "蚂蚁统一会员ID",
+          "description" : "支付宝用户ID",
           "schema" : {
             "type" : "string",
             "example" : "2088501304519332"
+          }
+        }, {
+          "name" : "employee_id",
+          "in" : "query",
+          "description" : "员工id",
+          "schema" : {
+            "type" : "string",
+            "example" : "2284200000000000"
           }
         }, {
           "name" : "mobile",
@@ -1268,6 +1268,38 @@
           "schema" : {
             "type" : "string",
             "example" : "134XXXX2526"
+          }
+        }, {
+          "name" : "alipay_logon_id",
+          "in" : "query",
+          "description" : "支付宝登录号（手机号或邮箱）",
+          "schema" : {
+            "type" : "string",
+            "example" : "134xxxx2526"
+          }
+        }, {
+          "name" : "employee_cert_type",
+          "in" : "query",
+          "description" : "员工证件类型",
+          "schema" : {
+            "type" : "string",
+            "example" : "IDENTITY_CARD"
+          }
+        }, {
+          "name" : "employee_cert_no",
+          "in" : "query",
+          "description" : "员工证件号码",
+          "schema" : {
+            "type" : "string",
+            "example" : "220000000000000000"
+          }
+        }, {
+          "name" : "employee_email",
+          "in" : "query",
+          "description" : "员工邮箱",
+          "schema" : {
+            "type" : "string",
+            "example" : "123@xxx.com"
           }
         } ]
       }
@@ -1392,7 +1424,7 @@
       },
       "post" : {
         "tags" : [ "alipay.commerce.ec.employee.title" ],
-        "summary" : "新增员工抬头关系",
+        "summary" : "员工抬头：新增员工抬头关系",
         "description" : "批量新增员工抬头关系，单次新增最大一千条",
         "operationId" : "alipay.commerce.ec.employee.title.create",
         "responses" : {
@@ -1436,8 +1468,8 @@
     "/v3/alipay/commerce/ec/employee/title/delete" : {
       "post" : {
         "tags" : [ "alipay.commerce.ec.employee.title" ],
-        "summary" : "删除员工抬头信息",
-        "description" : "批量删除员工抬头信息，单次删除最大一百条",
+        "summary" : "员工抬头：失效员工抬头关系",
+        "description" : "对员工抬头关系做失效处理。",
         "operationId" : "alipay.commerce.ec.employee.title.delete",
         "responses" : {
           "200" : {
@@ -3322,7 +3354,7 @@
         "parameters" : [ {
           "name" : "start_time",
           "in" : "query",
-          "description" : "账务流水创建时间的起始范围。只能查询一年内的记录",
+          "description" : "账务流水创建时间的起始范围。只能查询一年内的记录。精确查询不需要指定",
           "schema" : {
             "type" : "string",
             "example" : "2019-01-01 00:00:00"
@@ -3330,7 +3362,7 @@
         }, {
           "name" : "end_time",
           "in" : "query",
-          "description" : "账务流水创建时间的结束范围。与起始时间间隔不超过31天。查询结果为起始时间至结束时间的左闭右开区间",
+          "description" : "账务流水创建时间的结束范围。与起始时间间隔不超过31天。查询结果为起始时间至结束时间的左闭右开区间。精确查询不需要指定",
           "schema" : {
             "type" : "string",
             "example" : "2019-01-02 00:00:00"
@@ -3398,6 +3430,14 @@
           "schema" : {
             "type" : "string",
             "example" : "2088123456789012"
+          }
+        }, {
+          "name" : "open_id",
+          "in" : "query",
+          "description" : "用于标记支付宝用户在应用下的唯一标识",
+          "schema" : {
+            "type" : "string",
+            "example" : "074a1CcTG1LelxKe4xQC0zgNdId0nxi95b5lsNpazWYoCo5"
           }
         } ]
       }
@@ -5420,7 +5460,7 @@
     "/v3/alipay/ebpp/invoice/enterpriseexctrl/employertitle" : {
       "put" : {
         "tags" : [ "alipay.ebpp.invoice.enterpriseexctrl.employertitle" ],
-        "summary" : "修改企业抬头",
+        "summary" : "企业抬头：修改企业抬头",
         "description" : "修改企业开票抬头",
         "operationId" : "alipay.ebpp.invoice.enterpriseexctrl.employertitle.modify",
         "responses" : {
@@ -5464,7 +5504,7 @@
     "/v3/alipay/ebpp/invoice/enterpriseexctrl/employertitle/batchquery" : {
       "post" : {
         "tags" : [ "alipay.ebpp.invoice.enterpriseexctrl.employertitle" ],
-        "summary" : "批量查询企业抬头",
+        "summary" : "企业抬头：分页查询企业抬头信息",
         "description" : "分页查询企业抬头列表",
         "operationId" : "alipay.ebpp.invoice.enterpriseexctrl.employertitle.batchquery",
         "responses" : {
@@ -5508,7 +5548,7 @@
     "/v3/alipay/ebpp/invoice/enterpriseexctrl/employertitle/create" : {
       "post" : {
         "tags" : [ "alipay.ebpp.invoice.enterpriseexctrl.employertitle" ],
-        "summary" : "新增企业抬头",
+        "summary" : "企业抬头：新增企业抬头",
         "description" : "新增一条企业开票抬头",
         "operationId" : "alipay.ebpp.invoice.enterpriseexctrl.employertitle.create",
         "responses" : {
@@ -5552,7 +5592,7 @@
     "/v3/alipay/ebpp/invoice/enterpriseexctrl/employertitle/query" : {
       "get" : {
         "tags" : [ "alipay.ebpp.invoice.enterpriseexctrl.employertitle" ],
-        "summary" : "查询企业抬头",
+        "summary" : "企业抬头：查询企业抬头",
         "description" : "根据抬头ID查询企业抬头详情",
         "operationId" : "alipay.ebpp.invoice.enterpriseexctrl.employertitle.query",
         "responses" : {
@@ -10364,7 +10404,7 @@
         }, {
           "name" : "ext_info",
           "in" : "query",
-          "description" : "JSON格式，传递业务扩展参数",
+          "description" : "传递业务扩展参数。\t注意：ext_info字段本质上是String类型，所以传递\t的是转义后的json字符串。",
           "schema" : {
             "type" : "string",
             "example" : "{\"agreement_no\":\"2019000000000\"}"
@@ -26074,13 +26114,13 @@
                 "app_logo" : {
                   "contentType" : "*/*"
                 },
+                "third_license_pic" : {
+                  "contentType" : "*/*"
+                },
                 "third_screen_shot" : {
                   "contentType" : "*/*"
                 },
                 "fourth_screen_shot" : {
-                  "contentType" : "*/*"
-                },
-                "third_license_pic" : {
                   "contentType" : "*/*"
                 },
                 "out_door_pic" : {
@@ -37812,20 +37852,20 @@
           }
         },
         "parameters" : [ {
-          "name" : "user_name",
-          "in" : "query",
-          "description" : "姓名",
-          "schema" : {
-            "type" : "string",
-            "example" : "张三"
-          }
-        }, {
           "name" : "conn_key",
           "in" : "query",
           "description" : "外部订单号，zhima.credit.payafteruse.creditagreement.sign的入参 out_agreement_no智能简历场景支持只传该值",
           "schema" : {
             "type" : "string",
             "example" : "ttest11234"
+          }
+        }, {
+          "name" : "user_name",
+          "in" : "query",
+          "description" : "姓名",
+          "schema" : {
+            "type" : "string",
+            "example" : "张三"
           }
         }, {
           "name" : "cert_no",
@@ -38691,7 +38731,7 @@
           },
           "balance" : {
             "type" : "string",
-            "description" : "余额，仅供参考。由于架构原因，余额变动并不保证连续。也就是余额不一定等于上一笔余额减去当笔金额。但是会保证最终一致。",
+            "description" : "余额，单位元，仅供参考。由于架构原因，余额变动并不保证连续。也就是余额不一定等于上一笔余额减去当笔金额。但是会保证最终一致。",
             "example" : "10000.00"
           },
           "bill_source" : {
@@ -38746,7 +38786,7 @@
           },
           "trans_amount" : {
             "type" : "string",
-            "description" : "金额",
+            "description" : "金额，单位元",
             "example" : "1000.00"
           },
           "trans_dt" : {
@@ -40813,7 +40853,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "INVALID_PARAMETER", "SYSTEM_ERROR", "ENTERPRISE_NOT_EXIST", "USER_NOT_EXIST", "USER_UNREAL_NAME", "ENTERPRISE_MEMBER_NUM_EXCEED_MAX", "JOINED_ACCOUNT_NUM_EXCEED_MAX", "NO_AGREEMENT", "EMPLOYEE_HAS_ACTIVATED", "ENTERPRISE_NOT_SIGNED", "EMPLOYEE_NO_EXIST", "EMPLOYEE_ALIPAY_OCCUPIED", "EMPLOYEE_MOBILE_EXIST", "EMPLOYEE_FREQUENCY_OVER_LIMIT", "EMPLOYEE_IS_SUPER_ADMIN", "EMPLOYEE_OVER_LIMIT", "NODE_NOT_EXIST", "NEED_TO_SET_PPW", "ISV_USER_ID_NOT_SUPPORT", "ACCOUNT_NOT_PERSONAL", "EMPLOYEE_EMAIL_EXIST", "EMPLOYEE_EXIST", "EMPLOYEE_CERT_EXIST", "DEPT_UPGRADING", "MODIFY_AGENCY_OPERATION_FAIL", "FREE_SIGN_TOKEN_INVALID", "FUND_ACCOUNT_WHITE_NOT_EXIST", "FREE_SIGN_EMPLOYEE_EXISTED", "EMP_MULTI_ACCOUNT_NOT_SUPPORT", "IOT_ENTERPRISE_UNSIGN", "IOT_USER_FACE_NOT_EXIST", "IOT_USER_FACEPAY_OPEN_FAIL", "FUND_SYSTEM_ERROR", "FUND_DAILY_JOINENT_REACHED_LIMIT", "FUND_INVITE_REPLYING", "FUND_SECURITY_CHECK_FAILED", "IOT_SYSTEM_ERROR", "IOT_APP_UNSIGN", "EMPLOYEE_CREATE_ING" ]
+            "enum" : [ "INVALID_PARAMETER", "SYSTEM_ERROR", "ENTERPRISE_NOT_EXIST", "USER_NOT_EXIST", "USER_UNREAL_NAME", "ENTERPRISE_MEMBER_NUM_EXCEED_MAX", "JOINED_ACCOUNT_NUM_EXCEED_MAX", "NO_AGREEMENT", "EMPLOYEE_HAS_ACTIVATED", "ENTERPRISE_NOT_SIGNED", "EMPLOYEE_NO_EXIST", "EMPLOYEE_ALIPAY_OCCUPIED", "EMPLOYEE_MOBILE_EXIST", "EMPLOYEE_FREQUENCY_OVER_LIMIT", "EMPLOYEE_IS_SUPER_ADMIN", "EMPLOYEE_OVER_LIMIT", "NODE_NOT_EXIST", "NEED_TO_SET_PPW", "ISV_USER_ID_NOT_SUPPORT", "ACCOUNT_NOT_PERSONAL", "EMPLOYEE_EMAIL_EXIST", "EMPLOYEE_EXIST", "EMPLOYEE_CERT_EXIST", "DEPT_UPGRADING", "MODIFY_AGENCY_OPERATION_FAIL", "FREE_SIGN_TOKEN_INVALID", "FUND_ACCOUNT_WHITE_NOT_EXIST", "FREE_SIGN_EMPLOYEE_EXISTED", "EMP_MULTI_ACCOUNT_NOT_SUPPORT", "IOT_ENTERPRISE_UNSIGN", "IOT_USER_FACE_NOT_EXIST", "IOT_USER_FACEPAY_OPEN_FAIL", "FUND_SYSTEM_ERROR", "FUND_DAILY_JOINENT_REACHED_LIMIT", "FUND_INVITE_REPLYING", "FUND_SECURITY_CHECK_FAILED", "IOT_SYSTEM_ERROR", "IOT_APP_UNSIGN", "EMPLOYEE_CREATE_ING", "ENT_LABEL_COUNT_EXCEED_MAX", "LABEL_NAME_ILLEGAL" ]
           },
           "links" : {
             "type" : "string",
@@ -40828,6 +40868,14 @@
       "AlipayCommerceEcEmployeeAddModel" : {
         "type" : "object",
         "properties" : {
+          "accounting_entity_ids" : {
+            "type" : "array",
+            "description" : "员工所属核算主体，核算主体可用于管控不同员工的出资方式，建议和不同出资账户关联",
+            "items" : {
+              "type" : "string"
+            },
+            "example" : "[\"1007000041812522\"]"
+          },
           "create_share_code" : {
             "type" : "boolean",
             "description" : "是否需要生成吱口令，默认不生成",
@@ -40917,10 +40965,18 @@
             "description" : "员工在企业人脸库的人脸唯一标识（该字段已作废，不支持自定义传入）(iot不支持自定义传入)",
             "example" : "2109b5e671aa3ff2eb4851816c65828f"
           },
+          "label_names" : {
+            "type" : "array",
+            "description" : "员工标签，用于员工的打标分类，后续费控管理可使用标签进行控制，支持输入多个标签，如“差旅员工，用餐员工”等；若企业需要将离职员工统一管理且不变更员工状态，可打标“离职员工”",
+            "items" : {
+              "type" : "string"
+            },
+            "example" : "[\"差旅员工\"]"
+          },
           "profiles" : {
             "type" : "string",
             "description" : "个性化信息 <a href='https://opendocs.alipay.com/pre-open/0ceh47?pathHash=14fac87c'>详见文档</a>",
-            "example" : "{\"consume_remark\":\"员工账单备注内容示例\", \"inst_id\":\"CMBC\", \"card_type\":\"DC\", \"check_bind_card\":\"Y\"}"
+            "example" : "{\"consume_remark\":\"员工账单备注内容示例\"}"
           },
           "role_list" : {
             "deprecated" : true,
@@ -41064,7 +41120,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "INVALID_PARAMETER", "SYSTEM_ERROR", "ENTERPRISE_NOT_EXIST", "EMPLOYEE_NOT_EXIST", "DEPT_NOT_EXIST", "NO_AGREEMENT", "EMPLOYEE_BIND_NOT_MODIFY_ROLE", "EMPLOYEE_EMAIL_EXIST", "EMPLOYEE_MOBILE_EXIST", "DEPT_UPGRADING", "ORG_USER_NOT_EXIST" ]
+            "enum" : [ "INVALID_PARAMETER", "SYSTEM_ERROR", "ENTERPRISE_NOT_EXIST", "EMPLOYEE_NOT_EXIST", "DEPT_NOT_EXIST", "NO_AGREEMENT", "EMPLOYEE_BIND_NOT_MODIFY_ROLE", "EMPLOYEE_EMAIL_EXIST", "EMPLOYEE_MOBILE_EXIST", "DEPT_UPGRADING", "ORG_USER_NOT_EXIST", "ENT_LABEL_COUNT_EXCEED_MAX", "LABEL_NAME_ILLEGAL" ]
           },
           "links" : {
             "type" : "string",
@@ -41079,6 +41135,14 @@
       "AlipayCommerceEcEmployeeInfoModifyModel" : {
         "type" : "object",
         "properties" : {
+          "accounting_entity_ids" : {
+            "type" : "array",
+            "description" : "员工所属核算主体，核算主体可用于管控不同员工的出资方式，建议和不同出资账户关联，一个员工只能有一个核算主体。",
+            "items" : {
+              "type" : "string"
+            },
+            "example" : "[\"1007000041812522\"]"
+          },
           "department_ids" : {
             "type" : "array",
             "description" : "员工所属部门。如果不传值，则不更新所属部门",
@@ -41117,6 +41181,14 @@
             "description" : "企业id",
             "example" : "2088474883838"
           },
+          "label_names" : {
+            "type" : "array",
+            "description" : "员工标签，用于员工的打标分类，后续费控管理可使用标签进行控制，支持输入多个标签，如“差旅员工，用餐员工”等；<br/><br/>\t使用场景：1. 请严格对标签分类，不要滥用员工标签，否则影响员工和费控管理； 2. 一个员工最多10个标签，如无必要请勿使用；3. 标签名只能包含字母（大小写）、数字或中文字符",
+            "items" : {
+              "type" : "string"
+            },
+            "example" : "[\"标签\"]"
+          },
           "profiles" : {
             "type" : "string",
             "description" : "个性化信息。如果不传值，则不更新个性化信息。 <a href='https://opendocs.alipay.com/pre-open/0ceh47?pathHash=14fac87c'>详见文档</a>",
@@ -41149,7 +41221,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "INVALID_PARAMETER", "SYSTEM_ERROR", "NO_AGREEMENT", "EMPLOYEE_NOT_EXIST", "ENTERPRISE_NOT_EXIST", "ORG_USER_NOT_EXIST" ]
+            "enum" : [ "INVALID_PARAMETER", "SYSTEM_ERROR", "NO_AGREEMENT", "EMPLOYEE_NOT_EXIST", "ENTERPRISE_NOT_EXIST", "ORG_USER_NOT_EXIST", "USER_NOT_EXIST" ]
           },
           "links" : {
             "type" : "string",
@@ -41245,7 +41317,12 @@
         }
       },
       "AlipayCommerceEcEmployeeTitleCreateResponseModel" : {
-        "type" : "object"
+        "type" : "object",
+        "properties" : {
+          "title_failed_list" : {
+            "$ref" : "#/components/schemas/EcEmployeeTitleFailed"
+          }
+        }
       },
       "AlipayCommerceEcEmployeeTitleDeleteErrorResponseModel" : {
         "required" : [ "code", "message" ],
@@ -41279,7 +41356,12 @@
         }
       },
       "AlipayCommerceEcEmployeeTitleDeleteResponseModel" : {
-        "type" : "object"
+        "type" : "object",
+        "properties" : {
+          "ec_employee_title_failed_list" : {
+            "$ref" : "#/components/schemas/EcEmployeeTitleFailed"
+          }
+        }
       },
       "AlipayCommerceEcEmployeeTitleModifyErrorResponseModel" : {
         "required" : [ "code", "message" ],
@@ -41288,7 +41370,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "INVALID_PARAMETER", "TITLE_ENTERPRISE_NOT_MATCH", "SYSTEM_ERROR" ]
+            "enum" : [ "INVALID_PARAMETER", "TITLE_ENTERPRISE_NOT_MATCH", "SYSTEM_ERROR", "EMPLOYEE_TITLE_ALREADY_EXIST", "EMPLOYEE_TITLE_PEROID_INVALID" ]
           },
           "links" : {
             "type" : "string",
@@ -41334,8 +41416,9 @@
             "example" : "2022060900801711450000073478"
           },
           "old_title_id" : {
+            "deprecated" : true,
             "type" : "string",
-            "description" : "修改前的抬头id",
+            "description" : "修改前的抬头id(数据库自行查询是否有有效抬头)",
             "example" : "2022060900801711450000073478"
           },
           "open_id" : {
@@ -41626,7 +41709,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "INVALID_PARAMETER", "SYSTEM_ERROR", "ENTERPRISE_NO_AUTH", "ENTERPRISE_SETTLED_IN_FINISHED", "USER_NOT_EXIST", "SENSITIVE_WORDS_EXIST", "ENTERPRISE_CREATE_NOT_SUPPORT", "ENTERPRISE_CREATE_ING", "ECEIF_ENTERPRISE_CREATE_OVER_LIMIT", "IOT_FACE_GROUP_NAME_ERROR", "AUTH_INFO_NULL", "ENTERPRISE_EMAIL_ALREADY_EXIST", "CONFIRM_LETTER_IMG_NULL", "LICENSE_IMG_NULL", "ISV_USER_ID_NOT_SUPPORT", "EMPLOYEE_NOT_EXIST" ]
+            "enum" : [ "INVALID_PARAMETER", "SYSTEM_ERROR", "ENTERPRISE_NO_AUTH", "ENTERPRISE_SETTLED_IN_FINISHED", "USER_NOT_EXIST", "SENSITIVE_WORDS_EXIST", "ENTERPRISE_CREATE_NOT_SUPPORT", "ENTERPRISE_CREATE_ING", "ECEIF_ENTERPRISE_CREATE_OVER_LIMIT", "IOT_FACE_GROUP_NAME_ERROR", "AUTH_INFO_NULL", "ENTERPRISE_EMAIL_ALREADY_EXIST", "CONFIRM_LETTER_IMG_NULL", "LICENSE_IMG_NULL", "ISV_USER_ID_NOT_SUPPORT", "EMPLOYEE_NOT_EXIST", "ENTERPRISE_CODE_HAS_OCCUPIED" ]
           },
           "links" : {
             "type" : "string",
@@ -43302,7 +43385,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "ISV_INVALID_ARGUMENTS", "BUSINESS_FAILED" ]
+            "enum" : [ "ISV_INVALID_ARGUMENTS", "BUSINESS_FAILED", "INVALID_PARAMETER" ]
           },
           "links" : {
             "type" : "string",
@@ -43372,6 +43455,16 @@
             "description" : "设备型号",
             "example" : "2325436576768"
           },
+          "network_data_begin_time" : {
+            "type" : "string",
+            "description" : "流量开始时间",
+            "example" : "2025-05-26 00:00:00"
+          },
+          "network_data_end_time" : {
+            "type" : "string",
+            "description" : "流量结束时间",
+            "example" : "2025-06-26 00:00:00"
+          },
           "operator_id" : {
             "type" : "string",
             "description" : "运营商编码，一般为企业组织机构代码",
@@ -43396,6 +43489,11 @@
             "type" : "string",
             "description" : "额定电压，单位：V",
             "example" : "220"
+          },
+          "s_brand_code" : {
+            "type" : "string",
+            "description" : "设备有二级品牌商，需要传二级品牌编号",
+            "example" : "Alipay"
           },
           "unbind_time" : {
             "type" : "string",
@@ -43649,7 +43747,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "INVALID_PARAMETER", "BIZ_FAIL", "BIZ_UNKNOWN", "SYSTEM_ERROR" ]
+            "enum" : [ "INVALID_PARAMETER", "BIZ_FAIL", "BIZ_UNKNOWN", "SYSTEM_ERROR", "OPERATION_FREQUENTLY" ]
           },
           "links" : {
             "type" : "string",
@@ -43701,6 +43799,11 @@
             "description" : "缴费用户的手机号；",
             "example" : "13800000000"
           },
+          "node_type" : {
+            "type" : "string",
+            "description" : "表示当前请求类型：用户缴费或用户在岗亭前缴费准备离场状态",
+            "example" : "PAY"
+          },
           "open_appid" : {
             "type" : "string",
             "description" : "蚂蚁会员统一ID对应的归属应用appid",
@@ -43710,6 +43813,11 @@
             "type" : "string",
             "description" : "蚂蚁会员统一ID",
             "example" : "074a1CcTG1LelxKe4xQC0zgNdId0nxi95b5lsNpazWYoCo5"
+          },
+          "order_create_time" : {
+            "type" : "string",
+            "description" : "停车岗亭前订单创建时间，格式\"YYYY-MM-DD HH:mm:ss\"，24小时制，请保证服务器时间准确，创建时不应晚于当前网络时间",
+            "example" : "2025-03-26 15:29:55"
           },
           "out_order_no" : {
             "type" : "string",
@@ -43888,7 +43996,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "SYSTEM_ERROR", "INVALID_PARAMETER", "SYSTEM_BUSY", "AGREEMENT_CHECK_FAIL", "USER_AGREEMENT_CHECK_FAIL" ]
+            "enum" : [ "SYSTEM_ERROR", "INVALID_PARAMETER", "SYSTEM_BUSY", "AGREEMENT_CHECK_FAIL", "USER_AGREEMENT_CHECK_FAIL", "ISV_BUSINESS_FAILED", "ILLEGAL_ARGUMENT" ]
           },
           "links" : {
             "type" : "string",
@@ -44287,7 +44395,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "SYSTEM_ERROR", "INVALID_PARAMETER", "SYSTEM_BUSY" ]
+            "enum" : [ "SYSTEM_ERROR", "INVALID_PARAMETER", "SYSTEM_BUSY", "ISV_BUSINESS_FAILED" ]
           },
           "links" : {
             "type" : "string",
@@ -44304,7 +44412,7 @@
         "properties" : {
           "detail_list" : {
             "type" : "array",
-            "description" : "交易流水详情",
+            "description" : "交易流水详情，如果不存在记录则为空",
             "items" : {
               "$ref" : "#/components/schemas/TradeItemResult"
             }
@@ -44749,6 +44857,11 @@
             "type" : "string",
             "description" : "子业务类型是业务类型的下一级概念。枚举支持：\t*WATER：缴水费。\t*ELECTRIC：缴电费。\t*GAS：缴燃气费。\t*COMMUN：缴固话宽带费。\t*CATV：缴有线电视费。\t*WUYE：缴物业费。\t*RC：定期还车贷代扣。\t*RH：定期还房贷代扣。\t*RR：定期还房租代扣。\t*RN：定期还网贷代扣。\t*CZ：手机充值代扣。\t例如：WATER表示JF下面的水费。",
             "example" : "WATER"
+          },
+          "trade_no" : {
+            "type" : "string",
+            "description" : "50新链路订单号",
+            "example" : "2025011023001411940568290262"
           }
         }
       },
@@ -46273,6 +46386,11 @@
             "description" : "返回消息",
             "example" : "成功"
           },
+          "title_code" : {
+            "type" : "string",
+            "description" : "抬头编码",
+            "example" : "43523452345345****"
+          },
           "title_info_list" : {
             "type" : "array",
             "description" : "企业抬头信息",
@@ -46344,6 +46462,11 @@
             "description" : "电话",
             "example" : "0739-56*****"
           },
+          "title_code" : {
+            "type" : "string",
+            "description" : "抬头编码",
+            "example" : "443957893043425234"
+          },
           "title_name" : {
             "type" : "string",
             "description" : "企业抬头名称",
@@ -46383,7 +46506,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "PARAMETER_ILLEGAL", "SYSTEM_ERROR", "PERMISSION_DENIED", "ENTERPRISE_TITLE_EXISTS", "ENTERPRISE_TITLE_NOT_EXISTS", "ENTERPRISE_TITLE_ERROR" ]
+            "enum" : [ "PARAMETER_ILLEGAL", "SYSTEM_ERROR", "PERMISSION_DENIED", "ENTERPRISE_TITLE_EXISTS", "ENTERPRISE_TITLE_NOT_EXISTS", "ENTERPRISE_TITLE_ERROR", "EMPLOYEE_DONT_EXIST" ]
           },
           "links" : {
             "type" : "string",
@@ -46437,6 +46560,11 @@
             "type" : "string",
             "description" : "电话",
             "example" : "0739-56*****"
+          },
+          "title_code" : {
+            "type" : "string",
+            "description" : "抬头编码",
+            "example" : "231476324613281243"
           },
           "title_id" : {
             "type" : "string",
@@ -46506,6 +46634,11 @@
             "type" : "string",
             "description" : "返回消息",
             "example" : "成功"
+          },
+          "title_code" : {
+            "type" : "string",
+            "description" : "抬头编码",
+            "example" : "12341235325"
           },
           "title_info" : {
             "$ref" : "#/components/schemas/EnterpriseTitleInfo"
@@ -46928,7 +47061,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "INVALID_PARAMETER", "SYSTEM_ERROR", "PERMISSION_DENIED", "QUOTA_EXISTS", "REQUEST_REPEAT", "ISSUE_BATCH_NO_DUPLICATE", "EMPLOYEE_NOT_IN_INSTITUTION_SCOPE" ]
+            "enum" : [ "INVALID_PARAMETER", "SYSTEM_ERROR", "PERMISSION_DENIED", "QUOTA_EXISTS", "REQUEST_REPEAT", "ISSUE_BATCH_NO_DUPLICATE", "EMPLOYEE_NOT_IN_INSTITUTION_SCOPE", "INSTITUTION_EXPIRED", "ISSUE_NAME_DUPLICATE" ]
           },
           "links" : {
             "type" : "string",
@@ -48256,6 +48389,11 @@
               "$ref" : "#/components/schemas/IssueRuleInfo"
             }
           },
+          "multi_employee_share_mode" : {
+            "type" : "string",
+            "description" : "制度下额度是否支持多人共享。如果支持，则制度下资产所有人共享；如果不支持，则制度下的资产为个人资产，成员之间不共享。",
+            "example" : "1"
+          },
           "outer_source_id" : {
             "type" : "string",
             "description" : "外部唯一标识，可用于防止重复创建",
@@ -48431,6 +48569,11 @@
             "items" : {
               "$ref" : "#/components/schemas/IssueRuleInfo"
             }
+          },
+          "multi_employee_share_mode" : {
+            "type" : "string",
+            "description" : "制度下额度是否支持多人共享。如果支持，则制度下资产所有人共享；如果不支持，则制度下的资产为个人资产，成员之间不共享。",
+            "example" : "1"
           },
           "outer_source_id" : {
             "type" : "string",
@@ -52090,6 +52233,11 @@
               "$ref" : "#/components/schemas/BusinessItem"
             }
           },
+          "charge_sum_space" : {
+            "type" : "string",
+            "description" : "停车场充电车位数 单位:个",
+            "example" : "200"
+          },
           "charging_rule" : {
             "type" : "array",
             "description" : "停车场详细计费规则",
@@ -52209,8 +52357,8 @@
           },
           "parking_lot_type" : {
             "type" : "string",
-            "description" : "停车场类型，1为居民小区、2为商圈停车场（购物中心商业广场商场等）、3为路侧停车、4为公园景点（景点乐园公园老街古镇等）、5为商务楼宇（酒店写字楼商务楼园区等）、6为其他、7为交通枢纽（机场火车站汽车站码头港口等）、8为市政设施（体育场博物图书馆医院学校等）",
-            "example" : "1"
+            "description" : "停车场类型，COMMUNITY为居民小区、BUSINESS_AREA为商圈停车场（购物中心商业广场商场等）、ROADSIDE为路侧停车、PARK_SCENIC为公园景点（景点乐园公园老街古镇等）、OFFICE_BUILDING为商务楼宇（酒店写字楼商务楼园区等）、OTHER为其他、TRANSPORTATION为交通枢纽（机场火车站汽车站码头港口等）、PUBLIC_FACILITIES为市政设施（体育场博物图书馆医院学校等）、TERRITORY独立园区（办公工业物流园区等）、BUSINESS_PLACE经营场所（4S店、门市餐饮等",
+            "example" : "COMMUNITY"
           },
           "parking_mobile" : {
             "type" : "string",
@@ -52289,6 +52437,16 @@
       "AlipayEcoMycarParkingParkinglotinfoCreateResponseModel" : {
         "type" : "object",
         "properties" : {
+          "biz_code" : {
+            "type" : "string",
+            "description" : "具体错误码 参数异常：INVALID_PARAMETER 没有权限操作：NO_PERMISSION_ERROR 请求受理结果未知：BIZ_UNKNOWN 请求受理失败：BIZ_FAIL 系统繁忙：SYSTEM_ERROR",
+            "example" : "INVALID_PARAMETER"
+          },
+          "biz_msg" : {
+            "type" : "string",
+            "description" : "具体错误原因",
+            "example" : "停车场地址不能为空"
+          },
           "parking_id" : {
             "type" : "string",
             "description" : "支付宝返回停车场id。成功不为空，失败返回空",
@@ -52490,6 +52648,11 @@
               "$ref" : "#/components/schemas/BusinessItem"
             }
           },
+          "charge_sum_space" : {
+            "type" : "string",
+            "description" : "停车场充电车位数 单位:个",
+            "example" : "200"
+          },
           "charging_rule" : {
             "type" : "array",
             "description" : "停车场详细计费规则详细说明",
@@ -52657,6 +52820,11 @@
             "description" : "该参数废弃",
             "example" : "1"
           },
+          "remain_space" : {
+            "type" : "string",
+            "description" : "剩余车位数 单位：个",
+            "example" : "200"
+          },
           "serivce_url" : {
             "type" : "string",
             "description" : "提供用户查看停车状态、缴费功能",
@@ -52692,7 +52860,19 @@
         }
       },
       "AlipayEcoMycarParkingParkinglotinfoUpdateResponseModel" : {
-        "type" : "object"
+        "type" : "object",
+        "properties" : {
+          "biz_code" : {
+            "type" : "string",
+            "description" : "具体错误码 参数异常：INVALID_PARAMETER 没有权限操作：NO_PERMISSION_ERROR 请求受理结果未知：BIZ_UNKNOWN 请求受理失败：BIZ_FAIL 系统繁忙：SYSTEM_ERROR",
+            "example" : "INVALID_PARAMETER"
+          },
+          "biz_msg" : {
+            "type" : "string",
+            "description" : "具体错误原因",
+            "example" : "车牌不合法"
+          }
+        }
       },
       "AlipayEcoMycarParkingPaymentinfoSyncErrorResponseModel" : {
         "required" : [ "code", "message" ],
@@ -53166,7 +53346,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "INVALID_PARAMETER", "USER_AGREEMENT_VERIFY_FAIL", "OPEN_ACCOUNT_BOOK_ERROR", "MERCHANT_PRODUCT_NOT_SIGN", "USER_NOT_EXIST", "PRODUCT_NOT_SIGN", "SYSTEM_ERROR", "AUTH_CODE_ERROR", "AUTHOREE_IS_NOT_MATCH" ]
+            "enum" : [ "INVALID_PARAMETER", "USER_AGREEMENT_VERIFY_FAIL", "OPEN_ACCOUNT_BOOK_ERROR", "MERCHANT_PRODUCT_NOT_SIGN", "USER_NOT_EXIST", "PRODUCT_NOT_SIGN", "SYSTEM_ERROR", "AUTH_CODE_ERROR", "AUTHOREE_IS_NOT_MATCH", "EXPAND_INDIRECT_VERIFY_FAIL" ]
           },
           "links" : {
             "type" : "string",
@@ -53405,7 +53585,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "INVALID_PARAMETER", "TRUSTEESHIP_ACCOUNT_NOT_EXIST", "USER_AGREEMENT_VERIFY_FAIL", "AUTHOREE_IS_NOT_MATCH", "MERCHANT_AGREEMENT_VERIFY_FAIL", "NO_PERMISSION_ACCOUNT", "MERCHANT_PRODUCT_NOT_SIGN", "ACCOUNTBOOK_QUERY_NOT_SAME_USER", "TRUSTEESHIP_PARENT_ACCOUNT_NOT_EXIST", "AUTH_CODE_ERROR", "SYSTEM_ERROR", "NO_ACCOUNTBOOK_PERMISSION" ]
+            "enum" : [ "INVALID_PARAMETER", "TRUSTEESHIP_ACCOUNT_NOT_EXIST", "USER_AGREEMENT_VERIFY_FAIL", "AUTHOREE_IS_NOT_MATCH", "MERCHANT_AGREEMENT_VERIFY_FAIL", "NO_PERMISSION_ACCOUNT", "MERCHANT_PRODUCT_NOT_SIGN", "ACCOUNTBOOK_QUERY_NOT_SAME_USER", "TRUSTEESHIP_PARENT_ACCOUNT_NOT_EXIST", "AUTH_CODE_ERROR", "SYSTEM_ERROR", "NO_ACCOUNTBOOK_PERMISSION", "AUTH_USERID_IS_NOT_MATCH" ]
           },
           "links" : {
             "type" : "string",
@@ -55289,7 +55469,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "PRODUCT_NOT_SIGN", "ANALYSIS_PARAM_ERROR", "PARAM_NAME_NOT_BLANK", "AGREEMENT_NOT_EXIST", "AGREEMENT_IS_INVALID", "AGREEMENT_STATUS_IS_NOT_NORMAL", "AGREEMENT_IS_OUT_OF_DATE", "HORIZONTAL_AUTHORITY_EXCEPTION", "USER_NOT_EXIST", "USER_TYPE_NOT_ALLOWED", "USER_UNREAL_NAME", "CERT_TYPE_ERROR", "NEED_TO_SET_PPW", "USER_STATUS_ERROR", "INVITE_MEMBER_FAIL", "JOINT_ACCOUNT_DUPLICATE_INVITE", "ALREADY_REGISTER_MEMBER", "JOINT_ACCOUNT_APPLY_STATUS_ERROR", "ENTERPRISE_MEMBER_NUM_EXCEED_MAX", "JOINED_ACCOUNT_NUM_EXCEED_MAX", "USER_GROUP_OVER_MAX", "FUND_GROUP_NOT_EXIST", "FUND_IDENTITY_NOT_ALLOWED", "ACCOUNT_NO_MULTI_FUND_PERMISSION", "FUND_IDENTITY_PARAM_ERROR", "COMMON_LOCK_CONFLICT", "ILLEGAL_ARGUMENT", "SYSTEM_ERROR", "COMMON_RPC_ERROR", "OPEN_ID_TRANSFORM_ERROR" ]
+            "enum" : [ "PRODUCT_NOT_SIGN", "ANALYSIS_PARAM_ERROR", "PARAM_NAME_NOT_BLANK", "AGREEMENT_NOT_EXIST", "AGREEMENT_IS_INVALID", "AGREEMENT_STATUS_IS_NOT_NORMAL", "AGREEMENT_IS_OUT_OF_DATE", "HORIZONTAL_AUTHORITY_EXCEPTION", "USER_NOT_EXIST", "USER_TYPE_NOT_ALLOWED", "USER_UNREAL_NAME", "CERT_TYPE_ERROR", "NEED_TO_SET_PPW", "USER_STATUS_ERROR", "INVITE_MEMBER_FAIL", "JOINT_ACCOUNT_DUPLICATE_INVITE", "ALREADY_REGISTER_MEMBER", "JOINT_ACCOUNT_APPLY_STATUS_ERROR", "ENTERPRISE_MEMBER_NUM_EXCEED_MAX", "JOINED_ACCOUNT_NUM_EXCEED_MAX", "USER_GROUP_OVER_MAX", "FUND_GROUP_NOT_EXIST", "FUND_IDENTITY_NOT_ALLOWED", "ACCOUNT_NO_MULTI_FUND_PERMISSION", "FUND_IDENTITY_PARAM_ERROR", "COMMON_LOCK_CONFLICT", "ILLEGAL_ARGUMENT", "SYSTEM_ERROR", "COMMON_RPC_ERROR", "OPEN_ID_TRANSFORM_ERROR", "DUPLICATE_JOINT_ACCOUNT_INVITE" ]
           },
           "links" : {
             "type" : "string",
@@ -55515,7 +55695,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "PRODUCT_NOT_SIGN", "ANALYSIS_PARAM_ERROR", "PARAM_NAME_NOT_BLANK", "AGREEMENT_NOT_EXIST", "AGREEMENT_IS_INVALID", "AGREEMENT_STATUS_IS_NOT_NORMAL", "AGREEMENT_IS_OUT_OF_DATE", "HORIZONTAL_AUTHORITY_EXCEPTION", "USER_NOT_EXIST", "USER_TYPE_NOT_ALLOWED", "USER_UNREAL_NAME", "CERT_TYPE_ERROR", "NEED_TO_SET_PPW", "USER_STATUS_ERROR", "MEMBER_NOT_IN_ACCOUNT", "CANCEL_INVITE_MEMBER_FAIL", "DELETE_INVITE_MEMBER_FAIL", "NON_EXISTENT_INVITE_RECORD", "PASSIVE_DELETE_ADMIN", "QUERY_ACCOUNT_INFO_FAIL", "DELETE_MASTER_SELF", "PASSIVE_BECOME_ADMIN", "JOINT_ACCOUNT_NOT_EXIST", "HAS_DELETED", "DELETE_MEMBER_PERMISSION_DENIED", "DELETE_FAIL", "JOINT_ACCOUNT_INVITE_STATUS_INVALID", "JOINT_ACCOUNT_NO_PERMISSION", "ILLEGAL_ARGUMENT", "CONSULT_MEMBER_FAIL", "SYSTEM_ERROR", "QUERY_USER_INFO_FAIL" ]
+            "enum" : [ "PRODUCT_NOT_SIGN", "ANALYSIS_PARAM_ERROR", "PARAM_NAME_NOT_BLANK", "AGREEMENT_NOT_EXIST", "AGREEMENT_IS_INVALID", "AGREEMENT_STATUS_IS_NOT_NORMAL", "AGREEMENT_IS_OUT_OF_DATE", "HORIZONTAL_AUTHORITY_EXCEPTION", "USER_NOT_EXIST", "USER_TYPE_NOT_ALLOWED", "USER_UNREAL_NAME", "CERT_TYPE_ERROR", "NEED_TO_SET_PPW", "USER_STATUS_ERROR", "MEMBER_NOT_IN_ACCOUNT", "CANCEL_INVITE_MEMBER_FAIL", "DELETE_INVITE_MEMBER_FAIL", "NON_EXISTENT_INVITE_RECORD", "PASSIVE_DELETE_ADMIN", "QUERY_ACCOUNT_INFO_FAIL", "DELETE_MASTER_SELF", "PASSIVE_BECOME_ADMIN", "JOINT_ACCOUNT_NOT_EXIST", "HAS_DELETED", "DELETE_MEMBER_PERMISSION_DENIED", "DELETE_FAIL", "JOINT_ACCOUNT_INVITE_STATUS_INVALID", "JOINT_ACCOUNT_NO_PERMISSION", "ILLEGAL_ARGUMENT", "CONSULT_MEMBER_FAIL", "SYSTEM_ERROR", "QUERY_USER_INFO_FAIL", "FUND_AGREEMENT_INVALID_FAILED", "DUPLICATE_CANCEL_MEMBER_REQUEST" ]
           },
           "links" : {
             "type" : "string",
@@ -55886,6 +56066,21 @@
             "type" : "string",
             "description" : "查询到的订单状态为FAIL失败或REFUND退票时，返回错误代码",
             "example" : "PAYEE_CARD_INFO_ERROR"
+          },
+          "fail_inst_error_code" : {
+            "type" : "string",
+            "description" : "查询到的订单状态为FAIL失败时，返回具体报错银行的错误码。",
+            "example" : "01#RB623099"
+          },
+          "fail_inst_name" : {
+            "type" : "string",
+            "description" : "查询到的订单状态为FAIL失败时，返回具体的报错银行名称",
+            "example" : "建设银行"
+          },
+          "fail_inst_reason" : {
+            "type" : "string",
+            "description" : "查询到的订单状态为FAIL失败时，返回具体的原因。",
+            "example" : "存款金额超限"
           },
           "fail_reason" : {
             "type" : "string",
@@ -56380,7 +56575,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "INVALID_PARAMETER", "SYSTEM_ERROR", "EXCEED_LIMIT_SM_AMOUNT", "EXCEED_LIMIT_MM_AMOUNT", "PAYCARD_UNABLE_PAYMENT", "PAYER_STATUS_ERROR", "PAYER_CERTIFY_CHECK_FAIL", "PAYER_BALANCE_NOT_ENOUGH", "PAYER_USER_INFO_ERROR", "PAYMENT_INFO_INCONSISTENCY", "CARD_BIN_ERROR", "PAYEE_CARD_INFO_ERROR", "INST_PAY_UNABLE", "MEMO_REQUIRED_IN_TRANSFER_ERROR", "PERMIT_CHECK_PERM_IDENTITY_THEFT", "REMARK_HAS_SENSITIVE_WORD", "EXCEED_LIMIT_DM_AMOUNT", "NO_ACCOUNT_RECEIVE_PERMISSION", "BALANCE_IS_NOT_ENOUGH", "NO_ACCOUNT_PAYMENT_PERMISSION", "PAYER_NOT_EXIST", "PRODUCT_NOT_SIGN", "PAYMENT_TIME_EXPIRE", "PAYEE_NOT_EXIST", "PAYEE_ACCOUNT_STATUS_ERROR", "PERMIT_NON_BANK_LIMIT_PAYEE", "PAYEE_TRUSTEESHIP_ACC_OVER_LIMIT", "NO_PERMISSION_ACCOUNT", "TRUSTEESHIP_ACCOUNT_NOT_EXIST", "PAYEE_ACCOUNT_NOT_EXSIT", "ORDER_NOT_EXIST", "PAYEE_USERINFO_STATUS_ERROR", "PAYMENT_MONEY_NOT_ENOUGH", "TRUSTEESHIP_RECIEVE_QUOTA_LIMIT", "SECURITY_CHECK_FAILED", "NO_ORDER_PERMISSION", "ORDER_STATUS_INVALID", "PERM_AML_NOT_REALNAME_REV", "USER_AGREEMENT_VERIFY_FAIL", "PAYER_NOT_EQUAL_PAYEE_ERROR", "EXCEED_LIMIT_DC_RECEIVED", "PAYER_PERMLIMIT_CHECK_FAILURE", "PAYEE_ACC_OCUPIED", "PAYER_PAYEE_CANNOT_SAME", "PERMIT_CHECK_PERM_LIMITED", "RESOURCE_LIMIT_EXCEED", "INVALID_PAYER_ACCOUNT", "EXCEED_LIMIT_DM_MAX_AMOUNT", "EXCEED_LIMIT_PERSONAL_SM_AMOUNT", "EXCEED_LIMIT_UNRN_DM_AMOUNT", "INVALID_CARDNO", "RELEASE_USER_FORBBIDEN_RECIEVE", "PAYEE_USER_TYPE_ERROR", "EXCEED_LIMIT_SM_MIN_AMOUNT", "PERMIT_CHECK_RECEIVE_LIMIT", "NOT_IN_WHITE_LIST", "MONEY_PAY_CLOSED", "NO_AVAILABLE_PAYMENT_TOOLS", "PAYEE_NOT_RELNAME_CERTIFY", "OVERSEA_TRANSFER_CLOSE", "PAYMENT_FAIL", "ALREADY_WITHDRAW_STD_RED_PACKET", "BLOCK_USER_FORBBIDEN_RECIEVE", "REQUEST_PROCESSING", "USER_NOT_EXIST", "PARAM_ILLEGAL", "PROCESS_FAIL", "CURRENCY_NOT_SUPPORT", "PAYER_REQUESTER_RELATION_INVALID", "AUTHOREE_IS_NOT_MATCH", "NO_ACCOUNT_USER_FORBBIDEN_RECIEVE", "SIGN_INVALID", "SIGN_INVOKE_PID_INCONSISTENT", "SIGN_QUERY_APP_INFO_ERROR", "SIGN_QUERY_AGGREMENT_ERROR", "SIGN_AGREEMENT_NO_INCONSISTENT", "SIGN_PARAM_INVALID", "SIGN_NOT_ALLOW_SKIP", "EXCEED_LIMIT_ENT_SM_AMOUNT", "ISV_AUTH_ERROR", "PAYER_USERINFO_NOT_EXSIT", "BLOCK_USER_FORBBIDEN_SEND", "BANK_RESPONSE_ERROR", "BIZ_UNIQUE_EXCEPTION", "NO_ACCOUNTBOOK_PERMISSION", "PERMIT_CHECK_PERM_AML_CERT_EXPIRED", "MRCHPROD_QUERY_ERROR", "PERMIT_PAYER_FORBIDDEN", "IDENTITY_FUND_RELATION_NOT_FOUND", "INST_PAY_REMARK_UNVALID_CHARS", "PERMIT_LIMIT_PAYEE", "INVALID_TAX_BILL_AGREEMENT", "PAY_SALARY_MODE_NOT_SUPPORT", "CONTRACTOR_ACCOUNT_BOOK_NOT_FUND", "BANKCODE_OR_BRANCHNAME_INFO_ERROR", "PAYEE_OUT_PERMLIMIT_CHECK_FAILURE", "MID_ACCOUNT_STATUS_ERROR", "MID_ACCOUNT_TYPE_ERROR", "PAYEE_MID_CANNOT_SAME", "PAYER_MID_CANNOT_SAME", "MID_ACCOUNT_CHECK_ERROR", "PERM_PAY_USER_DAILY_QUOTA_ORG_BALANCE_LIMIT", "PERM_PAY_USER_MONTH_QUOTA_ORG_BALANCE_LIMIT", "PERM_PAY_CUSTOMER_DAILY_QUOTA_ORG_BALANCE_LIMIT", "PERM_PAY_CUSTOMER_MONTH_QUOTA_ORG_BALANCE_LIMIT", "NOT_SUPPORT_PAYER_ACCOUNT_TYPE", "EXCEED_LIMIT_MM_MAX_AMOUNT", "REP_INCONSISTENT", "ILLEGAL_OPERATION", "PERM_RECEIVE_CUSTOMER_ALMS_LIMIT", "PAYEE_IDENTITY_NOT_MATCH", "FLEXIBLE_STAFFING_RISK_CONSULT_UNSIGNED_MERCHANT", "FLEXIBLE_STAFFING_RISK_CONSULT_UNAUTHORIZED_CONSULT", "FLEXIBLE_STAFFING_RISK_CONSULT_USER_NOT_EXIST", "FLEXIBLE_STAFFING_RISK_CONSULT_RISK_RECEIVER", "PAYEE_USERINFO_ERROR", "FLEXIBLE_STAFFING_HIGH_RISK_RECEIVER", "FLEXIBLE_STAFFING_POTENTIAL_RISK_RECEIVER", "PAYER_ACCOUNT_BOOK_INFO_EXCEPTION", "RECEIVER_ACCOUNT_BOOK_INFO_EXCEPTION", "ACCOUNT_BOOK_SCENE_CODE_EXCEPTION", "TRUSTEESHIP_ACCOUNT_STATUS_ERROR", "PAYER_NOT_EQUAL_PAYEE_FOR_BIZ_SCENE_REQUIRED", "PERMIT_PAYER_LEVEL_FORBIDDEN", "FLEXIBLE_STAFFING_UN_KNOWN_RISK_RECEIVER", "JUDICIAL_FREEZE", "TRANS_AMOUNT_NOT_IN_PRIZE_LIMIT", "PROMO_CAMP_RELATION_CONFIG_MISSED", "PAYEE_RECEIVE_COUNT_EXCEED_LIMIT", "PROMO_TRANS_ORDER_DEALING", "FUND_PROTITOPN_NOT_MATCH", "FUND_WALLET_INST_NOT_EXIST", "FUND_WALLET_UNAVAILABLE", "PARTITION_FORMAT_ERROR", "CURREBT_AFTER_INVALID_TIME", "UNAUTHORIZED_CONSULT", "TAX_BILL_AGREEMENT_MISS", "FORBID_OPERATION_USER_WALLET", "USER_RISK_FREEZE", "BALANCE_NOT_ENOUGH_FOR_CARD_FEE", "TRANS_ORDER_DEALING", "PAYEE_USER_IS_INST", "PAYER_NOT_RELNAME_CERTIFY", "BALANCE_NOT_ENOUGH", "EMPLOYEE_SERVICE_NOT_EXIST", "UN_SUPPORT_EMPLOYEE_SERVICE", "PERM_AML_NOT_REALNAME_PAY", "CONFIGURATION_ERROR", "ILLEGAL_REQUEST_USER_ID", "PARAMETER_ERROR", "PERMIT_CHECK_PERM_AML_CERT_MISS_ACC_LIMIT", "RECEIVER_USER_RISK_FREEZE", "PAYER_PAYEE_ACCOUNT_NAME_CAN_NOT_SAME", "PAYEE_CERT_INFO_ERROR", "ACCOUNT_IN_NOT_EXIST", "GLOBAL_USER_FORBBIDEN_RECIEVE", "ACCOUNT_OPERATION_LIMIT", "PAYER_UNABLE_PAYMENT", "EXCEED_LIMIT_INTERNAL_SM_AMOUNT", "ILLEGAL_STATUS_EXCEPTION" ]
+            "enum" : [ "EXPAND_INDIRECT_VERIFY_FAIL", "INVALID_PARAMETER", "SYSTEM_ERROR", "EXCEED_LIMIT_SM_AMOUNT", "EXCEED_LIMIT_MM_AMOUNT", "PAYCARD_UNABLE_PAYMENT", "PAYER_STATUS_ERROR", "PAYER_CERTIFY_CHECK_FAIL", "PAYER_BALANCE_NOT_ENOUGH", "PAYER_USER_INFO_ERROR", "PAYMENT_INFO_INCONSISTENCY", "CARD_BIN_ERROR", "PAYEE_CARD_INFO_ERROR", "INST_PAY_UNABLE", "MEMO_REQUIRED_IN_TRANSFER_ERROR", "PERMIT_CHECK_PERM_IDENTITY_THEFT", "REMARK_HAS_SENSITIVE_WORD", "EXCEED_LIMIT_DM_AMOUNT", "NO_ACCOUNT_RECEIVE_PERMISSION", "BALANCE_IS_NOT_ENOUGH", "NO_ACCOUNT_PAYMENT_PERMISSION", "PAYER_NOT_EXIST", "PRODUCT_NOT_SIGN", "PAYMENT_TIME_EXPIRE", "PAYEE_NOT_EXIST", "PAYEE_ACCOUNT_STATUS_ERROR", "PERMIT_NON_BANK_LIMIT_PAYEE", "PAYEE_TRUSTEESHIP_ACC_OVER_LIMIT", "NO_PERMISSION_ACCOUNT", "TRUSTEESHIP_ACCOUNT_NOT_EXIST", "PAYEE_ACCOUNT_NOT_EXSIT", "ORDER_NOT_EXIST", "PAYEE_USERINFO_STATUS_ERROR", "PAYMENT_MONEY_NOT_ENOUGH", "TRUSTEESHIP_RECIEVE_QUOTA_LIMIT", "SECURITY_CHECK_FAILED", "NO_ORDER_PERMISSION", "ORDER_STATUS_INVALID", "PERM_AML_NOT_REALNAME_REV", "USER_AGREEMENT_VERIFY_FAIL", "PAYER_NOT_EQUAL_PAYEE_ERROR", "EXCEED_LIMIT_DC_RECEIVED", "PAYER_PERMLIMIT_CHECK_FAILURE", "PAYEE_ACC_OCUPIED", "PAYER_PAYEE_CANNOT_SAME", "PERMIT_CHECK_PERM_LIMITED", "RESOURCE_LIMIT_EXCEED", "INVALID_PAYER_ACCOUNT", "EXCEED_LIMIT_DM_MAX_AMOUNT", "EXCEED_LIMIT_PERSONAL_SM_AMOUNT", "EXCEED_LIMIT_UNRN_DM_AMOUNT", "INVALID_CARDNO", "RELEASE_USER_FORBBIDEN_RECIEVE", "PAYEE_USER_TYPE_ERROR", "EXCEED_LIMIT_SM_MIN_AMOUNT", "PERMIT_CHECK_RECEIVE_LIMIT", "NOT_IN_WHITE_LIST", "MONEY_PAY_CLOSED", "NO_AVAILABLE_PAYMENT_TOOLS", "PAYEE_NOT_RELNAME_CERTIFY", "OVERSEA_TRANSFER_CLOSE", "PAYMENT_FAIL", "ALREADY_WITHDRAW_STD_RED_PACKET", "BLOCK_USER_FORBBIDEN_RECIEVE", "REQUEST_PROCESSING", "USER_NOT_EXIST", "PARAM_ILLEGAL", "PROCESS_FAIL", "CURRENCY_NOT_SUPPORT", "PAYER_REQUESTER_RELATION_INVALID", "AUTHOREE_IS_NOT_MATCH", "NO_ACCOUNT_USER_FORBBIDEN_RECIEVE", "SIGN_INVALID", "SIGN_INVOKE_PID_INCONSISTENT", "SIGN_QUERY_APP_INFO_ERROR", "SIGN_QUERY_AGGREMENT_ERROR", "SIGN_AGREEMENT_NO_INCONSISTENT", "SIGN_PARAM_INVALID", "SIGN_NOT_ALLOW_SKIP", "EXCEED_LIMIT_ENT_SM_AMOUNT", "ISV_AUTH_ERROR", "PAYER_USERINFO_NOT_EXSIT", "BLOCK_USER_FORBBIDEN_SEND", "BANK_RESPONSE_ERROR", "BIZ_UNIQUE_EXCEPTION", "NO_ACCOUNTBOOK_PERMISSION", "PERMIT_CHECK_PERM_AML_CERT_EXPIRED", "MRCHPROD_QUERY_ERROR", "PERMIT_PAYER_FORBIDDEN", "IDENTITY_FUND_RELATION_NOT_FOUND", "INST_PAY_REMARK_UNVALID_CHARS", "PERMIT_LIMIT_PAYEE", "INVALID_TAX_BILL_AGREEMENT", "PAY_SALARY_MODE_NOT_SUPPORT", "CONTRACTOR_ACCOUNT_BOOK_NOT_FUND", "BANKCODE_OR_BRANCHNAME_INFO_ERROR", "PAYEE_OUT_PERMLIMIT_CHECK_FAILURE", "MID_ACCOUNT_STATUS_ERROR", "MID_ACCOUNT_TYPE_ERROR", "PAYEE_MID_CANNOT_SAME", "PAYER_MID_CANNOT_SAME", "MID_ACCOUNT_CHECK_ERROR", "PERM_PAY_USER_DAILY_QUOTA_ORG_BALANCE_LIMIT", "PERM_PAY_USER_MONTH_QUOTA_ORG_BALANCE_LIMIT", "PERM_PAY_CUSTOMER_DAILY_QUOTA_ORG_BALANCE_LIMIT", "PERM_PAY_CUSTOMER_MONTH_QUOTA_ORG_BALANCE_LIMIT", "NOT_SUPPORT_PAYER_ACCOUNT_TYPE", "EXCEED_LIMIT_MM_MAX_AMOUNT", "REP_INCONSISTENT", "ILLEGAL_OPERATION", "PERM_RECEIVE_CUSTOMER_ALMS_LIMIT", "PAYEE_IDENTITY_NOT_MATCH", "FLEXIBLE_STAFFING_RISK_CONSULT_UNSIGNED_MERCHANT", "FLEXIBLE_STAFFING_RISK_CONSULT_UNAUTHORIZED_CONSULT", "FLEXIBLE_STAFFING_RISK_CONSULT_USER_NOT_EXIST", "FLEXIBLE_STAFFING_RISK_CONSULT_RISK_RECEIVER", "PAYEE_USERINFO_ERROR", "FLEXIBLE_STAFFING_HIGH_RISK_RECEIVER", "FLEXIBLE_STAFFING_POTENTIAL_RISK_RECEIVER", "PAYER_ACCOUNT_BOOK_INFO_EXCEPTION", "RECEIVER_ACCOUNT_BOOK_INFO_EXCEPTION", "ACCOUNT_BOOK_SCENE_CODE_EXCEPTION", "TRUSTEESHIP_ACCOUNT_STATUS_ERROR", "PAYER_NOT_EQUAL_PAYEE_FOR_BIZ_SCENE_REQUIRED", "PERMIT_PAYER_LEVEL_FORBIDDEN", "FLEXIBLE_STAFFING_UN_KNOWN_RISK_RECEIVER", "JUDICIAL_FREEZE", "TRANS_AMOUNT_NOT_IN_PRIZE_LIMIT", "PROMO_CAMP_RELATION_CONFIG_MISSED", "PAYEE_RECEIVE_COUNT_EXCEED_LIMIT", "PROMO_TRANS_ORDER_DEALING", "FUND_PROTITOPN_NOT_MATCH", "FUND_WALLET_INST_NOT_EXIST", "FUND_WALLET_UNAVAILABLE", "PARTITION_FORMAT_ERROR", "CURREBT_AFTER_INVALID_TIME", "UNAUTHORIZED_CONSULT", "TAX_BILL_AGREEMENT_MISS", "FORBID_OPERATION_USER_WALLET", "USER_RISK_FREEZE", "BALANCE_NOT_ENOUGH_FOR_CARD_FEE", "TRANS_ORDER_DEALING", "PAYEE_USER_IS_INST", "PAYER_NOT_RELNAME_CERTIFY", "BALANCE_NOT_ENOUGH", "EMPLOYEE_SERVICE_NOT_EXIST", "UN_SUPPORT_EMPLOYEE_SERVICE", "PERM_AML_NOT_REALNAME_PAY", "CONFIGURATION_ERROR", "ILLEGAL_REQUEST_USER_ID", "PARAMETER_ERROR", "PERMIT_CHECK_PERM_AML_CERT_MISS_ACC_LIMIT", "RECEIVER_USER_RISK_FREEZE", "PAYER_PAYEE_ACCOUNT_NAME_CAN_NOT_SAME", "PAYEE_CERT_INFO_ERROR", "ACCOUNT_IN_NOT_EXIST", "GLOBAL_USER_FORBBIDEN_RECIEVE", "ACCOUNT_OPERATION_LIMIT", "PAYER_UNABLE_PAYMENT", "EXCEED_LIMIT_INTERNAL_SM_AMOUNT", "ILLEGAL_STATUS_EXCEPTION", "PAYER_ACCOUNT_LIMIT", "PAYER_AND_PAYEE_BOTH_PERSONAL_ACCOUNT_BOOK" ]
           },
           "links" : {
             "type" : "string",
@@ -64887,8 +65082,8 @@
           },
           "feedback_code" : {
             "type" : "string",
-            "description" : "反馈类目ID\t00:使用体验保障金退款；\t02:通过其他方式退款;\t03:已发货;\t04:其他;\t05:已完成售后服务;\t06:非我方责任范围；",
-            "example" : "02"
+            "description" : "小程序交易反馈类目ID：\t02:通过其他方式退款;\t03:已发货;\t04:其他;\t05:已完成售后服务;\t06:非我方责任范围;\t\t安心付/先享后付反馈类目ID：\t194:反馈处理结果;",
+            "example" : "已发货"
           },
           "feedback_content" : {
             "type" : "string",
@@ -67896,7 +68091,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "INVALID_PARAM", "SYSTEM_ERROR" ]
+            "enum" : [ "INVALID_PARAM", "SYSTEM_ERROR", "NO_PERMISSION", "AUTH_FIELD_SCENE_IS_BLANK", "API_NAME_NO_NEED_APPLY" ]
           },
           "links" : {
             "type" : "string",
@@ -69543,7 +69738,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "SYSTEM_ERROR", "MODIFY_PARAMS_ARE_BLANK", "CAN_NOT_MODIFY_BASE_INFO", "INVALID_MINI_APP_NAME", "INVALID_MINI_APP_NAME_LENGTH", "MINI_APP_NAME_DUPLICATE", "MINI_APP_NAME_SENSITIVE", "INVALID_MINI_APP_EN_NAME", "INVALID_MINI_APP_EN_NAME_LENGTH", "MINI_APP_EN_NAME_DUPLICATE", "MINI_APP_EN_NAME_SENSITIVE", "INVALID_MINI_APP_SLOGAN_LENGTH", "MINI_APP_SLOGAN_SENSITIVE", "CATEGOTY_NUM_IS_INVALID", "INVALID_CATEGOTY", "INVALID_LOGO_EXT", "LOGO_EXCEED_MAX_SIZE", "LOGO_HEIGHT_NOT_EQUAL_WIDTH", "MINI_APP_DESC_SENSITIVE", "INVALID_MINI_APP_DESC_LENGTH", "INVALID_MINI_APP_SERVICE_PHONE", "INVALID_MINI_APP_SERVICE_EMAIL", "MINI_APP_SERVICE_EMAIL_SENSITIVE", "APPLICATION_TYPE_NOT_MINIAPP", "INVALID_MINI_APP_DESC", "INVALID_MINI_APP_SLOGAN", "RISK_DECISION_CHECK_FAIL", "RISK_DECISION_HIT_BRAND", "SERVICE_TEL_AND_MAIL_BOTH_BLANK", "APP_DESC_IS_BLANK", "MINI_APP_NOT_ONLINE", "LOGO_SIZE_EXCEED", "CATEGORY_IS_BLANK", "PRIVATE_NOT_ALLOW_CATEGORY", "CANNOT_MODIFY_CATEGORY_WITH_RELATION_VERSION", "MINI_APP_INFO_AUDIT_CONTAINS", "CATEGORY_NUM_IS_INVALID", "SLOGAN_IS_BLANK", "OP_FREQUENCY_LIMIT", "LOGO_IS_BLANK", "INVALID_LOGO", "INVALID_PARAMETER", "NOT_ALLOW_BETA_CATEGORY", "DEVELOPER_INFO_NOT_EXIST" ]
+            "enum" : [ "SYSTEM_ERROR", "MODIFY_PARAMS_ARE_BLANK", "CAN_NOT_MODIFY_BASE_INFO", "INVALID_MINI_APP_NAME", "INVALID_MINI_APP_NAME_LENGTH", "MINI_APP_NAME_DUPLICATE", "MINI_APP_NAME_SENSITIVE", "INVALID_MINI_APP_EN_NAME", "INVALID_MINI_APP_EN_NAME_LENGTH", "MINI_APP_EN_NAME_DUPLICATE", "MINI_APP_EN_NAME_SENSITIVE", "INVALID_MINI_APP_SLOGAN_LENGTH", "MINI_APP_SLOGAN_SENSITIVE", "CATEGOTY_NUM_IS_INVALID", "INVALID_CATEGOTY", "INVALID_LOGO_EXT", "LOGO_EXCEED_MAX_SIZE", "LOGO_HEIGHT_NOT_EQUAL_WIDTH", "MINI_APP_DESC_SENSITIVE", "INVALID_MINI_APP_DESC_LENGTH", "INVALID_MINI_APP_SERVICE_PHONE", "INVALID_MINI_APP_SERVICE_EMAIL", "MINI_APP_SERVICE_EMAIL_SENSITIVE", "APPLICATION_TYPE_NOT_MINIAPP", "INVALID_MINI_APP_DESC", "INVALID_MINI_APP_SLOGAN", "RISK_DECISION_CHECK_FAIL", "RISK_DECISION_HIT_BRAND", "SERVICE_TEL_AND_MAIL_BOTH_BLANK", "APP_DESC_IS_BLANK", "MINI_APP_NOT_ONLINE", "LOGO_SIZE_EXCEED", "CATEGORY_IS_BLANK", "PRIVATE_NOT_ALLOW_CATEGORY", "CANNOT_MODIFY_CATEGORY_WITH_RELATION_VERSION", "MINI_APP_INFO_AUDIT_CONTAINS", "CATEGORY_NUM_IS_INVALID", "SLOGAN_IS_BLANK", "OP_FREQUENCY_LIMIT", "LOGO_IS_BLANK", "INVALID_LOGO", "INVALID_PARAMETER", "NOT_ALLOW_BETA_CATEGORY", "DEVELOPER_INFO_NOT_EXIST", "CANNOT_MODIFY_NAME_AFTER_ONLINE" ]
           },
           "links" : {
             "type" : "string",
@@ -69601,7 +69796,14 @@
         }
       },
       "AlipayOpenMiniBaseinfoModifyResponseModel" : {
-        "type" : "object"
+        "type" : "object",
+        "properties" : {
+          "modify_status" : {
+            "type" : "string",
+            "description" : "小程序基础信息修改结果，无开发中版本或仅有开发中版本修改立即生效，有上架版本会启动小程序信息审核，审核通过后信息修改生效。",
+            "example" : "1"
+          }
+        }
       },
       "AlipayOpenMiniBaseinfoNameCheckErrorResponseModel" : {
         "required" : [ "code", "message" ],
@@ -72781,7 +72983,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "INVALID_PARAMS", "SYSTEM_ERROR", "ONGOING_ORDER_EXIST", "DAILY_REJECT_EXCEEDS", "PROVIDER_ROLE_INVALID", "APP_NAME_DUPLICATED", "CERTIFICATE_INVALID", "PERMISSION_DENIED", "REJECT_COUNTS_EXCEEDS", "NOT_UNIQUE", "OPERATION_INVALID", "HAS_RISK", "ORDER_FINISHED", "INVALID_MINI_APP_NAME_LENGTH", "PARAM_INVALID", "BRAND_TORT", "RPC_INVOKE_ERROR", "RATE_LIMITING_RISK", "INFO_INVALID", "ILLEGAL_PARAMS", "APP_NAME_LENGTH_LIMIT", "EXTERNAL_SYSTEM_ERROR" ]
+            "enum" : [ "INVALID_PARAMS", "SYSTEM_ERROR", "ONGOING_ORDER_EXIST", "DAILY_REJECT_EXCEEDS", "PROVIDER_ROLE_INVALID", "APP_NAME_DUPLICATED", "CERTIFICATE_INVALID", "PERMISSION_DENIED", "REJECT_COUNTS_EXCEEDS", "NOT_UNIQUE", "OPERATION_INVALID", "HAS_RISK", "ORDER_FINISHED", "INVALID_MINI_APP_NAME_LENGTH", "PARAM_INVALID", "BRAND_TORT", "RPC_INVOKE_ERROR", "RATE_LIMITING_RISK", "INFO_INVALID", "ILLEGAL_PARAMS", "APP_NAME_LENGTH_LIMIT", "EXTERNAL_SYSTEM_ERROR", "LEGAL_PERSON_INFO_INVALID", "LEGAL_PERSON_NAME_NOT_MATCH", "CERT_NO_NOT_MATCH", "NEED_UPGRADE_INDIVIDUAL" ]
           },
           "links" : {
             "type" : "string",
@@ -73928,7 +74130,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "NO_QUERY_DELIVERY_ID", "INVALID_QUERY_TYPE", "INVALID_QUERY_TIME", "DELIVER_NOT_EXIST" ]
+            "enum" : [ "NO_QUERY_DELIVERY_ID", "INVALID_QUERY_TYPE", "INVALID_QUERY_TIME", "DELIVER_NOT_EXIST", "SYSTEM_ERROR" ]
           },
           "links" : {
             "type" : "string",
@@ -74681,7 +74883,7 @@
           },
           "downgrade" : {
             "type" : "boolean",
-            "description" : "true - 性能优先； false - 覆盖优先（默认）",
+            "description" : "true - 性能优先； false - 覆盖优先（默认）；试点开放，如需使用，请咨询在线客服",
             "example" : "false"
           },
           "permit_registration_limit_release" : {
@@ -78210,7 +78412,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "NO_PERMISSION", "BRAND_HAS_CONFIG_SEARCH_BOX", "APP_HAS_CONFIG_SEARCH_BOX", "INVALID_PARAMETER", "ISV_NOT_AUTH", "RELATED_ACCOUNT_NO_TINY_APP", "SYSTEM_ERROR", "SEARCH_BOX_ACCESS_CHECK_FAIL", "MERCHANT_NOT_EXIST" ]
+            "enum" : [ "NO_PERMISSION", "BRAND_HAS_CONFIG_SEARCH_BOX", "APP_HAS_CONFIG_SEARCH_BOX", "INVALID_PARAMETER", "ISV_NOT_AUTH", "RELATED_ACCOUNT_NO_TINY_APP", "SYSTEM_ERROR", "SEARCH_BOX_ACCESS_CHECK_FAIL", "MERCHANT_NOT_EXIST", "APP_BRAND_RELATION_NOT_EXIST" ]
           },
           "links" : {
             "type" : "string",
@@ -78537,7 +78739,7 @@
           },
           "custom_keywords" : {
             "type" : "string",
-            "description" : "1024",
+            "description" : "自定义触发词",
             "example" : "自定义触发词"
           },
           "image_id" : {
@@ -79250,7 +79452,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "APP_NOT_ONLINE", "APP_NOT_SEARCH_VISIBLE", "INVALID_PARAMETER", "KEYWORDS_EXCEED_MAX_LIMIT", "SYSTEM_ERROR", "APP_NOT_EXSIT", "INVALID_STATUS", "SYSTEM_BUSY", "SUB_SERVICE_CAN_NOT_SEARCH" ]
+            "enum" : [ "APP_NOT_ONLINE", "APP_NOT_SEARCH_VISIBLE", "INVALID_PARAMETER", "KEYWORDS_EXCEED_MAX_LIMIT", "SYSTEM_ERROR", "APP_NOT_EXSIT", "INVALID_STATUS", "SUB_SERVICE_CAN_NOT_SEARCH", "NO_PERMISSION" ]
           },
           "links" : {
             "type" : "string",
@@ -82873,6 +83075,9 @@
       "AlipayTradeCloseModel" : {
         "type" : "object",
         "properties" : {
+          "extend_params" : {
+            "$ref" : "#/components/schemas/CloseExtendParams"
+          },
           "notify_url" : {
             "type" : "string",
             "description" : "通知地址"
@@ -88379,7 +88584,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "NOT_ALLOWED_SETTLE", "SHOP_CATEGORY_IS_ILLEGAL", "ISV_NOT_EXIST", "SHOP_ACCOUNT_NO_IS_ILLEGAL", "SHOP_SHOPNO_IS_EMPTY", "INDUSTRY_QUALIFICATION_IS_EMPTY", "SETTLED_OUTDOORIMAGE_EMPTY", "SHOP_SHOPNAME_IS_EMPTY", "SETTLED_BIZ_ADDRESS_ILLEGAL", "SHOP_CATEGORY_IS_EMPTY", "CONTACT_WAY_VALUE_NULL", "ADDRESS_PROVINCE_CODE_ILLEGAL", "ADDRESS_CITY_CODE_ILLEGAL", "ADDRESS_DISTRICT_CODE_ILLEGAL", "SHOP_ALREADY_EXIST", "GONGAN_CHECK_FAIL", "GONGSHANG_CHECK_FAIL", "INVALID_PARAMETER", "CONTACT_PERSON_NAME_NULL", "USER_ILLEGAL", "BRAND_ILLEGAL", "PROFILE_KEY_ILLEGAL", "SETTLED_BANKCARD_NO_IS_EMPTY", "SETTLED_ACCOUNTHOLDERNAME_EMPTY", "SETTLED_ACCOUNTBRANCHNAME_EMPTY", "SETTLED_ACCOUNTINSTNAME_EMPTY", "SETTLED_USAGETYPE_IS_EMPTY", "BANK_BRANCH_NAME_ILLEGAL", "SETTLED_USAGETYPE_ILLEGAL", "SETTLED_CARD_ACCOUNTINSTID_EMPTY", "SETTLED_CARD_ACCOUNTTYPE_EMPTY", "BANK_ACCOUNTINSTID_ILLEGAL", "SETTLED_CARD_ACCOUNTTYPE_ILLEGAL", "BANK_ACCOUNTINSTNAME_ILLEGAL", "SYSTEM_ERROR", "GONGSHANG_LICENSE_ILLEGAL", "BUSINESS_LICENSE_EMPTY", "MERCHANT_NOT_EXIST", "ATTACHMENT_TYPE_ILLEGAL", "SHOP_NOT_EXIST", "ATTACHMENT_URL_NULL", "LOCATION_CHECK_FAIL", "ATTACHMENT_CHECK_FAIL", "BUSINESS_TIME_ILLEGAL", "SHOP_AUDIT_REJECT", "CTU_INDIRECT_CREATE_FAIL", "DETAIL_ADDRESS_NOT_CONTAIN_KEYWORD_VALUE", "SHOP_NAME_EXIST_RISK", "SHOP_ADDRESS_EXIST_RISK", "SHOP_REMARK_EXIST_RISK", "EXTERNAL_SHOP_CODE_EXIST_RISK", "SHOP_CODE_ALREADY_EXIST", "SETTLED_ALIPAYACCOUNT_NOT_EXIST", "DETAIL_ADDRESS_NOT_CONTAINS_CHINESE_CHARACTER", "OUTDOOR_IMAGE_URL_IS_EMPTY", "BIZ_SCENE_PIC_URL_IS_EMPTY", "BUSINESS_LICENSE_URL_IS_EMPTY", "MERCHANT_LOGO_URL_IS_EMPTY", "SETTLED_BANKCARD_NUMBER_LENGTH_ILLEGAL", "ACCOUNT_HOLDER_NAME_LENGTH_ILLEGAL", "ACCOUNT_INST_PROVINCE_LENGTH_ILLEGAL", "ACCOUNT_INST_CITY_LENGTH_ILLEGAL", "ACCOUNT_BRANCH_NAME_LENGTH_ILLEGAL", "ACCOUNT_NAME_LENGTH_ILLEGAL", "ACCOUNT_INST_ID_LENGTH_ILLEGAL", "OUTDOOR_IMAGE_OSSKEY_NOT_EXIST", "BUSINESS_LICENSE_OSSKEY_NOT_EXIST", "SPECIAL_TRAVEL_PERMIT_OSSKEY_NOT_EXIST", "OTA_SNAPSHOT_OSSKEY_NOT_EXIST", "ID_CARD_MSG_ILLEGAL", "BUSINESS_LICENSE_ILLEGAL", "BUSINESS_ADDRESS_IS_EMPTY", "DETAIL_ADDRESS_CONTAIN_PROVINCES_CITY_REGION", "SHOP_INFO_SOURCE_OTHER_TAG", "MERCHANT_ORDER_EXECUTE_CONFLICT", "BANK_CARD_TYPE_ILLEGAL", "TARGET_TYPE_ILLEGAL", "SHOP_EXT_INFO_NULL", "SHOP_INFO_SOURCE_ILLEGAL", "SHOP_INFO_SOURCE_CHANNEL_ILLEGAL", "SHOP_INFO_SOURCE_BIZ_FROM_ILLEGAL", "DISTRICT_CODE_ILLEGAL", "SETTLED_BANKCARD_ACCOUNTINSTPROVINCE_IS_EMPTY", "SETTLED_BANKCARD_ACCOUNTINSTCITY_IS_EMPTY", "SETTLED_CARD_SIZE_IS_ILLEGAL", "BANK_CODE_ILLEGAL", "ADDRESS_VERSION_CODE_ILLEGAL", "SHOP_SHOP_TYPE_ILLEGAL", "SHOP_SOURCE_IS_ILLEGAL", "CATEGORY_WITH_NO_PROOF", "SHOP_ASSET_CHECK_RESULT_EMPTY", "SHOP_ASSET_NOT_BINDABLE", "SHOP_ASSET_MAX_LIMIT", "SHOP_PRE_POI_NOT_FILL_ERROR", "STORE_ID_LENGTH_ILLEGAL", "SHOP_COVER_OSSKEY_NOT_EXIST", "SHOP_COVER_NOT_EXIST", "SHOP_EXT_INFO_INPUT_ARGUMENT_ILLEGAL", "SHOP_EXT_INFO_VALUE_INPUT_ARGUMENT_ILLEGAL", "SHOP_CATEGORY_EMPTY", "SHOP_NAME_BRAND_AUDIT_REJECT", "SHOP_NAME_BUSINESS_AUDIT_REJECT", "BUSINESS_LICENSE_NAME_NOT_MATCH", "BUSINESS_LICENSE_EXPIRED", "BUSINESS_LICENSE_CANCEL", "BUSINESS_LICENSE_REVOKED", "BUSINESS_LICENSE_DATA_STATUS_EXCEPTION", "REQUEST_MER_ARGUMENT_NULL", "CATEGORY_NOT_ALLOWED_TO_MODIFY", "SUBMIT_DIGITAL_POI_AUDIT_FAIL", "SHOP_INDUSTRY_CODE_DUPLICATED", "SHOP_INDUSTRY_REQUIRED_VALUE_NULL", "LOCATION_NOT_NULL", "SHOP_MODIFY_AUDITING", "SHOP_INDUSTRY_LICENSE_REQUIRED_BOTH", "SHOP_LICENSE_REQUIRED_NULL", "SHOP_INDUSTRY_VALUE_ERROR", "BUSINESS_LICENCE_INFO_REQUIRED" ]
+            "enum" : [ "NOT_ALLOWED_SETTLE", "SHOP_CATEGORY_IS_ILLEGAL", "ISV_NOT_EXIST", "SHOP_ACCOUNT_NO_IS_ILLEGAL", "SHOP_SHOPNO_IS_EMPTY", "INDUSTRY_QUALIFICATION_IS_EMPTY", "SETTLED_OUTDOORIMAGE_EMPTY", "SHOP_SHOPNAME_IS_EMPTY", "SETTLED_BIZ_ADDRESS_ILLEGAL", "SHOP_CATEGORY_IS_EMPTY", "CONTACT_WAY_VALUE_NULL", "ADDRESS_PROVINCE_CODE_ILLEGAL", "ADDRESS_CITY_CODE_ILLEGAL", "ADDRESS_DISTRICT_CODE_ILLEGAL", "SHOP_ALREADY_EXIST", "GONGAN_CHECK_FAIL", "GONGSHANG_CHECK_FAIL", "INVALID_PARAMETER", "CONTACT_PERSON_NAME_NULL", "USER_ILLEGAL", "BRAND_ILLEGAL", "PROFILE_KEY_ILLEGAL", "SETTLED_BANKCARD_NO_IS_EMPTY", "SETTLED_ACCOUNTHOLDERNAME_EMPTY", "SETTLED_ACCOUNTBRANCHNAME_EMPTY", "SETTLED_ACCOUNTINSTNAME_EMPTY", "SETTLED_USAGETYPE_IS_EMPTY", "BANK_BRANCH_NAME_ILLEGAL", "SETTLED_USAGETYPE_ILLEGAL", "SETTLED_CARD_ACCOUNTINSTID_EMPTY", "SETTLED_CARD_ACCOUNTTYPE_EMPTY", "BANK_ACCOUNTINSTID_ILLEGAL", "SETTLED_CARD_ACCOUNTTYPE_ILLEGAL", "BANK_ACCOUNTINSTNAME_ILLEGAL", "SYSTEM_ERROR", "GONGSHANG_LICENSE_ILLEGAL", "BUSINESS_LICENSE_EMPTY", "MERCHANT_NOT_EXIST", "ATTACHMENT_TYPE_ILLEGAL", "SHOP_NOT_EXIST", "ATTACHMENT_URL_NULL", "LOCATION_CHECK_FAIL", "ATTACHMENT_CHECK_FAIL", "BUSINESS_TIME_ILLEGAL", "SHOP_AUDIT_REJECT", "CTU_INDIRECT_CREATE_FAIL", "DETAIL_ADDRESS_NOT_CONTAIN_KEYWORD_VALUE", "SHOP_NAME_EXIST_RISK", "SHOP_ADDRESS_EXIST_RISK", "SHOP_REMARK_EXIST_RISK", "EXTERNAL_SHOP_CODE_EXIST_RISK", "SHOP_CODE_ALREADY_EXIST", "SETTLED_ALIPAYACCOUNT_NOT_EXIST", "DETAIL_ADDRESS_NOT_CONTAINS_CHINESE_CHARACTER", "OUTDOOR_IMAGE_URL_IS_EMPTY", "BIZ_SCENE_PIC_URL_IS_EMPTY", "BUSINESS_LICENSE_URL_IS_EMPTY", "MERCHANT_LOGO_URL_IS_EMPTY", "SETTLED_BANKCARD_NUMBER_LENGTH_ILLEGAL", "ACCOUNT_HOLDER_NAME_LENGTH_ILLEGAL", "ACCOUNT_INST_PROVINCE_LENGTH_ILLEGAL", "ACCOUNT_INST_CITY_LENGTH_ILLEGAL", "ACCOUNT_BRANCH_NAME_LENGTH_ILLEGAL", "ACCOUNT_NAME_LENGTH_ILLEGAL", "ACCOUNT_INST_ID_LENGTH_ILLEGAL", "OUTDOOR_IMAGE_OSSKEY_NOT_EXIST", "BUSINESS_LICENSE_OSSKEY_NOT_EXIST", "SPECIAL_TRAVEL_PERMIT_OSSKEY_NOT_EXIST", "OTA_SNAPSHOT_OSSKEY_NOT_EXIST", "ID_CARD_MSG_ILLEGAL", "BUSINESS_LICENSE_ILLEGAL", "BUSINESS_ADDRESS_IS_EMPTY", "DETAIL_ADDRESS_CONTAIN_PROVINCES_CITY_REGION", "SHOP_INFO_SOURCE_OTHER_TAG", "MERCHANT_ORDER_EXECUTE_CONFLICT", "BANK_CARD_TYPE_ILLEGAL", "TARGET_TYPE_ILLEGAL", "SHOP_EXT_INFO_NULL", "SHOP_INFO_SOURCE_ILLEGAL", "SHOP_INFO_SOURCE_CHANNEL_ILLEGAL", "SHOP_INFO_SOURCE_BIZ_FROM_ILLEGAL", "DISTRICT_CODE_ILLEGAL", "SETTLED_BANKCARD_ACCOUNTINSTPROVINCE_IS_EMPTY", "SETTLED_BANKCARD_ACCOUNTINSTCITY_IS_EMPTY", "SETTLED_CARD_SIZE_IS_ILLEGAL", "BANK_CODE_ILLEGAL", "ADDRESS_VERSION_CODE_ILLEGAL", "SHOP_SHOP_TYPE_ILLEGAL", "SHOP_SOURCE_IS_ILLEGAL", "CATEGORY_WITH_NO_PROOF", "SHOP_ASSET_CHECK_RESULT_EMPTY", "SHOP_ASSET_NOT_BINDABLE", "SHOP_ASSET_MAX_LIMIT", "SHOP_PRE_POI_NOT_FILL_ERROR", "STORE_ID_LENGTH_ILLEGAL", "SHOP_COVER_OSSKEY_NOT_EXIST", "SHOP_COVER_NOT_EXIST", "SHOP_EXT_INFO_INPUT_ARGUMENT_ILLEGAL", "SHOP_EXT_INFO_VALUE_INPUT_ARGUMENT_ILLEGAL", "SHOP_CATEGORY_EMPTY", "SHOP_NAME_BRAND_AUDIT_REJECT", "SHOP_NAME_BUSINESS_AUDIT_REJECT", "BUSINESS_LICENSE_NAME_NOT_MATCH", "BUSINESS_LICENSE_EXPIRED", "BUSINESS_LICENSE_CANCEL", "BUSINESS_LICENSE_REVOKED", "BUSINESS_LICENSE_DATA_STATUS_EXCEPTION", "REQUEST_MER_ARGUMENT_NULL", "CATEGORY_NOT_ALLOWED_TO_MODIFY", "SUBMIT_DIGITAL_POI_AUDIT_FAIL", "SHOP_INDUSTRY_CODE_DUPLICATED", "SHOP_INDUSTRY_REQUIRED_VALUE_NULL", "LOCATION_NOT_NULL", "SHOP_MODIFY_AUDITING", "SHOP_INDUSTRY_LICENSE_REQUIRED_BOTH", "SHOP_LICENSE_REQUIRED_NULL", "SHOP_INDUSTRY_VALUE_ERROR", "BUSINESS_LICENCE_INFO_REQUIRED", "SHOP_MAIN_TYPE_ILLEGAL", "SHOP_AUTH_LETTER_EMPTY", "BUSINESS_MODE_NOT_EXIST", "GUIDE_B_SITE_OPEN_API", "SHOP_MAIN_TYPE_EMPTY", "SETTLED_INDUSTRYQUALIFICATIONTYPE_IS_ILLEGAL", "BUSINESS_TIME_WEEKDAY_ERROR", "BUSINESS_TIME_WEEKDAY_DUP", "BUSINESS_TIME_TIMEPERIOD_ERROR", "BUSINESS_TIME_TIMEPERIOD_SIZE_LIMIT" ]
           },
           "links" : {
             "type" : "string",
@@ -88504,6 +88709,13 @@
             "description" : "备注",
             "example" : "备注"
           },
+          "new_business_time" : {
+            "type" : "array",
+            "description" : "门店营业时间，支持一周7天，支持1天内多时间段",
+            "items" : {
+              "$ref" : "#/components/schemas/ComplexBusinessTime"
+            }
+          },
           "out_door_images" : {
             "type" : "array",
             "description" : "需传入<a href=\"https://opendocs.alipay.com/apis/api_1/ant.merchant.expand.indirect.image.upload\">ant.merchant.expand.indirect.image.upload</a> 接口上传图片后得到的 image_id。",
@@ -88533,6 +88745,11 @@
             "type" : "string",
             "description" : "新版门店类目标准二级类目code。类目标准及与原类目映射关系参见 <a href=\"https://gw.alipayobjects.com/os/bmw-prod/4b3f82df-e53e-4b84-bc41-fe025101e726.xlsx\">支付宝门店类目-最新</a> 表格。",
             "example" : "B0001"
+          },
+          "shop_main_type" : {
+            "type" : "string",
+            "description" : "主要针对医疗行业门店主体类型进件使用，不同门店认证主体需要相应的主体资质证书。 \t企业营业执照: ENTERPRISE; \t事业单位法人证书: INST_RGST_CTF; \t民办非企业单位登记证书 PRIVATE_NON_ENTERPRISE",
+            "example" : "ENTERPRISE"
           },
           "shop_name" : {
             "type" : "string",
@@ -88573,7 +88790,7 @@
           "code" : {
             "type" : "string",
             "description" : "错误码",
-            "enum" : [ "NOT_ALLOWED_SETTLE", "SHOP_CATEGORY_IS_ILLEGAL", "ISV_NOT_EXIST", "SHOP_ACCOUNT_NO_IS_ILLEGAL", "INDUSTRY_QUALIFICATION_IS_EMPTY", "SETTLED_OUTDOORIMAGE_EMPTY", "SETTLED_BIZ_ADDRESS_ILLEGAL", "SHOP_CATEGORY_IS_EMPTY", "CONTACT_WAY_VALUE_NULL", "ADDRESS_PROVINCE_CODE_ILLEGAL", "ADDRESS_CITY_CODE_ILLEGAL", "ADDRESS_DISTRICT_CODE_ILLEGAL", "GONGAN_CHECK_FAIL", "GONGSHANG_CHECK_FAIL", "INVALID_PARAMETER", "CONTACT_PERSON_NAME_NULL", "USER_ILLEGAL", "BRAND_ILLEGAL", "PROFILE_KEY_ILLEGAL", "MER_ARGUMENT_NULL", "IP_ROLE_ID_DO_NOT_CHANGE", "SHOP_NOT_EXIST", "RELATION_NOT_EXIST", "SHOP_ALREADY_EXIST", "SETTLED_BANKCARD_NO_IS_EMPTY", "SETTLED_ACCOUNTHOLDERNAME_EMPTY", "SETTLED_ACCOUNTBRANCHNAME_EMPTY", "SETTLED_ACCOUNTINSTNAME_EMPTY", "SETTLED_USAGETYPE_IS_EMPTY", "BANK_BRANCH_NAME_ILLEGAL", "SETTLED_USAGETYPE_ILLEGAL", "SETTLED_CARD_ACCOUNTINSTID_EMPTY", "SETTLED_CARD_ACCOUNTTYPE_EMPTY", "BANK_ACCOUNTINSTID_ILLEGAL", "SETTLED_CARD_ACCOUNTTYPE_ILLEGAL", "BANK_ACCOUNTINSTNAME_ILLEGAL", "SETTLED_ALIPAYACCOUNT_NOT_EXIST", "GONGSHANG_LICENSE_ILLEGAL", "SYSTEM_ERROR", "SHOP_TYPE_ILLEGAL", "LOCATION_CHECK_FAIL", "ATTACHMENT_CHECK_FAIL", "BUSINESS_TIME_ILLEGAL", "SHOP_AUDIT_REJECT", "ATTACHMENT_URL_NULL", "SHOP_CODE_ALREADY_EXIST", "FIELD_LENGTH_ERROR", "CTU_INDIRECT_CREATE_FAIL", "DETAIL_ADDRESS_NOT_CONTAIN_KEYWORD_VALUE", "SHOP_NAME_EXIST_RISK", "SHOP_ADDRESS_EXIST_RISK", "SHOP_REMARK_EXIST_RISK", "EXTERNAL_SHOP_CODE_EXIST_RISK", "DETAIL_ADDRESS_NOT_CONTAINS_CHINESE_CHARACTER", "OUTDOOR_IMAGE_URL_IS_EMPTY", "BIZ_SCENE_PIC_URL_IS_EMPTY", "BUSINESS_LICENSE_URL_IS_EMPTY", "MERCHANT_LOGO_URL_IS_EMPTY", "SETTLED_BANKCARD_NUMBER_LENGTH_ILLEGAL", "ACCOUNT_HOLDER_NAME_LENGTH_ILLEGAL", "ACCOUNT_INST_PROVINCE_LENGTH_ILLEGAL", "ACCOUNT_INST_CITY_LENGTH_ILLEGAL", "ACCOUNT_BRANCH_NAME_LENGTH_ILLEGAL", "ACCOUNT_NAME_LENGTH_ILLEGAL", "ACCOUNT_INST_ID_LENGTH_ILLEGAL", "OUTDOOR_IMAGE_OSSKEY_NOT_EXIST", "BUSINESS_LICENSE_OSSKEY_NOT_EXIST", "SPECIAL_TRAVEL_PERMIT_OSSKEY_NOT_EXIST", "OTA_SNAPSHOT_OSSKEY_NOT_EXIST", "ID_CARD_MSG_ILLEGAL", "BUSINESS_LICENSE_ILLEGAL", "BUSINESS_ADDRESS_IS_EMPTY", "DETAIL_ADDRESS_CONTAIN_PROVINCES_CITY_REGION", "MERCHANT_NOT_EXIST", "SHOP_INFO_SOURCE_OTHER_TAG", "ATTACHMENT_TYPE_ILLEGAL", "BANK_CARD_TYPE_ILLEGAL", "TARGET_TYPE_ILLEGAL", "SHOP_EXT_INFO_NULL", "SHOP_INFO_SOURCE_ILLEGAL", "SHOP_INFO_SOURCE_CHANNEL_ILLEGAL", "SHOP_INFO_SOURCE_BIZ_FROM_ILLEGAL", "DISTRICT_CODE_ILLEGAL", "UK_OCCUPIED", "SETTLED_BANKCARD_ACCOUNTINSTPROVINCE_IS_EMPTY", "SETTLED_BANKCARD_ACCOUNTINSTCITY_IS_EMPTY", "SETTLED_CARD_SIZE_IS_ILLEGAL", "BUSINESS_LICENSE_EMPTY", "BANK_CODE_ILLEGAL", "ADDRESS_VERSION_CODE_ILLEGAL", "SHOP_SHOPNO_IS_EMPTY", "SHOP_SHOPNAME_IS_EMPTY", "SHOP_SOURCE_IS_ILLEGAL", "CATEGORY_WITH_NO_PROOF", "SHOP_ASSET_CHECK_RESULT_EMPTY", "SHOP_ASSET_NOT_BINDABLE", "SHOP_ASSET_MAX_LIMIT", "SHOP_PRE_POI_NOT_FILL_ERROR", "STORE_ID_LENGTH_ILLEGAL", "SHOP_COVER_OSSKEY_NOT_EXIST", "SHOP_COVER_NOT_EXIST", "SHOP_EXT_INFO_INPUT_ARGUMENT_ILLEGAL", "SHOP_EXT_INFO_VALUE_INPUT_ARGUMENT_ILLEGAL", "SHOP_CATEGORY_EMPTY", "SHOP_NAME_BRAND_AUDIT_REJECT", "SHOP_NAME_BUSINESS_AUDIT_REJECT", "BUSINESS_LICENSE_NAME_NOT_MATCH", "BUSINESS_LICENSE_EXPIRED", "BUSINESS_LICENSE_CANCEL", "BUSINESS_LICENSE_REVOKED", "BUSINESS_LICENSE_DATA_STATUS_EXCEPTION", "CATEGORY_NOT_ALLOWED_TO_MODIFY", "SUBMIT_DIGITAL_POI_AUDIT_FAIL", "SHOP_INDUSTRY_CODE_DUPLICATED", "SHOP_INDUSTRY_REQUIRED_VALUE_NULL", "SHOP_MODIFY_AUDITING" ]
+            "enum" : [ "NOT_ALLOWED_SETTLE", "SHOP_CATEGORY_IS_ILLEGAL", "ISV_NOT_EXIST", "SHOP_ACCOUNT_NO_IS_ILLEGAL", "INDUSTRY_QUALIFICATION_IS_EMPTY", "SETTLED_OUTDOORIMAGE_EMPTY", "SETTLED_BIZ_ADDRESS_ILLEGAL", "SHOP_CATEGORY_IS_EMPTY", "CONTACT_WAY_VALUE_NULL", "ADDRESS_PROVINCE_CODE_ILLEGAL", "ADDRESS_CITY_CODE_ILLEGAL", "ADDRESS_DISTRICT_CODE_ILLEGAL", "GONGAN_CHECK_FAIL", "GONGSHANG_CHECK_FAIL", "INVALID_PARAMETER", "CONTACT_PERSON_NAME_NULL", "USER_ILLEGAL", "BRAND_ILLEGAL", "PROFILE_KEY_ILLEGAL", "MER_ARGUMENT_NULL", "IP_ROLE_ID_DO_NOT_CHANGE", "SHOP_NOT_EXIST", "RELATION_NOT_EXIST", "SHOP_ALREADY_EXIST", "SETTLED_BANKCARD_NO_IS_EMPTY", "SETTLED_ACCOUNTHOLDERNAME_EMPTY", "SETTLED_ACCOUNTBRANCHNAME_EMPTY", "SETTLED_ACCOUNTINSTNAME_EMPTY", "SETTLED_USAGETYPE_IS_EMPTY", "BANK_BRANCH_NAME_ILLEGAL", "SETTLED_USAGETYPE_ILLEGAL", "SETTLED_CARD_ACCOUNTINSTID_EMPTY", "SETTLED_CARD_ACCOUNTTYPE_EMPTY", "BANK_ACCOUNTINSTID_ILLEGAL", "SETTLED_CARD_ACCOUNTTYPE_ILLEGAL", "BANK_ACCOUNTINSTNAME_ILLEGAL", "SETTLED_ALIPAYACCOUNT_NOT_EXIST", "GONGSHANG_LICENSE_ILLEGAL", "SYSTEM_ERROR", "SHOP_TYPE_ILLEGAL", "LOCATION_CHECK_FAIL", "ATTACHMENT_CHECK_FAIL", "BUSINESS_TIME_ILLEGAL", "SHOP_AUDIT_REJECT", "ATTACHMENT_URL_NULL", "SHOP_CODE_ALREADY_EXIST", "FIELD_LENGTH_ERROR", "CTU_INDIRECT_CREATE_FAIL", "DETAIL_ADDRESS_NOT_CONTAIN_KEYWORD_VALUE", "SHOP_NAME_EXIST_RISK", "SHOP_ADDRESS_EXIST_RISK", "SHOP_REMARK_EXIST_RISK", "EXTERNAL_SHOP_CODE_EXIST_RISK", "DETAIL_ADDRESS_NOT_CONTAINS_CHINESE_CHARACTER", "OUTDOOR_IMAGE_URL_IS_EMPTY", "BIZ_SCENE_PIC_URL_IS_EMPTY", "BUSINESS_LICENSE_URL_IS_EMPTY", "MERCHANT_LOGO_URL_IS_EMPTY", "SETTLED_BANKCARD_NUMBER_LENGTH_ILLEGAL", "ACCOUNT_HOLDER_NAME_LENGTH_ILLEGAL", "ACCOUNT_INST_PROVINCE_LENGTH_ILLEGAL", "ACCOUNT_INST_CITY_LENGTH_ILLEGAL", "ACCOUNT_BRANCH_NAME_LENGTH_ILLEGAL", "ACCOUNT_NAME_LENGTH_ILLEGAL", "ACCOUNT_INST_ID_LENGTH_ILLEGAL", "OUTDOOR_IMAGE_OSSKEY_NOT_EXIST", "BUSINESS_LICENSE_OSSKEY_NOT_EXIST", "SPECIAL_TRAVEL_PERMIT_OSSKEY_NOT_EXIST", "OTA_SNAPSHOT_OSSKEY_NOT_EXIST", "ID_CARD_MSG_ILLEGAL", "BUSINESS_LICENSE_ILLEGAL", "BUSINESS_ADDRESS_IS_EMPTY", "DETAIL_ADDRESS_CONTAIN_PROVINCES_CITY_REGION", "MERCHANT_NOT_EXIST", "SHOP_INFO_SOURCE_OTHER_TAG", "ATTACHMENT_TYPE_ILLEGAL", "BANK_CARD_TYPE_ILLEGAL", "TARGET_TYPE_ILLEGAL", "SHOP_EXT_INFO_NULL", "SHOP_INFO_SOURCE_ILLEGAL", "SHOP_INFO_SOURCE_CHANNEL_ILLEGAL", "SHOP_INFO_SOURCE_BIZ_FROM_ILLEGAL", "DISTRICT_CODE_ILLEGAL", "UK_OCCUPIED", "SETTLED_BANKCARD_ACCOUNTINSTPROVINCE_IS_EMPTY", "SETTLED_BANKCARD_ACCOUNTINSTCITY_IS_EMPTY", "SETTLED_CARD_SIZE_IS_ILLEGAL", "BUSINESS_LICENSE_EMPTY", "BANK_CODE_ILLEGAL", "ADDRESS_VERSION_CODE_ILLEGAL", "SHOP_SHOPNO_IS_EMPTY", "SHOP_SHOPNAME_IS_EMPTY", "SHOP_SOURCE_IS_ILLEGAL", "CATEGORY_WITH_NO_PROOF", "SHOP_ASSET_CHECK_RESULT_EMPTY", "SHOP_ASSET_NOT_BINDABLE", "SHOP_ASSET_MAX_LIMIT", "SHOP_PRE_POI_NOT_FILL_ERROR", "STORE_ID_LENGTH_ILLEGAL", "SHOP_COVER_OSSKEY_NOT_EXIST", "SHOP_COVER_NOT_EXIST", "SHOP_EXT_INFO_INPUT_ARGUMENT_ILLEGAL", "SHOP_EXT_INFO_VALUE_INPUT_ARGUMENT_ILLEGAL", "SHOP_CATEGORY_EMPTY", "SHOP_NAME_BRAND_AUDIT_REJECT", "SHOP_NAME_BUSINESS_AUDIT_REJECT", "BUSINESS_LICENSE_NAME_NOT_MATCH", "BUSINESS_LICENSE_EXPIRED", "BUSINESS_LICENSE_CANCEL", "BUSINESS_LICENSE_REVOKED", "BUSINESS_LICENSE_DATA_STATUS_EXCEPTION", "CATEGORY_NOT_ALLOWED_TO_MODIFY", "SUBMIT_DIGITAL_POI_AUDIT_FAIL", "SHOP_INDUSTRY_CODE_DUPLICATED", "SHOP_INDUSTRY_REQUIRED_VALUE_NULL", "SHOP_MODIFY_AUDITING", "SHOP_MAIN_TYPE_ILLEGAL", "SHOP_AUTH_LETTER_EMPTY", "BUSINESS_MODE_NOT_EXIST", "MERCHANT_CATEGORY_ILLEGAL", "GUIDE_B_SITE_OPEN_API", "SHOP_INDUSTRY_LICENSE_REQUIRED_BOTH", "BIZ_CATEGORY_NULL", "SHOP_INFO_AUDIT_NOT_SUPPORT_EDIT", "BUSINESS_LICENCE_INFO_REQUIRED", "SHOP_INDUSTRY_VALUE_ERROR", "SHOP_LICENSE_REQUIRED_NULL", "SETTLED_INDUSTRYQUALIFICATIONTYPE_IS_ILLEGAL", "LOCATION_NOT_NULL", "BUSINESS_TIME_WEEKDAY_ERROR", "BUSINESS_TIME_WEEKDAY_DUP", "BUSINESS_TIME_TIMEPERIOD_ERROR", "BUSINESS_TIME_TIMEPERIOD_SIZE_LIMIT" ]
           },
           "links" : {
             "type" : "string",
@@ -88694,6 +88911,13 @@
             "description" : "备注",
             "example" : "备注"
           },
+          "new_business_time" : {
+            "type" : "array",
+            "description" : "门店营业时间，支持一周7天，支持1天内多时间段",
+            "items" : {
+              "$ref" : "#/components/schemas/ComplexBusinessTime"
+            }
+          },
           "out_door_images" : {
             "type" : "array",
             "description" : "门头照，其值为使用ant.merchant.expand.indirect.image.upload上传图片得到的一串oss key。若无需更新本信息项，可以不填写。若填写则会整体覆盖原有的门头照列表",
@@ -88728,6 +88952,11 @@
             "type" : "string",
             "description" : "蚂蚁店铺id，用于查出待修改的门店。填写本参数的话，store_id和ip_role_id可以不填。本信息项不可修改",
             "example" : "2018011900502000000005124744"
+          },
+          "shop_main_type" : {
+            "type" : "string",
+            "description" : "主要针对医疗行业门店主体类型进件使用，不同门店认证主体需要相应的主体资质证书。 \t企业营业执照: ENTERPRISE; \t事业单位法人证书: INST_RGST_CTF; \t民办非企业单位登记证书 PRIVATE_NON_ENTERPRISE",
+            "example" : "ENTERPRISE"
           },
           "shop_name" : {
             "type" : "string",
@@ -88917,6 +89146,13 @@
             "description" : "备注",
             "example" : "备注"
           },
+          "new_business_time" : {
+            "type" : "array",
+            "description" : "门店营业时间，支持一周7天，支持1天内多时间段",
+            "items" : {
+              "$ref" : "#/components/schemas/ComplexBusinessTime"
+            }
+          },
           "new_shop_category" : {
             "type" : "string",
             "description" : "新版门店类目标准二级类目code",
@@ -88961,6 +89197,11 @@
             "type" : "string",
             "description" : "当前名称、地址、经纬度信息准确一致，可用于数字化经营场景消费(如商品、券、消费圈等场域的分发)，不影响门店支付结算",
             "example" : "01"
+          },
+          "shop_main_type" : {
+            "type" : "string",
+            "description" : "主要针对医疗行业门店主体类型进件使用，不同门店认证主体需要相应的主体资质证书。 \t企业营业执照: ENTERPRISE; \t事业单位法人证书: INST_RGST_CTF; \t民办非企业单位登记证书 PRIVATE_NON_ENTERPRISE",
+            "example" : "ENTERPRISE"
           },
           "shop_name" : {
             "type" : "string",
@@ -89452,9 +89693,24 @@
             "type" : "boolean",
             "description" : "是否为点在发票\r\ttrue：是， false：不是"
           },
+          "out_business_no_list" : {
+            "type" : "array",
+            "description" : "外部单据号",
+            "items" : {
+              "type" : "string"
+            }
+          },
           "payee" : {
             "type" : "string",
             "description" : "收款人"
+          },
+          "pdf_file_name" : {
+            "type" : "string",
+            "description" : "PDF附件名称"
+          },
+          "pdf_file_url" : {
+            "type" : "string",
+            "description" : "可外网访问的PDF附件的下载链接"
           },
           "recent_mail_id" : {
             "type" : "string",
@@ -89484,6 +89740,13 @@
           "reviewer" : {
             "type" : "string",
             "description" : "复核人"
+          },
+          "sales_product_name_list" : {
+            "type" : "array",
+            "description" : "销售产品码字符串数组",
+            "items" : {
+              "type" : "string"
+            }
           },
           "seller_address" : {
             "type" : "string",
@@ -91548,6 +91811,10 @@
             "type" : "string",
             "description" : "实际订单时间，在乘车码场景，传入的是用户刷码乘车时间"
           },
+          "buyer_memo" : {
+            "type" : "string",
+            "description" : "买家备注信息"
+          },
           "campus_card" : {
             "type" : "string",
             "description" : "校园卡编号"
@@ -91563,6 +91830,10 @@
           "enterprise_pay_info" : {
             "type" : "string",
             "description" : "因公付业务信息"
+          },
+          "force_pwd" : {
+            "type" : "string",
+            "description" : "收银台强制密码核身参数，实际收银侧会根据这个参数为true并结合业务场景来判断是否密码核身"
           },
           "good_taxes" : {
             "type" : "string",
@@ -91849,6 +92120,16 @@
             "type" : "string",
             "description" : "发送者类型: VISITOR(访客) ,AGENT(在线客服) ,SYSTEM(系统)",
             "example" : "VISITOR"
+          }
+        }
+      },
+      "CloseExtendParams" : {
+        "type" : "object",
+        "properties" : {
+          "is_fulfilled" : {
+            "type" : "string",
+            "description" : "标识是否通过其他方式履约",
+            "example" : "true or false"
           }
         }
       },
@@ -92517,6 +92798,35 @@
             "type" : "integer",
             "description" : "合计税额（元）",
             "example" : "49"
+          }
+        }
+      },
+      "ComplexBusinessTime" : {
+        "type" : "object",
+        "properties" : {
+          "time_period" : {
+            "type" : "array",
+            "description" : "营业时间段，支持多个时间段，例如08:00-11:00，14:00-16:00",
+            "items" : {
+              "$ref" : "#/components/schemas/ComplexBusinessTimePeriod"
+            }
+          },
+          "week_day" : {
+            "type" : "integer",
+            "description" : "本对象表示周几的营业时间。1~6表示周一到周六，7表示周日"
+          }
+        }
+      },
+      "ComplexBusinessTimePeriod" : {
+        "type" : "object",
+        "properties" : {
+          "close_time" : {
+            "type" : "string",
+            "description" : "关门时间 格式：HH:mm"
+          },
+          "open_time" : {
+            "type" : "string",
+            "description" : "开门时间 格式：HH:mm"
           }
         }
       },
@@ -93322,12 +93632,12 @@
           },
           "customs_result_code" : {
             "type" : "string",
-            "description" : "发起报关后，海关返回回执中的结果码。目前只有总署的报关，并且总署回执接收成功的请求才会返回此参数\r\t2：电子口岸申报中\r\t3：发送海关成功\r\t4：发送海关失败\r\t100：海关退单\r\t399：海关审结\r\t小于0的数字：表示处理异常回执\r\t   注意：\r\t支付宝原样返回海关返回的数据，参数值以海关的定义为准。",
+            "description" : "发起报关后，海关返回回执中的结果码。总署回执接收成功的请求透传总署参数，其它海关成功时返回 succ，异常时返回 fail\t支付宝原样返回总署返回的数据，参数值以海关的定义为准，总署回执参数参考如下：\t 2：电子口岸申报中\t 3：发送海关成功\t 4：发送海关失败 \t100：海关退单 \t399：海关审结 \t小于0的数字：表示处理异常回执",
             "example" : "2"
           },
           "customs_result_info" : {
             "type" : "string",
-            "description" : "发起报关后，海关返回回执中的结果描述信息。目前只有总署报关，并且总署成功返回回执的时候会有此值",
+            "description" : "发起报关后，海关返回回执中的结果描述信息。",
             "example" : "新增申报成功[B0B2F23E-2CF6-434D-9F24-8931B835A056]"
           },
           "customs_result_return_time" : {
@@ -94783,7 +95093,7 @@
           },
           "ext_infos" : {
             "type" : "string",
-            "description" : "账单扩展信息，JsonMap格式，以下信息可组合返回，\"SUMMARY_INFO\"表示\"账单汇总信息\"，\"MERCHANT_EXTEND_INFO\"表示\"商户信息\"，\"TERMINAL_INFO\"表示\"终端设备信息\"，\"BENEFIT_INFO\"表示\"员工优惠信息\"，\"CONSUMPTION_LOCATION\"表示\"消费上报位置\"，\"THIRD_PARTY_PAYMENT_INFO\"表示\"代收款详情\""
+            "description" : "账单扩展信息，JsonMap格式，以下信息可组合返回，\"SUMMARY_INFO\"表示\"账单汇总信息\"，\"MERCHANT_EXTEND_INFO\"表示\"商户信息\"，\"TERMINAL_INFO\"表示\"终端设备信息\"，\"BENEFIT_INFO\"表示\"员工优惠信息\"，\"CONSUMPTION_LOCATION\"表示\"消费上报位置\"，\"THIRD_PARTY_PAYMENT_INFO\"表示\"代收款详情\"，\"REIMBURSEMENT_INFO\"表示\"审批单信息\""
           },
           "fund_biz_type" : {
             "type" : "string",
@@ -94892,6 +95202,31 @@
           "user_id" : {
             "type" : "string",
             "description" : "员工支付宝UID"
+          }
+        }
+      },
+      "EcEmployeeTitleFailed" : {
+        "type" : "object",
+        "properties" : {
+          "employee_id" : {
+            "type" : "string",
+            "description" : "员工ID"
+          },
+          "enterprise_id" : {
+            "type" : "string",
+            "description" : "企业ID"
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "返回每一个抬头批量处理信息"
+          },
+          "title_id" : {
+            "type" : "string",
+            "description" : "抬头ID"
+          },
+          "title_tag" : {
+            "type" : "string",
+            "description" : "标识抬头是否默认DEFAULT/多抬头MULTI"
           }
         }
       },
@@ -95167,6 +95502,26 @@
           }
         }
       },
+      "EmployeeAccountingEntityDTO" : {
+        "type" : "object",
+        "properties" : {
+          "accounting_entity_code" : {
+            "type" : "string",
+            "description" : "核算主体编码",
+            "example" : "00001"
+          },
+          "accounting_entity_id" : {
+            "type" : "string",
+            "description" : "核算主体id",
+            "example" : "1007000000000000"
+          },
+          "accounting_entity_name" : {
+            "type" : "string",
+            "description" : "核算主体名称",
+            "example" : "核算主体"
+          }
+        }
+      },
       "EmployeeDepartmentDTO" : {
         "type" : "object",
         "properties" : {
@@ -95185,6 +95540,13 @@
       "EmployeeInfoDTO" : {
         "type" : "object",
         "properties" : {
+          "accounting_entity_list" : {
+            "type" : "array",
+            "description" : "员工所属核算主体列表",
+            "items" : {
+              "$ref" : "#/components/schemas/EmployeeAccountingEntityDTO"
+            }
+          },
           "activate" : {
             "type" : "string",
             "description" : "是否激活",
@@ -95247,6 +95609,11 @@
             "description" : "变更时间",
             "example" : "Sat Oct 19 11:47:12 CST 2024"
           },
+          "invoice_email" : {
+            "type" : "string",
+            "description" : "员工收票邮箱",
+            "example" : "example@163.com"
+          },
           "iot_face_status" : {
             "type" : "string",
             "description" : "员工是否人脸在库",
@@ -95266,6 +95633,14 @@
             "type" : "string",
             "description" : "员工职级",
             "example" : "S2"
+          },
+          "label_names" : {
+            "type" : "array",
+            "description" : "员工标签",
+            "items" : {
+              "type" : "string"
+            },
+            "example" : "[\"差旅员工\"]"
           },
           "mobile" : {
             "type" : "string",
@@ -95412,6 +95787,10 @@
           "enterprise_alias" : {
             "type" : "string",
             "description" : "企业简称"
+          },
+          "enterprise_alias_audit_status" : {
+            "type" : "string",
+            "description" : "企业简称审核状态\tPASSED： 通过\tREJECTED： 驳回\tAUDITING： 审核中"
           },
           "enterprise_code" : {
             "type" : "string",
@@ -97587,6 +97966,11 @@
             "type" : "string",
             "description" : "制度名称",
             "example" : "餐补制度"
+          },
+          "multi_employee_share_mode" : {
+            "type" : "string",
+            "description" : "制度下额度是否支持多人共享。如果支持，则制度下资产所有人共享；如果不支持，则制度下的资产为个人资产，成员之间不共享。",
+            "example" : "1"
           }
         }
       },
@@ -98836,7 +99220,7 @@
           },
           "owner_id" : {
             "type" : "string",
-            "description" : "切换open_id前请使用：owner类型为PHONE时该字段表示员工手机号，owner类型为EMPLOYEE时该字段表示为员工支付宝uid，owner类型为ENTERPRISE_PAY_UID时该字段表示为员工企业码id，owner类型为ENTERPRISE时可不填，如果填写仅支持填企业id"
+            "description" : "切换open_id前请使用：owner类型为PHONE时该字段表示员工手机号，owner类型为EMPLOYEE时该字段表示为员工支付宝uid，owner类型为ENTERPRISE_PAY_UID时该字段表示为员工企业码id，owner类型为ENTERPRISE时可不填，如果填写仅支持填企业id，owner类型为INSTITUTION时可不填，默认为制度id"
           },
           "owner_open_id" : {
             "type" : "string",
@@ -101817,6 +102201,9 @@
               "$ref" : "#/components/schemas/StandardConditionInfo"
             }
           },
+          "asset_share_source_info" : {
+            "$ref" : "#/components/schemas/AssetShareSourceInfo"
+          },
           "consume_mode" : {
             "type" : "string",
             "description" : "消费模式",
@@ -102203,7 +102590,7 @@
           },
           "trans_in" : {
             "type" : "string",
-            "description" : "收入方账户。如果收入方账户类型为userId，本参数为收入方的支付宝账号对应的支付宝唯一用户号，以2088开头的纯16位数字；如果收入方类型为cardAliasNo，本参数为收入方在支付宝绑定的卡编号；如果收入方类型为loginName，本参数为收入方的支付宝登录号；"
+            "description" : "收入方账户。如果收入方账户类型为userId，本参数为收入方的支付宝账号对应的支付宝唯一用户号，以2088开头的纯16位数字；如果收入方类型为cardAliasNo，本参数为收入方在支付宝绑定的卡编号；如果收入方类型为loginName，本参数为收入方的支付宝登录号；如果收入方类型为openId，本参数为收入方的支付宝openId信息"
           },
           "trans_in_name" : {
             "type" : "string",
@@ -105115,6 +105502,26 @@
           }
         }
       },
+      "QuotaInfoDTO" : {
+        "type" : "object",
+        "properties" : {
+          "remain_money" : {
+            "type" : "string",
+            "description" : "剩余额度",
+            "example" : "10.00"
+          },
+          "remain_times" : {
+            "type" : "string",
+            "description" : "剩余次数",
+            "example" : "1"
+          },
+          "trade_no" : {
+            "type" : "string",
+            "description" : "交易号",
+            "example" : "fb7605826108af29888aafc5b1157018"
+          }
+        }
+      },
       "QuotaModifyDetail" : {
         "type" : "object",
         "properties" : {
@@ -107612,6 +108019,11 @@
             "type" : "string",
             "description" : "\"冻结分账场景下生效，其他场景传入无效。代表该交易分账是否完结，可选值：true/false，不传默认为false。true：代表分账完结，则本次分账处理完成后会把该笔交易的剩余冻结金额全额解冻。false：代表分账未完结。\"",
             "example" : "true"
+          },
+          "royalty_finish_amount" : {
+            "type" : "string",
+            "description" : "部分分账完结的金额，单位为元。若该参数不为空，则会按照该参数金额进行部分解冻。注：该参数不为空时，royalty_finish需要传入true",
+            "example" : "0.01"
           }
         }
       },
@@ -107765,7 +108177,7 @@
           },
           "license_type" : {
             "type" : "string",
-            "description" : "行业资质类型，需使用<a href=\"https://mdn.alipayobjects.com/mrcheshop/afts/file/iGfGQL0ATkEAAAAAAAAAAAAADiWmAQBr?af_fileName=%E8%B5%84%E8%B4%A8%E7%B1%BB%E5%9E%8B.xlsx\">资质列表</a>中类型"
+            "description" : "行业资质类型，需使用<a href=\"https://mdn.alipayobjects.com/mrcheshop/afts/file/DfOPQYKgg_sAAAAAAAAAAAAAeiWmAQBr\">资质列表</a>中类型"
           }
         }
       },
@@ -107791,6 +108203,13 @@
             "type" : "string",
             "description" : "店铺的联系固话",
             "example" : "010-62286228"
+          },
+          "new_business_time" : {
+            "type" : "array",
+            "description" : "门店营业时间，支持一周7天，支持1天内多时间段",
+            "items" : {
+              "$ref" : "#/components/schemas/ComplexBusinessTime"
+            }
           },
           "new_shop_category" : {
             "type" : "string",
@@ -109157,6 +109576,14 @@
           "payment_medium_type" : {
             "type" : "string",
             "description" : "碰一下支付的支付介质类型，标识当前支付为碰一下支付"
+          },
+          "total_discount_amount" : {
+            "type" : "string",
+            "description" : "碰一下支付的碰一下共减优惠金额"
+          },
+          "total_discount_name" : {
+            "type" : "string",
+            "description" : "碰一下支付的碰一下共减金额展示名称"
           }
         }
       },
@@ -110164,7 +110591,7 @@
           },
           "gmt_pay" : {
             "type" : "string",
-            "description" : "交易支付时间"
+            "description" : "交易支付时间。支付后会有值"
           },
           "gmt_refund" : {
             "type" : "string",
@@ -110196,7 +110623,7 @@
           },
           "service_fee" : {
             "type" : "string",
-            "description" : "服务费金额"
+            "description" : "服务费金额，人民币元"
           },
           "store_name" : {
             "type" : "string",
@@ -111249,7 +111676,7 @@
           },
           "available_real_shop_ids" : {
             "type" : "array",
-            "description" : "代运营商业关系门店列表，列表中的门店id是调用接口alipay.business.relation.shop.create创建门店返回的real_shop_id 接口参数是列表类型。",
+            "description" : "券可使用的物理门店列表，列表中的门店id是调用接口alipay.business.relation.shop.create创建门店返回的real_shop_id 接口参数是列表类型。",
             "items" : {
               "type" : "string"
             }
@@ -111465,10 +111892,30 @@
       "VoucherConsultInfo" : {
         "type" : "object",
         "properties" : {
+          "active_time" : {
+            "type" : "string",
+            "description" : "开始时间，立减为活动开始时间，券为券生效时间",
+            "example" : "2025-05-31 19:57:51"
+          },
+          "asset_type" : {
+            "type" : "string",
+            "description" : "资产优惠类型，用于区分不同优惠",
+            "example" : "DISCOUNT"
+          },
+          "assets_code" : {
+            "type" : "string",
+            "description" : "资产编码",
+            "example" : "ALIPAY_CHANNEL_DISCOUNT"
+          },
           "ceiling_amount" : {
             "type" : "string",
             "description" : "封顶优惠金额，单位为元",
             "example" : "4.0"
+          },
+          "expired_time" : {
+            "type" : "string",
+            "description" : "结束时间，立减为活动结束时间，券为券失效时间",
+            "example" : "2025-05-31 19:57:51"
           },
           "item_promo_info" : {
             "$ref" : "#/components/schemas/ItemPromoInfo"
@@ -111493,6 +111940,13 @@
             "description" : "优惠类型： 代金(FIX),折扣(DISCOUNT),减至(SPECIAL，即特价券)",
             "example" : "FIX"
           },
+          "quota_info_list" : {
+            "type" : "array",
+            "description" : "额度信息",
+            "items" : {
+              "$ref" : "#/components/schemas/QuotaInfoDTO"
+            }
+          },
           "reduction_amount" : {
             "type" : "string",
             "description" : "满减金额，单位为元，仅针对代金券",
@@ -111500,7 +111954,7 @@
           },
           "reduction_ratio" : {
             "type" : "string",
-            "description" : "优惠额度，如3折券，返回0.7，仅针对折扣券",
+            "description" : "优惠额度，小数表示，0.7 表示 30% 的折扣",
             "example" : "0.7"
           },
           "specified_amount" : {
@@ -112151,6 +112605,13 @@
       "VoucherSendModeInfo" : {
         "type" : "object",
         "properties" : {
+          "delivery_channel_list" : {
+            "type" : "array",
+            "description" : "推广渠道列表",
+            "items" : {
+              "type" : "string"
+            }
+          },
           "voucher_package_mode_info" : {
             "$ref" : "#/components/schemas/VoucherPackageModeInfo"
           },
@@ -112393,7 +112854,7 @@
           },
           "quantity_limit_per_user_period_type" : {
             "type" : "string",
-            "description" : "周期限领配置,限制每人在固定周期内领取张数(voucher_quantity_limit_per_user),默认LIFE_CYCLE"
+            "description" : "周期限领配置,限制每人在固定周期内领取张数(quantity_limit_per_user)"
           },
           "voucher_max_use_times" : {
             "type" : "integer",
@@ -113394,6 +113855,11 @@
           "total_amount" : {
             "type" : "string",
             "description" : "信用服务订单金额",
+            "example" : "88.88"
+          },
+          "total_credit_pay_amount" : {
+            "type" : "string",
+            "description" : "信用服务订单中信用支付金额，不包含支付宝营销金额",
             "example" : "88.88"
           },
           "trade_no" : {

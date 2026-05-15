@@ -66,7 +66,7 @@ namespace Aop.Api.Domain
         public string FinOrg { get; set; }
 
         /// <summary>
-        /// 资金利率
+        /// 资金利率，如：1%传0.01
         /// </summary>
         [XmlElement("fund_rate")]
         public string FundRate { get; set; }
@@ -162,16 +162,41 @@ namespace Aop.Api.Domain
         public string ServiceFeeRate { get; set; }
 
         /// <summary>
+        /// 服务类型
+        /// </summary>
+        [XmlElement("service_info")]
+        public CarfinLendServiceInfo ServiceInfo { get; set; }
+
+        /// <summary>
         /// CANCEL_FAIL: 取消失败（适用于客户挽回成功的场景，经联系后客户愿意继续办理） CANCEL_SUC: 取消成功（适用于客户确定放弃的场景，机构侧后续不能联系客户）
         /// </summary>
         [XmlElement("status")]
         public string Status { get; set; }
 
         /// <summary>
+        /// 补充类别信息
+        /// </summary>
+        [XmlArray("supplement_category_list")]
+        [XmlArrayItem("supplement_category_info")]
+        public List<SupplementCategoryInfo> SupplementCategoryList { get; set; }
+
+        /// <summary>
         /// 是否需要补充信息或流水
         /// </summary>
         [XmlElement("supplement_info_flag")]
         public bool SupplementInfoFlag { get; set; }
+
+        /// <summary>
+        /// 需要补充的原因
+        /// </summary>
+        [XmlElement("supplement_reason")]
+        public string SupplementReason { get; set; }
+
+        /// <summary>
+        /// 是否支持先放后抵
+        /// </summary>
+        [XmlElement("support_lend_before_mortgage")]
+        public bool SupportLendBeforeMortgage { get; set; }
 
         /// <summary>
         /// 用户类别

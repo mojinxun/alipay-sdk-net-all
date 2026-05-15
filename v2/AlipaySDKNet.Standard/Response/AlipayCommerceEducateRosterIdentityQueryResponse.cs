@@ -1,5 +1,6 @@
 using System;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace Aop.Api.Response
 {
@@ -63,9 +64,22 @@ namespace Aop.Api.Response
         public string RoleType { get; set; }
 
         /// <summary>
+        /// 花名册ID
+        /// </summary>
+        [XmlElement("roster_id")]
+        public string RosterId { get; set; }
+
+        /// <summary>
         /// 支付宝用户的userId。
         /// </summary>
         [XmlElement("user_id")]
         public string UserId { get; set; }
+
+        /// <summary>
+        /// 白名单名称列表
+        /// </summary>
+        [XmlArray("white_name_list")]
+        [XmlArrayItem("string")]
+        public List<string> WhiteNameList { get; set; }
     }
 }

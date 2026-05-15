@@ -126,10 +126,22 @@ namespace Aop.Api.Domain
         public string IsCombinationOrder { get; set; }
 
         /// <summary>
+        /// is_kit_pack为Y，则组合单维度下，多个子物料需要打包到一起进行发货，related_kit_item_id和related_kit_item_name不为空
+        /// </summary>
+        [XmlElement("is_kit_pack")]
+        public string IsKitPack { get; set; }
+
+        /// <summary>
         /// 物流公司代码
         /// </summary>
         [XmlElement("logistics_code")]
         public string LogisticsCode { get; set; }
+
+        /// <summary>
+        /// 物流模式
+        /// </summary>
+        [XmlElement("logistics_mode")]
+        public string LogisticsMode { get; set; }
 
         /// <summary>
         /// 收钱码吊牌和贴纸类型不为空
@@ -148,6 +160,19 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("memo")]
         public string Memo { get; set; }
+
+        /// <summary>
+        /// 是否有选配物料标识
+        /// </summary>
+        [XmlElement("optional_item_flag")]
+        public string OptionalItemFlag { get; set; }
+
+        /// <summary>
+        /// 选配物料信息列表
+        /// </summary>
+        [XmlArray("optional_item_infos")]
+        [XmlArrayItem("optional_item_info")]
+        public List<OptionalItemInfo> OptionalItemInfos { get; set; }
 
         /// <summary>
         /// 公司主体代码
@@ -240,10 +265,41 @@ namespace Aop.Api.Domain
         public string ReceiverName { get; set; }
 
         /// <summary>
+        /// 同一组合订单号下所有业务单据号的总数量
+        /// </summary>
+        [XmlElement("related_children_out_biz_no_count")]
+        public long RelatedChildrenOutBizNoCount { get; set; }
+
+        /// <summary>
+        /// 组合单维度下，多个子物料需要打包到一起进行发货，套组物料id和套组名称，作为打包的标签
+        /// </summary>
+        [XmlElement("related_kit_item_id")]
+        public string RelatedKitItemId { get; set; }
+
+        /// <summary>
+        /// 组合单维度下，多个子物料需要打包到一起进行发货，套组物料id和套组名称，作为打包的标签
+        /// </summary>
+        [XmlElement("related_kit_item_name")]
+        public string RelatedKitItemName { get; set; }
+
+        /// <summary>
+        /// 关联的其它业务单据号，即相同组合订单号下除了当前业务单据号以外的剩余所有业务单据号
+        /// </summary>
+        [XmlArray("related_others_out_biz_no")]
+        [XmlArrayItem("string")]
+        public List<string> RelatedOthersOutBizNo { get; set; }
+
+        /// <summary>
         /// 关联的上游业务单号
         /// </summary>
         [XmlElement("related_out_biz_no")]
         public string RelatedOutBizNo { get; set; }
+
+        /// <summary>
+        /// 关联的上游组合订单号，一个组合订单号关联多个业务单据号，供应商可将该字段用作合单发货
+        /// </summary>
+        [XmlElement("related_parent_out_biz_no")]
+        public string RelatedParentOutBizNo { get; set; }
 
         /// <summary>
         /// 物料供应商PID，和调用方的供应商PID一致
@@ -262,6 +318,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("template_name")]
         public string TemplateName { get; set; }
+
+        /// <summary>
+        /// 加急单标识，Y是加急单 N非加急单
+        /// </summary>
+        [XmlElement("urgent_order_flag")]
+        public string UrgentOrderFlag { get; set; }
 
         /// <summary>
         /// 动作

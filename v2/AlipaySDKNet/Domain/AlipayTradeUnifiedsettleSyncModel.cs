@@ -10,16 +10,22 @@ namespace Aop.Api.Domain
     public class AlipayTradeUnifiedsettleSyncModel : AopObject
     {
         /// <summary>
-        /// 收单模式，目前仅支持PLATFORM_BUSINESS
+        /// 收单模式，譬如 PLATFORM_BUSINESS/DANBAO
         /// </summary>
         [XmlElement("acquire_mode")]
         public string AcquireMode { get; set; }
 
         /// <summary>
-        /// 订单同步金额，biz_type=PAY_SYNC时为支付金额，biz_type=REFUND_SYNC时为退款金额。
+        /// 订单同步金额，biz_type=PAY_SYNC时为支付金额，biz_type=REFUND_SYNC时为退款金额。以元为单位，人民币。
         /// </summary>
         [XmlElement("amount")]
         public string Amount { get; set; }
+
+        /// <summary>
+        /// 用于标识收结易的业务模式，不传为默认模式，可选RECHARGE_SINGLE、REFUND_SINGLE 等
+        /// </summary>
+        [XmlElement("biz_scene")]
+        public string BizScene { get; set; }
 
         /// <summary>
         /// 扩展字段
@@ -62,6 +68,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("product_code")]
         public string ProductCode { get; set; }
+
+        /// <summary>
+        /// 退款同步时可选传入，包括退款相关的具体属性
+        /// </summary>
+        [XmlElement("refund_info")]
+        public UnifiedSettleRefundInfo RefundInfo { get; set; }
 
         /// <summary>
         /// 同步流水的类型，支付为PAY_SYNC，退款为REFUND_SYNC

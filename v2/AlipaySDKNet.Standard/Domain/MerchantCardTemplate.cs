@@ -11,6 +11,24 @@ namespace Aop.Api.Domain
     public class MerchantCardTemplate : AopObject
     {
         /// <summary>
+        /// 不传时默认卡商品类型
+        /// </summary>
+        [XmlElement("ax_item_type")]
+        public string AxItemType { get; set; }
+
+        /// <summary>
+        /// 最晚改约时限。最晚提前x小时可改约。取值范围[1, 24]，整数
+        /// </summary>
+        [XmlElement("booking_cancel_deadline")]
+        public string BookingCancelDeadline { get; set; }
+
+        /// <summary>
+        /// 预约模式。
+        /// </summary>
+        [XmlElement("booking_mode")]
+        public string BookingMode { get; set; }
+
+        /// <summary>
         /// 违约金信息
         /// </summary>
         [XmlElement("break_costs_info")]
@@ -30,19 +48,19 @@ namespace Aop.Api.Domain
         public string CardTemplateAppId { get; set; }
 
         /// <summary>
-        /// 支付宝侧卡ID，创建接口不需要传
+        /// 支付宝侧商品ID，创建接口不需要传
         /// </summary>
         [XmlElement("card_template_id")]
         public string CardTemplateId { get; set; }
 
         /// <summary>
-        /// 卡名称（当card_type=AXF_MONEY_CARD时，查询会返回）
+        /// 商品名称（当card_type=AXF_MONEY_CARD时，查询会返回）
         /// </summary>
         [XmlElement("card_template_name")]
         public string CardTemplateName { get; set; }
 
         /// <summary>
-        /// 卡状态，创建接口不需要传
+        /// 商品状态，创建接口不需要传
         /// </summary>
         [XmlElement("card_template_status")]
         public string CardTemplateStatus { get; set; }
@@ -58,6 +76,19 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("category_id")]
         public string CategoryId { get; set; }
+
+        /// <summary>
+        /// 履约类型，默认到店服务
+        /// </summary>
+        [XmlElement("fulfillment_type")]
+        public string FulfillmentType { get; set; }
+
+        /// <summary>
+        /// 资金模式，预付或先享，新增时不传默认先享，编辑时不传默认不改变原值
+        /// </summary>
+        [XmlArray("funding_model")]
+        [XmlArrayItem("string")]
+        public List<string> FundingModel { get; set; }
 
         /// <summary>
         /// 客服电话
@@ -94,6 +125,26 @@ namespace Aop.Api.Domain
         public List<string> ImageUrlList { get; set; }
 
         /// <summary>
+        /// 商品属性。具体所需属性见类目模版查询接口
+        /// </summary>
+        [XmlArray("item_attrs")]
+        [XmlArrayItem("axf_item_attr")]
+        public List<AxfItemAttr> ItemAttrs { get; set; }
+
+        /// <summary>
+        /// 商品类目，具体可使用类目见类目查询接口。
+        /// </summary>
+        [XmlElement("item_category_code")]
+        public string ItemCategoryCode { get; set; }
+
+        /// <summary>
+        /// 商品自定义属性。可分组传入，如果不需要分组，group_name设空即可
+        /// </summary>
+        [XmlArray("item_custom_attrs")]
+        [XmlArrayItem("ls_item_custom_attr")]
+        public List<LsItemCustomAttr> ItemCustomAttrs { get; set; }
+
+        /// <summary>
         /// 金额卡的必要参数。其他卡类型无需传入
         /// </summary>
         [XmlElement("money_card_info")]
@@ -106,10 +157,22 @@ namespace Aop.Api.Domain
         public string MsgAppId { get; set; }
 
         /// <summary>
-        /// 线上售卖表示。01标识已开启线上售卖。02标识未开启线上售卖.
+        /// 用户购买该卡的时候是否需要签署购卡协议
+        /// </summary>
+        [XmlElement("need_order_agreement")]
+        public bool NeedOrderAgreement { get; set; }
+
+        /// <summary>
+        /// 线上售卖标识。 01表示已开启线上售卖；02表示未开启线上售卖。
         /// </summary>
         [XmlElement("online_sale_switch")]
         public string OnlineSaleSwitch { get; set; }
+
+        /// <summary>
+        /// 该字段作用于阵地页线上商城展示
+        /// </summary>
+        [XmlElement("online_show_switch")]
+        public string OnlineShowSwitch { get; set; }
 
         /// <summary>
         /// 外部卡ID

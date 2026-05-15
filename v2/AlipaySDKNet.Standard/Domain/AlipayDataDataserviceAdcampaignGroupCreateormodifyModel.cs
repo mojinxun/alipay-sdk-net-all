@@ -100,6 +100,12 @@ namespace Aop.Api.Domain
         public string FilterConvertedTimeRange { get; set; }
 
         /// <summary>
+        /// 排除品牌广告人群时间，单位：【天】
+        /// </summary>
+        [XmlElement("filter_taobao_alliance_crowd_time_range")]
+        public string FilterTaobaoAllianceCrowdTimeRange { get; set; }
+
+        /// <summary>
         /// 性别,允许值： GENDER_FEMALE、 GENDER_MALE
         /// </summary>
         [XmlArray("gender_list")]
@@ -131,6 +137,12 @@ namespace Aop.Api.Domain
         public long GroupInherit { get; set; }
 
         /// <summary>
+        /// 单元继承开关。 1.入参CUSTOMER 时继承单元ID必须填写， 2.若填写了继承单元ID，单元继承开关只能入参CUSTOMER或空， 没有入参单元继承开关 自动回填为CUSTOMER 3.入参SYSTEM,OFF时继承单元ID必须为空
+        /// </summary>
+        [XmlElement("group_inherit_switch")]
+        public string GroupInheritSwitch { get; set; }
+
+        /// <summary>
         /// 单元名称
         /// </summary>
         [XmlElement("group_name")]
@@ -158,6 +170,12 @@ namespace Aop.Api.Domain
         public List<OpenLbsEntry> LbsList { get; set; }
 
         /// <summary>
+        /// 做为target_roi的拓展字段，含义与target_roi一样，支持4为小数。优先级高于target_roi
+        /// </summary>
+        [XmlElement("new_target_roi")]
+        public string NewTargetRoi { get; set; }
+
+        /// <summary>
         /// 仅出价方式bidType=OCPX时才可开启一键起量 ENABLE: 开启 MANUAL_DISABLE：手动关闭
         /// </summary>
         [XmlElement("one_boost_status")]
@@ -171,7 +189,7 @@ namespace Aop.Api.Domain
         public List<string> OsList { get; set; }
 
         /// <summary>
-        /// 计划id
+        /// 计划id,当前单元所需关联的计划
         /// </summary>
         [XmlElement("plan_id")]
         public long PlanId { get; set; }
@@ -183,7 +201,19 @@ namespace Aop.Api.Domain
         public string PrincipalTag { get; set; }
 
         /// <summary>
-        /// 允许值是行政区域码，仅支持省、市、区县级别，条件必填，行政区域码请参考 <a href="https://www.mca.gov.cn/mzsj/xzqh/2022/202201xzqh.html">文档</a>，请完整填写6位数，目前仅支持到区县粒度
+        /// 0-关闭大促放量；1-开启大促放量;
+        /// </summary>
+        [XmlElement("promotion_open_traffic_switch")]
+        public string PromotionOpenTrafficSwitch { get; set; }
+
+        /// <summary>
+        /// 是否开启推荐流量开关.1打开，0关闭
+        /// </summary>
+        [XmlElement("referral_traffic_switch")]
+        public long ReferralTrafficSwitch { get; set; }
+
+        /// <summary>
+        /// 允许值是行政区域码，仅支持大陆和港澳地区省、市、区县级别，条件必填，行政区域码请参考 <a href="https://www.mca.gov.cn/mzsj/xzqh/2022/202201xzqh.html">文档</a>，请完整填写6位数，目前仅支持到区县粒度
         /// </summary>
         [XmlArray("region_list")]
         [XmlArrayItem("string")]
@@ -196,10 +226,23 @@ namespace Aop.Api.Domain
         public string RegionType { get; set; }
 
         /// <summary>
+        /// 搜索词列表
+        /// </summary>
+        [XmlArray("search_word_list")]
+        [XmlArrayItem("search_word")]
+        public List<SearchWord> SearchWordList { get; set; }
+
+        /// <summary>
         /// 目标转化成本：当bidType= OCPX时，必填 单位为元【人民币】
         /// </summary>
         [XmlElement("target_cpa")]
         public string TargetCpa { get; set; }
+
+        /// <summary>
+        /// 目标ROI，单位【元】，人民币。 bidType= ROI时候必填
+        /// </summary>
+        [XmlElement("target_roi")]
+        public string TargetRoi { get; set; }
 
         /// <summary>
         /// 行业主题人群包，根据行业主题人群查询定向API接口返回值填写 alipay.data.dataservice.adcrowd.themecrowd.batchquery

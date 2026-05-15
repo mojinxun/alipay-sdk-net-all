@@ -22,6 +22,12 @@ namespace Aop.Api.Domain
         public long ApprovalStatus { get; set; }
 
         /// <summary>
+        /// 是否基于总代协议
+        /// </summary>
+        [XmlElement("based_on_agency_agreement_flag")]
+        public long BasedOnAgencyAgreementFlag { get; set; }
+
+        /// <summary>
         /// 最终客户签约对方主体ID，客户则为BID，伙伴则为PID
         /// </summary>
         [XmlElement("final_customer_sign_other_party_subject_id")]
@@ -32,6 +38,18 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("final_customer_sign_other_party_subject_name")]
         public string FinalCustomerSignOtherPartySubjectName { get; set; }
+
+        /// <summary>
+        /// 最终客户签约主体id
+        /// </summary>
+        [XmlElement("final_customer_sign_subject_id")]
+        public string FinalCustomerSignSubjectId { get; set; }
+
+        /// <summary>
+        /// 最终客户签约主体名称
+        /// </summary>
+        [XmlElement("final_customer_sign_subject_name")]
+        public string FinalCustomerSignSubjectName { get; set; }
 
         /// <summary>
         /// 总代合作类型枚举
@@ -74,6 +92,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("ob_sign_other_party_subject_name")]
         public string ObSignOtherPartySubjectName { get; set; }
+
+        /// <summary>
+        /// 我方签约主体
+        /// </summary>
+        [XmlElement("our_sign_subject")]
+        public string OurSignSubject { get; set; }
 
         /// <summary>
         /// 签约路径枚举

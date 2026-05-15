@@ -11,6 +11,12 @@ namespace Aop.Api.Domain
     public class AlipayMsaasMediarecogAftscvpayTransactionInitializeModel : AopObject
     {
         /// <summary>
+        /// 仅明确指定该标志为 true 时开启识别，否则不开启识别，仅货柜 air 使用。  其他类型货柜（静态柜、货柜Lite）默认开始识别。
+        /// </summary>
+        [XmlElement("air_identify")]
+        public bool AirIdentify { get; set; }
+
+        /// <summary>
         /// 货柜类型
         /// </summary>
         [XmlElement("device_identify_type")]
@@ -42,10 +48,23 @@ namespace Aop.Api.Domain
         public bool RecordVideo { get; set; }
 
         /// <summary>
+        /// 右柜商品清单(仅单pad双门柜)
+        /// </summary>
+        [XmlArray("right_goods_infos")]
+        [XmlArrayItem("good_info")]
+        public List<GoodInfo> RightGoodsInfos { get; set; }
+
+        /// <summary>
         /// 标识是什么场景下的视觉识别请求
         /// </summary>
         [XmlElement("scene")]
         public string Scene { get; set; }
+
+        /// <summary>
+        /// 单pad双门左右柜标识
+        /// </summary>
+        [XmlElement("single_pad_door_pos")]
+        public string SinglePadDoorPos { get; set; }
 
         /// <summary>
         /// 二级商户ID

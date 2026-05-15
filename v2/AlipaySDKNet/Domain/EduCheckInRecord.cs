@@ -22,6 +22,18 @@ namespace Aop.Api.Domain
         public string CheckInResult { get; set; }
 
         /// <summary>
+        /// 签到来源类型
+        /// </summary>
+        [XmlElement("check_in_source_type")]
+        public string CheckInSourceType { get; set; }
+
+        /// <summary>
+        /// 签到状态
+        /// </summary>
+        [XmlElement("check_in_status")]
+        public string CheckInStatus { get; set; }
+
+        /// <summary>
         /// 签到时间
         /// </summary>
         [XmlElement("check_in_time")]
@@ -34,6 +46,18 @@ namespace Aop.Api.Domain
         public string CheckInType { get; set; }
 
         /// <summary>
+        /// 签退图片url
+        /// </summary>
+        [XmlElement("check_out_picture")]
+        public string CheckOutPicture { get; set; }
+
+        /// <summary>
+        /// 签退时间
+        /// </summary>
+        [XmlElement("check_out_time")]
+        public string CheckOutTime { get; set; }
+
+        /// <summary>
         /// 学号或工号
         /// </summary>
         [XmlElement("employee_no")]
@@ -44,6 +68,24 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("inst_id")]
         public string InstId { get; set; }
+
+        /// <summary>
+        /// 纬度
+        /// </summary>
+        [XmlElement("latitude")]
+        public string Latitude { get; set; }
+
+        /// <summary>
+        /// 经度
+        /// </summary>
+        [XmlElement("longitude")]
+        public string Longitude { get; set; }
+
+        /// <summary>
+        /// 最小停留时长，单位是分钟，默认30分钟
+        /// </summary>
+        [XmlElement("min_stay_minutes")]
+        public long MinStayMinutes { get; set; }
 
         /// <summary>
         /// 姓名

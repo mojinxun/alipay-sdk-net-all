@@ -10,6 +10,12 @@ namespace Aop.Api.Domain
     public class AlipaySocialAntiepLinkedmallenergyQueryModel : AopObject
     {
         /// <summary>
+        /// 跳转商品链接时传递，有就透传回来，没有不用传
+        /// </summary>
+        [XmlElement("biz_context")]
+        public string BizContext { get; set; }
+
+        /// <summary>
         /// 业务ID
         /// </summary>
         [XmlElement("biz_id")]
@@ -26,6 +32,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("open_id")]
         public string OpenId { get; set; }
+
+        /// <summary>
+        /// 权益id
+        /// </summary>
+        [XmlElement("right_id")]
+        public string RightId { get; set; }
 
         /// <summary>
         /// 场景码，如：antforest（蚂蚁森林）

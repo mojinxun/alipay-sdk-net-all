@@ -4,17 +4,17 @@ All URIs are relative to *https://openapi.alipay.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Batchquery**](AlipayEbppInvoiceEnterpriseexctrlEmployertitleApi.md#batchquery) | **POST** /v3/alipay/ebpp/invoice/enterpriseexctrl/employertitle/batchquery | 批量查询企业抬头
-[**Create**](AlipayEbppInvoiceEnterpriseexctrlEmployertitleApi.md#create) | **POST** /v3/alipay/ebpp/invoice/enterpriseexctrl/employertitle/create | 新增企业抬头
-[**Modify**](AlipayEbppInvoiceEnterpriseexctrlEmployertitleApi.md#modify) | **PUT** /v3/alipay/ebpp/invoice/enterpriseexctrl/employertitle | 修改企业抬头
-[**Query**](AlipayEbppInvoiceEnterpriseexctrlEmployertitleApi.md#query) | **GET** /v3/alipay/ebpp/invoice/enterpriseexctrl/employertitle/query | 查询企业抬头
+[**Batchquery**](AlipayEbppInvoiceEnterpriseexctrlEmployertitleApi.md#batchquery) | **POST** /v3/alipay/ebpp/invoice/enterpriseexctrl/employertitle/batchquery | 企业抬头：分页查询企业抬头信息
+[**Create**](AlipayEbppInvoiceEnterpriseexctrlEmployertitleApi.md#create) | **POST** /v3/alipay/ebpp/invoice/enterpriseexctrl/employertitle/create | 企业抬头：新增企业抬头
+[**Modify**](AlipayEbppInvoiceEnterpriseexctrlEmployertitleApi.md#modify) | **PUT** /v3/alipay/ebpp/invoice/enterpriseexctrl/employertitle | 企业抬头：修改企业抬头
+[**Query**](AlipayEbppInvoiceEnterpriseexctrlEmployertitleApi.md#query) | **GET** /v3/alipay/ebpp/invoice/enterpriseexctrl/employertitle/query | 企业抬头：查询企业抬头
 
 
 <a name="batchquery"></a>
 # **Batchquery**
 > AlipayEbppInvoiceEnterpriseexctrlEmployertitleBatchqueryResponseModel Batchquery (AlipayEbppInvoiceEnterpriseexctrlEmployertitleBatchqueryModel alipayEbppInvoiceEnterpriseexctrlEmployertitleBatchqueryModel = null)
 
-批量查询企业抬头
+企业抬头：分页查询企业抬头信息
 
 分页查询企业抬头列表
 
@@ -56,7 +56,7 @@ namespace Example
 
             try
             {
-                // 批量查询企业抬头
+                // 企业抬头：分页查询企业抬头信息
                 AlipayEbppInvoiceEnterpriseexctrlEmployertitleBatchqueryResponseModel result = apiInstance.Batchquery(alipayEbppInvoiceEnterpriseexctrlEmployertitleBatchqueryModel);
                 Debug.WriteLine(result);
             }
@@ -103,7 +103,7 @@ No authorization required
 # **Create**
 > AlipayEbppInvoiceEnterpriseexctrlEmployertitleCreateResponseModel Create (AlipayEbppInvoiceEnterpriseexctrlEmployertitleCreateModel alipayEbppInvoiceEnterpriseexctrlEmployertitleCreateModel = null)
 
-新增企业抬头
+企业抬头：新增企业抬头
 
 新增一条企业开票抬头
 
@@ -145,7 +145,7 @@ namespace Example
 
             try
             {
-                // 新增企业抬头
+                // 企业抬头：新增企业抬头
                 AlipayEbppInvoiceEnterpriseexctrlEmployertitleCreateResponseModel result = apiInstance.Create(alipayEbppInvoiceEnterpriseexctrlEmployertitleCreateModel);
                 Debug.WriteLine(result);
             }
@@ -192,7 +192,7 @@ No authorization required
 # **Modify**
 > AlipayEbppInvoiceEnterpriseexctrlEmployertitleModifyResponseModel Modify (AlipayEbppInvoiceEnterpriseexctrlEmployertitleModifyModel alipayEbppInvoiceEnterpriseexctrlEmployertitleModifyModel = null)
 
-修改企业抬头
+企业抬头：修改企业抬头
 
 修改企业开票抬头
 
@@ -234,7 +234,7 @@ namespace Example
 
             try
             {
-                // 修改企业抬头
+                // 企业抬头：修改企业抬头
                 AlipayEbppInvoiceEnterpriseexctrlEmployertitleModifyResponseModel result = apiInstance.Modify(alipayEbppInvoiceEnterpriseexctrlEmployertitleModifyModel);
                 Debug.WriteLine(result);
             }
@@ -281,7 +281,7 @@ No authorization required
 # **Query**
 > AlipayEbppInvoiceEnterpriseexctrlEmployertitleQueryResponseModel Query (string accountId = null, string enterpriseId = null, string agreementNo = null, string titleId = null)
 
-查询企业抬头
+企业抬头：查询企业抬头
 
 根据抬头ID查询企业抬头详情
 
@@ -326,7 +326,7 @@ namespace Example
 
             try
             {
-                // 查询企业抬头
+                // 企业抬头：查询企业抬头
                 AlipayEbppInvoiceEnterpriseexctrlEmployertitleQueryResponseModel result = apiInstance.Query(accountId, enterpriseId, agreementNo, titleId);
                 Debug.WriteLine(result);
             }

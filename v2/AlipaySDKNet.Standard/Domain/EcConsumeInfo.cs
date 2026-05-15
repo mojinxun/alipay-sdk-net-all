@@ -100,7 +100,7 @@ namespace Aop.Api.Domain
         public string ExpenseRuleGroupId { get; set; }
 
         /// <summary>
-        /// 费用场景
+        /// 费用场景/一级场景
         /// </summary>
         [XmlElement("expense_scene_code")]
         public string ExpenseSceneCode { get; set; }
@@ -112,13 +112,13 @@ namespace Aop.Api.Domain
         public string ExpenseType { get; set; }
 
         /// <summary>
-        /// 费用类型子类目
+        /// 费用类型子类目/二级场景
         /// </summary>
         [XmlElement("expense_type_sub_category")]
         public string ExpenseTypeSubCategory { get; set; }
 
         /// <summary>
-        /// 账单扩展信息，JsonMap格式，以下信息可组合返回，"SUMMARY_INFO"表示"账单汇总信息"，"MERCHANT_EXTEND_INFO"表示"商户信息"，"TERMINAL_INFO"表示"终端设备信息"，"BENEFIT_INFO"表示"员工优惠信息"，"CONSUMPTION_LOCATION"表示"消费上报位置"，"THIRD_PARTY_PAYMENT_INFO"表示"代收款详情"
+        /// 账单扩展信息，JsonMap格式，以下信息可组合返回，"SUMMARY_INFO"表示"账单汇总信息"，"MERCHANT_EXTEND_INFO"表示"商户信息"，"TERMINAL_INFO"表示"终端设备信息"，"BENEFIT_INFO"表示"员工优惠信息"，"CONSUMPTION_LOCATION"表示"消费上报位置"，"THIRD_PARTY_PAYMENT_INFO"表示"代收款详情"，"REIMBURSEMENT_INFO"表示"审批单信息"
         /// </summary>
         [XmlElement("ext_infos")]
         public string ExtInfos { get; set; }
@@ -212,6 +212,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("peer_pay_amount")]
         public string PeerPayAmount { get; set; }
+
+        /// <summary>
+        /// 实际出资人名称
+        /// </summary>
+        [XmlElement("peer_payer_card_name")]
+        public string PeerPayerCardName { get; set; }
 
         /// <summary>
         /// 实际出资支付宝账号

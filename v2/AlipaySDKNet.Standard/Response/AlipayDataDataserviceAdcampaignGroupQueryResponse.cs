@@ -18,7 +18,7 @@ namespace Aop.Api.Response
         public List<string> AgeList { get; set; }
 
         /// <summary>
-        /// 资产类型
+        /// 资产类型（前置转化资产openAPI接口获取）转化类型获取接口：alipay.data.dataservice.adconversion.conversiontype.query
         /// </summary>
         [XmlElement("asset")]
         public string Asset { get; set; }
@@ -59,6 +59,12 @@ namespace Aop.Api.Response
         /// </summary>
         [XmlElement("boost_start_date")]
         public string BoostStartDate { get; set; }
+
+        /// <summary>
+        /// 计划的计费方式
+        /// </summary>
+        [XmlElement("charge_type")]
+        public string ChargeType { get; set; }
 
         /// <summary>
         /// 地理位置-城市等级
@@ -118,6 +124,12 @@ namespace Aop.Api.Response
         public string FilterConvertedTimeRange { get; set; }
 
         /// <summary>
+        /// 空则表示不限。单位【天】
+        /// </summary>
+        [XmlElement("filter_taobao_alliance_crowd_time_range")]
+        public string FilterTaobaoAllianceCrowdTimeRange { get; set; }
+
+        /// <summary>
         /// 性别
         /// </summary>
         [XmlArray("gender_list")]
@@ -153,6 +165,12 @@ namespace Aop.Api.Response
         /// </summary>
         [XmlElement("group_inherit")]
         public long GroupInherit { get; set; }
+
+        /// <summary>
+        /// 单元继承开关。不支持修改。不支持搜索场景  1.入参CUSTOMER 时继承单元ID必须填写， 2.若填写了继承单元ID，单元继承开关只能入参CUSTOMER或空， 没有入参单元继承开关 自动回填为CUSTOMER 3.入参SYSTEM,OFF时继承单元ID必须为空
+        /// </summary>
+        [XmlElement("group_inherit_switch")]
+        public string GroupInheritSwitch { get; set; }
 
         /// <summary>
         /// 单元名称
@@ -194,7 +212,7 @@ namespace Aop.Api.Response
         public List<OpenLbsEntry> LbsList { get; set; }
 
         /// <summary>
-        /// 二级营销目标code
+        /// 二级营销目标
         /// </summary>
         [XmlElement("market_target_code")]
         public string MarketTargetCode { get; set; }
@@ -204,6 +222,12 @@ namespace Aop.Api.Response
         /// </summary>
         [XmlElement("market_target_name")]
         public string MarketTargetName { get; set; }
+
+        /// <summary>
+        /// 做为target_roi的拓展字段，含义与target_roi一样，支持4位小数。优先级高于target_roi
+        /// </summary>
+        [XmlElement("new_target_roi")]
+        public string NewTargetRoi { get; set; }
 
         /// <summary>
         /// 起量状态
@@ -237,6 +261,12 @@ namespace Aop.Api.Response
         public long PrincipalId { get; set; }
 
         /// <summary>
+        /// 是否开启推荐流量开关.0关闭，1开启
+        /// </summary>
+        [XmlElement("referral_traffic_switch")]
+        public long ReferralTrafficSwitch { get; set; }
+
+        /// <summary>
         /// 地理位置-行政区域，行政区域编码和省市区县对应关系见<a href="https://www.mca.gov.cn/mzsj/xzqh/2022/202201xzqh.html">文档</a>
         /// </summary>
         [XmlArray("region_list")]
@@ -256,10 +286,23 @@ namespace Aop.Api.Response
         public string SceneCode { get; set; }
 
         /// <summary>
+        /// 搜索词列表
+        /// </summary>
+        [XmlArray("search_word_list")]
+        [XmlArrayItem("search_word")]
+        public List<SearchWord> SearchWordList { get; set; }
+
+        /// <summary>
         /// 转化目标成本。单位：元【人民币】
         /// </summary>
         [XmlElement("target_cpa")]
         public string TargetCpa { get; set; }
+
+        /// <summary>
+        /// 目标ROI,单位：元【人民币】
+        /// </summary>
+        [XmlElement("target_roi")]
+        public string TargetRoi { get; set; }
 
         /// <summary>
         /// 行业主题人群

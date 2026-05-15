@@ -23,7 +23,7 @@ namespace Aop.Api.Response
         public string ApplyStartTime { get; set; }
 
         /// <summary>
-        /// 审批结果（审批单状态）
+        /// 申请单状态，对应申请单修改接口的：approval_status字段
         /// </summary>
         [XmlElement("approval_result")]
         public string ApprovalResult { get; set; }
@@ -61,10 +61,22 @@ namespace Aop.Api.Response
         public string EnterpriseId { get; set; }
 
         /// <summary>
+        /// 申请单相关的扩展信息，如花呗券ID和金额等
+        /// </summary>
+        [XmlElement("ex_json")]
+        public string ExJson { get; set; }
+
+        /// <summary>
         /// 二级场景，更多枚举请见：
         /// </summary>
         [XmlElement("expense_type_sub_category")]
         public string ExpenseTypeSubCategory { get; set; }
+
+        /// <summary>
+        /// 用于保存外部扩展信息内容，如差旅预估金额
+        /// </summary>
+        [XmlElement("out_ext")]
+        public string OutExt { get; set; }
 
         /// <summary>
         /// 支付类型
@@ -73,7 +85,7 @@ namespace Aop.Api.Response
         public string PaymentType { get; set; }
 
         /// <summary>
-        /// 外部平台审批单id
+        /// 外部平台申请单id
         /// </summary>
         [XmlElement("platform_approval_id")]
         public string PlatformApprovalId { get; set; }

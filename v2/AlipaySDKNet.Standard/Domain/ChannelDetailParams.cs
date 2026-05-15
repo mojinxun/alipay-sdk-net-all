@@ -22,6 +22,18 @@ namespace Aop.Api.Domain
         public string CreditRiskInfo { get; set; }
 
         /// <summary>
+        /// 国家贴息
+        /// </summary>
+        [XmlElement("gov_subsidy")]
+        public string GovSubsidy { get; set; }
+
+        /// <summary>
+        /// 银行贴息
+        /// </summary>
+        [XmlElement("inst_subsidy")]
+        public string InstSubsidy { get; set; }
+
+        /// <summary>
         /// 芝麻人群标签
         /// </summary>
         [XmlElement("marketing_flag")]
@@ -32,5 +44,11 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("refuse_code")]
         public string RefuseCode { get; set; }
+
+        /// <summary>
+        /// 用户是否已签约
+        /// </summary>
+        [XmlElement("user_has_sign")]
+        public string UserHasSign { get; set; }
     }
 }

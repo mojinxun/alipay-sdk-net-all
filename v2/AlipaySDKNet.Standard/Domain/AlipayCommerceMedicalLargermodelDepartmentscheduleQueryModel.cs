@@ -62,11 +62,32 @@ namespace Aop.Api.Domain
         public List<string> HosGradeList { get; set; }
 
         /// <summary>
+        /// 针对医院机构搜索意图
+        /// </summary>
+        [XmlArray("hos_institution_code_list")]
+        [XmlArrayItem("string")]
+        public List<string> HosInstitutionCodeList { get; set; }
+
+        /// <summary>
         /// 意图识别医院名称列表
         /// </summary>
         [XmlArray("hos_name_list")]
         [XmlArrayItem("string")]
         public List<string> HosNameList { get; set; }
+
+        /// <summary>
+        /// 针对单医院院区搜索意图
+        /// </summary>
+        [XmlArray("hos_uniq_code_list")]
+        [XmlArrayItem("string")]
+        public List<string> HosUniqCodeList { get; set; }
+
+        /// <summary>
+        /// 原始科室名称
+        /// </summary>
+        [XmlArray("hospital_depart_name_list")]
+        [XmlArrayItem("string")]
+        public List<string> HospitalDepartNameList { get; set; }
 
         /// <summary>
         /// LBS纬度
@@ -85,6 +106,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("open_id")]
         public string OpenId { get; set; }
+
+        /// <summary>
+        /// 挂号订单属性
+        /// </summary>
+        [XmlElement("order_prop")]
+        public string OrderProp { get; set; }
 
         /// <summary>
         /// 分页key

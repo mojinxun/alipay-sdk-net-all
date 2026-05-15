@@ -34,6 +34,12 @@ namespace Aop.Api.Domain
         public string Complaint { get; set; }
 
         /// <summary>
+        /// 医生头像
+        /// </summary>
+        [XmlElement("doctor_avatar")]
+        public string DoctorAvatar { get; set; }
+
+        /// <summary>
         /// 联系医生问诊链接
         /// </summary>
         [XmlElement("doctor_inquiry_link_page")]
@@ -56,6 +62,18 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("doctor_refuse_reason")]
         public string DoctorRefuseReason { get; set; }
+
+        /// <summary>
+        /// 医生职称
+        /// </summary>
+        [XmlElement("doctor_title")]
+        public string DoctorTitle { get; set; }
+
+        /// <summary>
+        /// 医生类型，判断医生属于家庭医生还是专科医生
+        /// </summary>
+        [XmlElement("doctor_type")]
+        public string DoctorType { get; set; }
 
         /// <summary>
         /// 是否首次回复
@@ -100,6 +118,12 @@ namespace Aop.Api.Domain
         public string GmtRefundApplying { get; set; }
 
         /// <summary>
+        /// 医院名称
+        /// </summary>
+        [XmlElement("hospital_name")]
+        public string HospitalName { get; set; }
+
+        /// <summary>
         /// 问诊完成类型 DOCTOR_ACTIVE_END：医生主动完成 TIMEOUT_END：超时结束
         /// </summary>
         [XmlElement("inquiry_complete_status")]
@@ -112,13 +136,19 @@ namespace Aop.Api.Domain
         public bool Notice { get; set; }
 
         /// <summary>
-        /// 实付金额
+        /// 问诊订单商品名称
+        /// </summary>
+        [XmlElement("product_name")]
+        public string ProductName { get; set; }
+
+        /// <summary>
+        /// 实付金额，单位：元
         /// </summary>
         [XmlElement("real_amount")]
         public string RealAmount { get; set; }
 
         /// <summary>
-        /// 退款金额
+        /// 退款金额，单位：元
         /// </summary>
         [XmlElement("refund_amount")]
         public string RefundAmount { get; set; }

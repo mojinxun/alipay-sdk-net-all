@@ -52,6 +52,18 @@ namespace Aop.Api.Domain
         public string Mode { get; set; }
 
         /// <summary>
+        /// 网商银行应用id,当mode为ANT_MYBANK时由网商提供给商户
+        /// </summary>
+        [XmlElement("mybank_app_id")]
+        public string MybankAppId { get; set; }
+
+        /// <summary>
+        /// 网商银行解决方案CODE,当mode为ANT_MYBANK时由网商提供给商户
+        /// </summary>
+        [XmlElement("mybank_scene_code")]
+        public string MybankSceneCode { get; set; }
+
+        /// <summary>
         /// 如果mode为网商银行，则为网商银行分配
         /// </summary>
         [XmlElement("partner_id")]
@@ -74,5 +86,11 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("request_time")]
         public string RequestTime { get; set; }
+
+        /// <summary>
+        /// 子功能，默认是代付，涉及到同人账户的资金划拨/资金释放等操作需要选择划拨 ●代付： ENTRUST_AUTH_PAY ●划拨：ENTRUST_ALLOCATE
+        /// </summary>
+        [XmlElement("sub_function")]
+        public string SubFunction { get; set; }
     }
 }

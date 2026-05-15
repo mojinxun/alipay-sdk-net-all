@@ -10,6 +10,12 @@ namespace Aop.Api.Domain
     public class DeviceExtAttribute : AopObject
     {
         /// <summary>
+        /// 设备外挂配件的SN号，仅设备有外挂配件时需要传
+        /// </summary>
+        [XmlElement("accessory_sn")]
+        public string AccessorySn { get; set; }
+
+        /// <summary>
         /// 商家编号，由服务商定义，需要保证在服务商下唯一
         /// </summary>
         [XmlElement("external_id")]
@@ -34,10 +40,22 @@ namespace Aop.Api.Domain
         public string IsvDeviceVersionTag { get; set; }
 
         /// <summary>
-        /// 卖进订单id，先卖进后绑定模式下必传。
+        /// 卖进订单id，先卖进后绑定模式下必传。 当前字段已废弃(调用此接口创建的订单为预订单，因此字段命名不准确，后续请使用 sales_entry_pre_order_id 字段。)
         /// </summary>
         [XmlElement("sales_entry_order_id")]
         public string SalesEntryOrderId { get; set; }
+
+        /// <summary>
+        /// 卖进订单id，批签模式下如果在绑定时用户订单核销成功，但是绑定失败，会返回核销生产的卖进订单id，后续再重试绑定时，可以重新在绑定接口传入该字段，这样则不会占用签约额度。
+        /// </summary>
+        [XmlElement("sales_order_id")]
+        public string SalesOrderId { get; set; }
+
+        /// <summary>
+        /// 卖进预订单id
+        /// </summary>
+        [XmlElement("sales_pre_order_id")]
+        public string SalesPreOrderId { get; set; }
 
         /// <summary>
         /// 卖进方案扩展信息

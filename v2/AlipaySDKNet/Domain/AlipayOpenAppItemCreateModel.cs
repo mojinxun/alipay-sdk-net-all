@@ -24,10 +24,22 @@ namespace Aop.Api.Domain
         public bool AutoMarketingDelivery { get; set; }
 
         /// <summary>
+        /// 精品池自动提报标志，默认false，不提报；true表示提报
+        /// </summary>
+        [XmlElement("auto_premium_pool")]
+        public bool AutoPremiumPool { get; set; }
+
+        /// <summary>
         /// 条形码
         /// </summary>
         [XmlElement("barcode")]
         public string Barcode { get; set; }
+
+        /// <summary>
+        /// 商品业务模式，租赁业务模式包含（短租：0；长租：1）
+        /// </summary>
+        [XmlElement("business_model")]
+        public string BusinessModel { get; set; }
 
         /// <summary>
         /// 平台类目，填写的类目必须在类目表列出，多级类目只填最后一级。商品类目 ID 及信息可通过<a href="https://opendocs.alipay.com/b/07847b">商品类目表</a>获取。 仅叶子类目支持创建商品。

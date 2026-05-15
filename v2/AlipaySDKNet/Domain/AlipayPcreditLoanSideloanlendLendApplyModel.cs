@@ -23,6 +23,13 @@ namespace Aop.Api.Domain
         public string BankCardId { get; set; }
 
         /// <summary>
+        /// 候选授信机构列表
+        /// </summary>
+        [XmlArray("candidate_credit_fund_supplier_list")]
+        [XmlArrayItem("institution_v_o")]
+        public List<InstitutionVO> CandidateCreditFundSupplierList { get; set; }
+
+        /// <summary>
         /// 营销卡券Code列表,不能超过100个
         /// </summary>
         [XmlArray("coupon_code_list")]
@@ -30,10 +37,22 @@ namespace Aop.Api.Domain
         public List<string> CouponCodeList { get; set; }
 
         /// <summary>
+        /// 渠道侧授信申请单号
+        /// </summary>
+        [XmlElement("credit_apply_no")]
+        public string CreditApplyNo { get; set; }
+
+        /// <summary>
         /// 扩展字段JSON String
         /// </summary>
         [XmlElement("extension")]
         public string Extension { get; set; }
+
+        /// <summary>
+        /// 支用扩展处理(目前有支用拒绝转签TRANSFER_CREDIT)
+        /// </summary>
+        [XmlElement("loan_additional_process")]
+        public string LoanAdditionalProcess { get; set; }
 
         /// <summary>
         /// 贷款金额（单位：元）保留小数点后两位
@@ -64,6 +83,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("loan_term_unit")]
         public string LoanTermUnit { get; set; }
+
+        /// <summary>
+        /// 支用类型
+        /// </summary>
+        [XmlElement("loan_type")]
+        public string LoanType { get; set; }
 
         /// <summary>
         /// 用于标记支付宝用户在应用下的唯一标识

@@ -9,6 +9,18 @@ namespace Aop.Api.Response
     public class AlipayCommerceOperationOpportunityLeadsCreateResponse : AopResponse
     {
         /// <summary>
+        /// 安装码
+        /// </summary>
+        [XmlElement("installation_code")]
+        public string InstallationCode { get; set; }
+
+        /// <summary>
+        /// 线索ID
+        /// </summary>
+        [XmlElement("leads_id")]
+        public string LeadsId { get; set; }
+
+        /// <summary>
         /// 商机id
         /// </summary>
         [XmlElement("opportunity_id")]
@@ -31,5 +43,11 @@ namespace Aop.Api.Response
         /// </summary>
         [XmlElement("out_biz_no")]
         public string OutBizNo { get; set; }
+
+        /// <summary>
+        /// 饿了么专项渠道标识
+        /// </summary>
+        [XmlElement("source")]
+        public string Source { get; set; }
     }
 }

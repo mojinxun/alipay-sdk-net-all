@@ -64,7 +64,7 @@ namespace Aop.Api.Response
         public string PlanName { get; set; }
 
         /// <summary>
-        /// 计划状态         "PLAN_END",         "PLAN_DELETE",         "PLAN_EFFECTIVE",         "PLAN_PAUSE",         "PLAN_NOT_BEGIN"
+        /// 计划状态
         /// </summary>
         [XmlElement("plan_status")]
         public string PlanStatus { get; set; }
@@ -100,7 +100,7 @@ namespace Aop.Api.Response
         public string PromoteTargetAppType { get; set; }
 
         /// <summary>
-        /// RTB冻结单号
+        /// 冻结单id
         /// </summary>
         [XmlElement("rtb_freeze_order_id")]
         public string RtbFreezeOrderId { get; set; }
@@ -140,6 +140,12 @@ namespace Aop.Api.Response
         /// </summary>
         [XmlElement("start_date")]
         public string StartDate { get; set; }
+
+        /// <summary>
+        /// 计划子状态。2-表示计划不在投放时间段。仅在计划状态为有效的情况下透出
+        /// </summary>
+        [XmlElement("sub_status")]
+        public string SubStatus { get; set; }
 
         /// <summary>
         /// 投放时段 全时段投放-不返回该字段 分时段投放：格式为24*7位字符串，且都为 0 和 1，以单小时为最小粒度。按日,一,二,......,六排列。单日内按23,22,21,......3,2,1,0排列。0为不投放，1 为投放，全传 1 视为全时段投放，不允许全部传 0。日维度采用“,”分隔

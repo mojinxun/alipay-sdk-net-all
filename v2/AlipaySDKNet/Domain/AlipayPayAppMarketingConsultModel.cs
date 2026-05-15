@@ -23,6 +23,18 @@ namespace Aop.Api.Domain
         public string BlindMobile { get; set; }
 
         /// <summary>
+        /// 身份证号
+        /// </summary>
+        [XmlElement("cert_no")]
+        public string CertNo { get; set; }
+
+        /// <summary>
+        /// 身份证类别
+        /// </summary>
+        [XmlElement("cert_type")]
+        public string CertType { get; set; }
+
+        /// <summary>
         /// 混淆后的手机号MD5值列表； 若接口调用采用morse匿名方式，此字段必须与盲化的原始手机号MD5值(blind_mobile)字段一起传入，二者缺一不可；
         /// </summary>
         [XmlArray("confused_mobile_list")]
@@ -67,7 +79,7 @@ namespace Aop.Api.Domain
         public string MerchantUserId { get; set; }
 
         /// <summary>
-        /// 已废弃不支持
+        /// 已废弃不支持 当前字段已废弃(不支持手机明文传输,废弃该字段)
         /// </summary>
         [XmlElement("mobile")]
         public string Mobile { get; set; }
@@ -107,6 +119,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("partner_id")]
         public string PartnerId { get; set; }
+
+        /// <summary>
+        /// 外部商户咨询场景参数
+        /// </summary>
+        [XmlElement("proconsult_scene")]
+        public string ProconsultScene { get; set; }
 
         /// <summary>
         /// 销售产品码，商家和支付宝签约的产品码

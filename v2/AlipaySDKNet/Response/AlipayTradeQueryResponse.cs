@@ -156,6 +156,12 @@ namespace Aop.Api.Response
         public string ExtInfos { get; set; }
 
         /// <summary>
+        /// 外部付款人信息，用于返回给商户用户付款使用的外部账户信息要素
+        /// </summary>
+        [XmlElement("external_payer_info")]
+        public ExternalPayerInfo ExternalPayerInfo { get; set; }
+
+        /// <summary>
         /// 履约详情列表。 只有入参的query_options中指定fulfillment_detail_list并且所查询的交易存在履约明细时才返回该字段信息。
         /// </summary>
         [XmlArray("fulfillment_detail_list")]
@@ -280,6 +286,12 @@ namespace Aop.Api.Response
         public string PreAuthPayAmount { get; set; }
 
         /// <summary>
+        /// 支付宝钱包跨境支付交易的购汇主体，ALIPAYHK-境外香港购汇实体，3008境内购汇实体
+        /// </summary>
+        [XmlElement("purchase_entity")]
+        public string PurchaseEntity { get; set; }
+
+        /// <summary>
         /// 实收金额，单位为元，两位小数。该金额为本笔交易，商户账户能够实际收到的金额
         /// </summary>
         [XmlElement("receipt_amount")]
@@ -393,6 +405,12 @@ namespace Aop.Api.Response
         /// </summary>
         [XmlElement("trans_pay_rate")]
         public string TransPayRate { get; set; }
+
+        /// <summary>
+        /// 有限条件下返回当前订单未支付原因
+        /// </summary>
+        [XmlElement("unpaid_reason")]
+        public string UnpaidReason { get; set; }
 
         /// <summary>
         /// 本交易支付时使用的所有优惠券信息。 只有在query_options中指定时才返回该字段信息。

@@ -10,6 +10,12 @@ namespace Aop.Api.Domain
     public class SellerSyncRentItemExtInfo : AopObject
     {
         /// <summary>
+        /// 券后签约价格，币种：人民币，单位：元
+        /// </summary>
+        [XmlElement("after_coupon_price")]
+        public string AfterCouponPrice { get; set; }
+
+        /// <summary>
         /// 商品的品牌名称
         /// </summary>
         [XmlElement("item_brand")]
@@ -50,6 +56,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("item_state")]
         public string ItemState { get; set; }
+
+        /// <summary>
+        /// 官网价，单位：元。
+        /// </summary>
+        [XmlElement("official_price")]
+        public string OfficialPrice { get; set; }
 
         /// <summary>
         /// 商品的供应商名称，例如：深圳爱租机苹果供应商

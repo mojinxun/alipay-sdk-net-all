@@ -28,6 +28,24 @@ namespace Aop.Api.Domain
         public string BuyerOpenId { get; set; }
 
         /// <summary>
+        /// 当期对应的买断金的应还日
+        /// </summary>
+        [XmlElement("buyout_repay_time")]
+        public string BuyoutRepayTime { get; set; }
+
+        /// <summary>
+        /// 当期对应的买断分账利息，单位：元。
+        /// </summary>
+        [XmlElement("buyout_royalty_interest_price")]
+        public string BuyoutRoyaltyInterestPrice { get; set; }
+
+        /// <summary>
+        /// 本期阶梯买断分账本金，单位：元。
+        /// </summary>
+        [XmlElement("buyout_royalty_principal_price")]
+        public string BuyoutRoyaltyPrincipalPrice { get; set; }
+
+        /// <summary>
         /// 当前期数改账中的买断分账金，单位：元
         /// </summary>
         [XmlElement("current_buyout_after_price")]
@@ -116,6 +134,18 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("royalty_interest_price")]
         public string RoyaltyInterestPrice { get; set; }
+
+        /// <summary>
+        /// 分账支付方式（for资方），到卡、到户或者部分到卡，部分到户
+        /// </summary>
+        [XmlElement("royalty_payment_method")]
+        public string RoyaltyPaymentMethod { get; set; }
+
+        /// <summary>
+        /// 和royalty_payment_method配合使用。履约单号+"-到卡"或者+"到户"，多笔履约单号之前用“;”隔开。
+        /// </summary>
+        [XmlElement("royalty_payment_method_note")]
+        public string RoyaltyPaymentMethodNote { get; set; }
 
         /// <summary>
         /// 分账金额，单位：元，精确到小数点后两位

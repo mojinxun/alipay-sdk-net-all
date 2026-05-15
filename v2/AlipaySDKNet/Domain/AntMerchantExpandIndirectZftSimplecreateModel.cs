@@ -41,7 +41,7 @@ namespace Aop.Api.Domain
         public string AlipayLogonId { get; set; }
 
         /// <summary>
-        /// 签约支付宝账户。需使用实名认证支付宝账号，使用该支付宝账号签约直付通二级商户及后续服务，商户主体与该支付宝账号主体相同
+        /// 签约支付宝账户。需使用实名认证支付宝账号，使用该支付宝账号签约二级商户及后续服务，商户主体与该支付宝账号主体相同
         /// </summary>
         [XmlElement("binding_alipay_logon_id")]
         public string BindingAlipayLogonId { get; set; }
@@ -107,7 +107,7 @@ namespace Aop.Api.Domain
         public string LicenseAuthLetterImage { get; set; }
 
         /// <summary>
-        /// 商户类别码 mcc，可查看  <a href="https://mdn.alipayobjects.com/huamei_fctrxv/afts/file/A*3TMHRZ8ppa4AAAAAAAAAAAAADs2DAQ/%E8%BF%9B%E4%BB%B6MCC%E4%B8%8E%E8%B5%84%E8%B4%A8%E8%A6%81%E6%B1%82202212.xlsx">进件MCC与资质要求 202212.xlsx</a>，特殊行业要按照MCC说明中的资质一栏上传辅助资质，辅助资质要在 qualifications 中上传，会有人工审核。
+        /// 商户类别码 mcc，可查看  <a href="https://opendocs.alipay.com/common/02khjv#%E5%95%86%E5%AE%B6%E7%BB%8F%E8%90%A5%E7%B1%BB%E7%9B%AE">创建二级商户类目与资质要求说明</a>，特殊行业要按照MCC说明中的资质一栏上传辅助资质，辅助资质要在 qualifications 中上传，会有人工审核。
         /// </summary>
         [XmlElement("mcc")]
         public string Mcc { get; set; }
@@ -117,6 +117,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// 是否需要发送待办
+        /// </summary>
+        [XmlElement("need_send_todo_notify")]
+        public bool NeedSendTodoNotify { get; set; }
 
         /// <summary>
         /// 门头照，使用当面付服务时必填。其值为使用ant.merchant.expand.indirect.image.upload上传图片得到的一串oss key。
@@ -155,6 +161,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("service_phone")]
         public string ServicePhone { get; set; }
+
+        /// <summary>
+        /// 签约确认方式
+        /// </summary>
+        [XmlElement("sign_confirm_type")]
+        public string SignConfirmType { get; set; }
 
         /// <summary>
         /// 二级商户与服务商的签约时间。

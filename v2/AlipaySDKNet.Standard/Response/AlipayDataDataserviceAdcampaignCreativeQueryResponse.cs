@@ -36,10 +36,22 @@ namespace Aop.Api.Response
         public string AdName { get; set; }
 
         /// <summary>
+        /// 创意拒绝理由文案信息，由审核方填充
+        /// </summary>
+        [XmlElement("audit_refuse_reason")]
+        public string AuditRefuseReason { get; set; }
+
+        /// <summary>
         /// 创意点击监测地址
         /// </summary>
         [XmlElement("click_track_url")]
         public string ClickTrackUrl { get; set; }
+
+        /// <summary>
+        /// 创意业务状态
+        /// </summary>
+        [XmlElement("creative_biz_status")]
+        public string CreativeBizStatus { get; set; }
 
         /// <summary>
         /// 修改时间
@@ -66,7 +78,7 @@ namespace Aop.Api.Response
         public string ImpressionTrackUrl { get; set; }
 
         /// <summary>
-        /// 二级营销目标code
+        /// 二级营销目标
         /// </summary>
         [XmlElement("market_target_code")]
         public string MarketTargetCode { get; set; }
@@ -85,6 +97,18 @@ namespace Aop.Api.Response
         public List<CreativeMaterial> MaterialList { get; set; }
 
         /// <summary>
+        /// 是否原生创意
+        /// </summary>
+        [XmlElement("native_flag")]
+        public bool NativeFlag { get; set; }
+
+        /// <summary>
+        /// 视频发布在主页是否隐藏。1不隐藏，2隐藏。为空则是不隐藏
+        /// </summary>
+        [XmlElement("permission_level")]
+        public long PermissionLevel { get; set; }
+
+        /// <summary>
         /// 所属计划id
         /// </summary>
         [XmlElement("plan_id")]
@@ -101,6 +125,30 @@ namespace Aop.Api.Response
         /// </summary>
         [XmlElement("principal_id")]
         public long PrincipalId { get; set; }
+
+        /// <summary>
+        /// 生活号ID
+        /// </summary>
+        [XmlElement("public_id")]
+        public string PublicId { get; set; }
+
+        /// <summary>
+        /// 处置理由
+        /// </summary>
+        [XmlElement("punish_reason")]
+        public string PunishReason { get; set; }
+
+        /// <summary>
+        /// 审核拒绝扩展信息
+        /// </summary>
+        [XmlElement("refuse_extend_info_res")]
+        public CreativeRefuseExtendInfoRes RefuseExtendInfoRes { get; set; }
+
+        /// <summary>
+        /// 创意处置。状态 0:正常,1:风控
+        /// </summary>
+        [XmlElement("risk_status")]
+        public string RiskStatus { get; set; }
 
         /// <summary>
         /// 场景code

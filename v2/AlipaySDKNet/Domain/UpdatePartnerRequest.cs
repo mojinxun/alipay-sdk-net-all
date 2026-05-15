@@ -95,6 +95,12 @@ namespace Aop.Api.Domain
         public string IndustryCategory { get; set; }
 
         /// <summary>
+        /// 伙伴政策生效状态，控制政策同步是增加还是删除
+        /// </summary>
+        [XmlElement("is_effective")]
+        public string IsEffective { get; set; }
+
+        /// <summary>
         /// 所属地区
         /// </summary>
         [XmlElement("location")]
@@ -113,6 +119,12 @@ namespace Aop.Api.Domain
         public string PartnerChannelType { get; set; }
 
         /// <summary>
+        /// 2025政策
+        /// </summary>
+        [XmlElement("partner_policy")]
+        public string PartnerPolicy { get; set; }
+
+        /// <summary>
         /// 合作伙伴类型列表
         /// </summary>
         [XmlArray("partner_type_list")]
@@ -124,6 +136,24 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("pid")]
         public string Pid { get; set; }
+
+        /// <summary>
+        /// 结束时间
+        /// </summary>
+        [XmlElement("policy_end_time")]
+        public string PolicyEndTime { get; set; }
+
+        /// <summary>
+        /// 政策编号，仅同步政策时传
+        /// </summary>
+        [XmlElement("policy_no")]
+        public string PolicyNo { get; set; }
+
+        /// <summary>
+        /// 开始时间
+        /// </summary>
+        [XmlElement("policy_start_time")]
+        public string PolicyStartTime { get; set; }
 
         /// <summary>
         /// 区域

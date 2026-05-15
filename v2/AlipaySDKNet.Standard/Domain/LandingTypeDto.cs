@@ -11,6 +11,13 @@ namespace Aop.Api.Domain
     public class LandingTypeDto : AopObject
     {
         /// <summary>
+        /// 聚合落地页中的图片地址，landing_type值为3的时候必填，至少一张图片地址
+        /// </summary>
+        [XmlArray("aggregated_info_list")]
+        [XmlArrayItem("string")]
+        public List<string> AggregatedInfoList { get; set; }
+
+        /// <summary>
         /// 活动列表
         /// </summary>
         [XmlArray("landing_act")]
@@ -22,6 +29,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("landing_id")]
         public string LandingId { get; set; }
+
+        /// <summary>
+        /// 服务商L1L2落地页标识，L1表示非通投，L2表示可以通投
+        /// </summary>
+        [XmlElement("landing_level")]
+        public string LandingLevel { get; set; }
 
         /// <summary>
         /// 落地页名称，同一个商品的落地页名称唯一。

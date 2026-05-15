@@ -40,6 +40,12 @@ namespace Aop.Api.Domain
         public string BoostStartDate { get; set; }
 
         /// <summary>
+        /// 计划的计费方式
+        /// </summary>
+        [XmlElement("charge_type")]
+        public string ChargeType { get; set; }
+
+        /// <summary>
         /// 修改时间
         /// </summary>
         [XmlElement("gmt_modified")]
@@ -88,6 +94,12 @@ namespace Aop.Api.Domain
         public string MarketTargetName { get; set; }
 
         /// <summary>
+        /// 做为target_roi的拓展字段，含义与target_roi一样，支持4为小数。优先级高于target_roi
+        /// </summary>
+        [XmlElement("new_target_roi")]
+        public string NewTargetRoi { get; set; }
+
+        /// <summary>
         /// 起量状态
         /// </summary>
         [XmlElement("one_boost_status")]
@@ -122,5 +134,11 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("target_cpa")]
         public string TargetCpa { get; set; }
+
+        /// <summary>
+        /// 目标ROI，单位【元】，人民币。 bidType= ROI时候必填
+        /// </summary>
+        [XmlElement("target_roi")]
+        public string TargetRoi { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace Aop.Api.Domain
 {
@@ -9,6 +10,19 @@ namespace Aop.Api.Domain
     [Serializable]
     public class AlipayTradeCrowdConsultModel : AopObject
     {
+        /// <summary>
+        /// 单位元
+        /// </summary>
+        [XmlElement("average_amount")]
+        public string AverageAmount { get; set; }
+
+        /// <summary>
+        /// 定义咨询人群场景，如花呗、Z1
+        /// </summary>
+        [XmlArray("consult_crowd_list")]
+        [XmlArrayItem("string")]
+        public List<string> ConsultCrowdList { get; set; }
+
         /// <summary>
         /// 用于标记支付宝用户在应用下的唯一标识
         /// </summary>
@@ -20,6 +34,13 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("scene")]
         public string Scene { get; set; }
+
+        /// <summary>
+        /// 表明着笔请求的场景，可以同时包含多个场景，目前支持 AAC潜客营销-aacProspectMarketing 未绑卡人群首绑营销-bindCard
+        /// </summary>
+        [XmlArray("scene_list")]
+        [XmlArrayItem("string")]
+        public List<string> SceneList { get; set; }
 
         /// <summary>
         /// 支付宝用户的userId。

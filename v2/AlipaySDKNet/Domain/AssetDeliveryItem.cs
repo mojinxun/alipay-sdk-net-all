@@ -23,6 +23,12 @@ namespace Aop.Api.Domain
         public long Amount { get; set; }
 
         /// <summary>
+        /// AO单申请配送数量
+        /// </summary>
+        [XmlElement("apply_order_amount")]
+        public long ApplyOrderAmount { get; set; }
+
+        /// <summary>
         /// 订单申请日期, 格式:  yyyy-MM-dd HH：mm:ss
         /// </summary>
         [XmlElement("apply_order_date")]
@@ -33,6 +39,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("apply_order_id")]
         public string ApplyOrderId { get; set; }
+
+        /// <summary>
+        /// 生产资料：用于提供物料供应商生产所需资料
+        /// </summary>
+        [XmlElement("asset_resource")]
+        public string AssetResource { get; set; }
 
         /// <summary>
         /// 配送订单唯一Id
@@ -69,6 +81,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("biz_type")]
         public string BizType { get; set; }
+
+        /// <summary>
+        /// (线圈码牌物料仓发的配送指令中，会带码组序列标识，用于供应商对物料进行分包）
+        /// </summary>
+        [XmlElement("code_group_ser_number")]
+        public string CodeGroupSerNumber { get; set; }
 
         /// <summary>
         /// 合单批次号
@@ -168,6 +186,12 @@ namespace Aop.Api.Domain
         public string IsCombinationOrder { get; set; }
 
         /// <summary>
+        /// is_kit_pack为Y，则组合单维度下，多个子物料需要打包到一起进行发货，related_kit_item_id和related_kit_item_name不为空，目前只有线圈调拨入指令会带该标识
+        /// </summary>
+        [XmlElement("is_kit_pack")]
+        public string IsKitPack { get; set; }
+
+        /// <summary>
         /// 物料id
         /// </summary>
         [XmlElement("item_id")]
@@ -186,6 +210,12 @@ namespace Aop.Api.Domain
         public LogisticsInfo LogisticsInfo { get; set; }
 
         /// <summary>
+        /// 主要用于供应商区分发货模式
+        /// </summary>
+        [XmlElement("logistics_mode")]
+        public string LogisticsMode { get; set; }
+
+        /// <summary>
         /// 备注
         /// </summary>
         [XmlElement("memo")]
@@ -196,6 +226,19 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("operate_info")]
         public string OperateInfo { get; set; }
+
+        /// <summary>
+        /// 是否有选配物料
+        /// </summary>
+        [XmlElement("optional_item_flag")]
+        public string OptionalItemFlag { get; set; }
+
+        /// <summary>
+        /// 是否有选配物料标识
+        /// </summary>
+        [XmlArray("optional_item_infos")]
+        [XmlArrayItem("optional_item_info")]
+        public List<OptionalItemInfo> OptionalItemInfos { get; set; }
 
         /// <summary>
         /// 公司主体代码
@@ -246,6 +289,43 @@ namespace Aop.Api.Domain
         public string RecordType { get; set; }
 
         /// <summary>
+        /// 父业务单据号下子业务单据数量，数量等于related_others_out_biz_no的列表数量+1
+        /// </summary>
+        [XmlElement("related_children_out_biz_no_count")]
+        public long RelatedChildrenOutBizNoCount { get; set; }
+
+        /// <summary>
+        /// 组合单维度下，多个子物料需要打包到一起进行发货，套组物料id和套组名称，作为打包的标签（备注：目前只有线圈调入指令会带该标识）
+        /// </summary>
+        [XmlElement("related_kit_item_id")]
+        public string RelatedKitItemId { get; set; }
+
+        /// <summary>
+        /// 组合单维度下，多个子物料需要打包到一起进行发货，套组物料id和套组名称，作为打包的标签(备注：目前只有线圈调拨入指令会带该标识)
+        /// </summary>
+        [XmlElement("related_kit_item_name")]
+        public string RelatedKitItemName { get; set; }
+
+        /// <summary>
+        /// 关联其它业务单据号，同一个父业务单据号的其它业务单据号（不包含related_out_biz_no）
+        /// </summary>
+        [XmlArray("related_others_out_biz_no")]
+        [XmlArrayItem("string")]
+        public List<string> RelatedOthersOutBizNo { get; set; }
+
+        /// <summary>
+        /// 关联的上游业务单号
+        /// </summary>
+        [XmlElement("related_out_biz_no")]
+        public string RelatedOutBizNo { get; set; }
+
+        /// <summary>
+        /// 父业务单据号（组合订单号），同related_out_biz_no形成父子关系
+        /// </summary>
+        [XmlElement("related_parent_out_biz_no")]
+        public string RelatedParentOutBizNo { get; set; }
+
+        /// <summary>
         /// 对应供应商pid
         /// </summary>
         [XmlElement("supplier_id")]
@@ -262,6 +342,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("to_address")]
         public AssetDeliveryAddress ToAddress { get; set; }
+
+        /// <summary>
+        /// 加急单的标识，Y是加急单 N非加急单
+        /// </summary>
+        [XmlElement("urgent_order_flag")]
+        public string UrgentOrderFlag { get; set; }
 
         /// <summary>
         /// 动作
