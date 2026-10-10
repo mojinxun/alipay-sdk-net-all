@@ -140,6 +140,13 @@ namespace Aop.Api.Domain
         public string OpenId { get; set; }
 
         /// <summary>
+        /// 当前调用服务商名下的员工因公付代扣授权明细，每条记录对应一个收单商户 PID。
+        /// </summary>
+        [XmlArray("pay_auth_list")]
+        [XmlArrayItem("pay_auth_info_d_t_o")]
+        public List<PayAuthInfoDTO> PayAuthList { get; set; }
+
+        /// <summary>
         /// 个性化信息 <a href='https://opendocs.alipay.com/pre-open/0ceh47?pathHash=14fac87c'>详见文档</a>
         /// </summary>
         [XmlElement("profiles")]

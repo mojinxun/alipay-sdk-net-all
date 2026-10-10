@@ -13,5 +13,11 @@ namespace Aop.Api.Response
         /// </summary>
         [XmlElement("principal_id")]
         public long PrincipalId { get; set; }
+
+        /// <summary>
+        /// 商户标签，商户生成后的标签，可定位到此商户
+        /// </summary>
+        [XmlElement("principal_tag")]
+        public string PrincipalTag { get; set; }
     }
 }

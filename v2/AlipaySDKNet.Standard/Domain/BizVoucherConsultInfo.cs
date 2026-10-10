@@ -34,6 +34,12 @@ namespace Aop.Api.Domain
         public bool Optimal { get; set; }
 
         /// <summary>
+        /// 下单页优惠文案
+        /// </summary>
+        [XmlElement("order_page_promo_text")]
+        public string OrderPagePromoText { get; set; }
+
+        /// <summary>
         /// 优惠文档
         /// </summary>
         [XmlElement("promo_text")]

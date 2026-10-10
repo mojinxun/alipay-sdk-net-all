@@ -60,6 +60,12 @@ namespace Aop.Api.Domain
         public List<InsOpenAttachmentDTO> Attachments { get; set; }
 
         /// <summary>
+        /// 收款人
+        /// </summary>
+        [XmlElement("claim_payee")]
+        public InsOpenUserDTO ClaimPayee { get; set; }
+
+        /// <summary>
         /// 报案业务信息
         /// </summary>
         [XmlElement("claim_report_biz_info")]

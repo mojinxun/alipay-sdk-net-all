@@ -41,6 +41,13 @@ namespace Aop.Api.Response
         public RentOrderDeliveryInfoVO DeliveryInfo { get; set; }
 
         /// <summary>
+        /// 租赁电子合同信息
+        /// </summary>
+        [XmlArray("ec_sign_apply_infos")]
+        [XmlArrayItem("rent_ec_sign_apply_info_v_o")]
+        public List<RentEcSignApplyInfoVO> EcSignApplyInfos { get; set; }
+
+        /// <summary>
         /// 租赁订单拓展信息
         /// </summary>
         [XmlElement("extend_info")]
@@ -90,6 +97,12 @@ namespace Aop.Api.Response
         public string OrderId { get; set; }
 
         /// <summary>
+        /// 订单发货地址
+        /// </summary>
+        [XmlElement("order_shipping_address")]
+        public RentOrderShipperAddressInfoVO OrderShippingAddress { get; set; }
+
+        /// <summary>
         /// 订单类型
         /// </summary>
         [XmlElement("order_type")]
@@ -118,6 +131,12 @@ namespace Aop.Api.Response
         /// </summary>
         [XmlElement("price_info")]
         public RentOrderPriceInfoVO PriceInfo { get; set; }
+
+        /// <summary>
+        /// 租赁采购信息
+        /// </summary>
+        [XmlElement("procurement_info")]
+        public RentProcurementInfoVO ProcurementInfo { get; set; }
 
         /// <summary>
         /// 优惠信息，包含分期优惠

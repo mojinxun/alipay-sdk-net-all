@@ -11,6 +11,13 @@ namespace Aop.Api.Response
     public class AlipayCommerceEcIndustryinvoiceInvoiceapplyQueryResponse : AopResponse
     {
         /// <summary>
+        /// 附加要素列表
+        /// </summary>
+        [XmlArray("additional_element_list")]
+        [XmlArrayItem("industry_invoice_additional_element_info")]
+        public List<IndustryInvoiceAdditionalElementInfo> AdditionalElementList { get; set; }
+
+        /// <summary>
         /// 购买方地址
         /// </summary>
         [XmlElement("buyer_address")]
@@ -138,6 +145,12 @@ namespace Aop.Api.Response
         public string InvoiceType { get; set; }
 
         /// <summary>
+        /// 乐企开票模式代码
+        /// </summary>
+        [XmlElement("leqi_invoice_mode")]
+        public string LeqiInvoiceMode { get; set; }
+
+        /// <summary>
         /// 外部开票申请ID
         /// </summary>
         [XmlElement("outer_apply_id")]
@@ -163,10 +176,40 @@ namespace Aop.Api.Response
         public List<IndustryInvoiceRealPropertyBusiness> RealPropertyBusinessList { get; set; }
 
         /// <summary>
+        /// 红字确认单号
+        /// </summary>
+        [XmlElement("red_confirmation_no")]
+        public string RedConfirmationNo { get; set; }
+
+        /// <summary>
+        /// 红字确认单UUID
+        /// </summary>
+        [XmlElement("red_confirmation_uuid")]
+        public string RedConfirmationUuid { get; set; }
+
+        /// <summary>
+        /// 加油站开票参数（含开票环节/加油卡发票号码列表/加油站特定要素明细）
+        /// </summary>
+        [XmlElement("refined_oil_gas_station")]
+        public IndustryInvoiceRefinedOilGasStation RefinedOilGasStation { get; set; }
+
+        /// <summary>
         /// 关联蓝票发票号码
         /// </summary>
         [XmlElement("related_blue_invoice_no")]
         public string RelatedBlueInvoiceNo { get; set; }
+
+        /// <summary>
+        /// 发票备注
+        /// </summary>
+        [XmlElement("remark")]
+        public string Remark { get; set; }
+
+        /// <summary>
+        /// 换开发票号码
+        /// </summary>
+        [XmlElement("replace_invoice_no")]
+        public string ReplaceInvoiceNo { get; set; }
 
         /// <summary>
         /// 销售方名称
@@ -192,5 +235,11 @@ namespace Aop.Api.Response
         [XmlArray("trade_list")]
         [XmlArrayItem("industry_invoice_trade_info")]
         public List<IndustryInvoiceTradeInfo> TradeList { get; set; }
+
+        /// <summary>
+        /// 交易信息来源渠道
+        /// </summary>
+        [XmlElement("trade_source")]
+        public string TradeSource { get; set; }
     }
 }

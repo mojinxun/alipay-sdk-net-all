@@ -54,6 +54,12 @@ namespace Aop.Api.Domain
         public List<PlatformPrescriptionDrugInfo> DrugList { get; set; }
 
         /// <summary>
+        /// 处方过期时间
+        /// </summary>
+        [XmlElement("expire_time")]
+        public string ExpireTime { get; set; }
+
+        /// <summary>
         /// 分组号
         /// </summary>
         [XmlElement("group_no")]
@@ -64,6 +70,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("medical_institution_name")]
         public string MedicalInstitutionName { get; set; }
+
+        /// <summary>
+        /// 用药医嘱
+        /// </summary>
+        [XmlElement("medical_instructions")]
+        public string MedicalInstructions { get; set; }
 
         /// <summary>
         /// 开方外部医生ID
@@ -90,6 +102,12 @@ namespace Aop.Api.Domain
         public string OutOrderId { get; set; }
 
         /// <summary>
+        /// 院内处方单购买链接
+        /// </summary>
+        [XmlElement("out_prescription_buy_url")]
+        public string OutPrescriptionBuyUrl { get; set; }
+
+        /// <summary>
         /// 外部处方id
         /// </summary>
         [XmlElement("out_prescription_id")]
@@ -106,6 +124,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("patient_age")]
         public string PatientAge { get; set; }
+
+        /// <summary>
+        /// 患者年龄
+        /// </summary>
+        [XmlElement("patient_birthday")]
+        public string PatientBirthday { get; set; }
 
         /// <summary>
         /// 患者身份证号
@@ -136,6 +160,18 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("platform_code")]
         public string PlatformCode { get; set; }
+
+        /// <summary>
+        /// 处方笺图片链接
+        /// </summary>
+        [XmlElement("prescription_image_url")]
+        public string PrescriptionImageUrl { get; set; }
+
+        /// <summary>
+        /// 院内处方笺pdf链接
+        /// </summary>
+        [XmlElement("prescription_pdf_url")]
+        public string PrescriptionPdfUrl { get; set; }
 
         /// <summary>
         /// 处方状态

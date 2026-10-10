@@ -29,6 +29,12 @@ namespace Aop.Api.Domain
         public string BizIdentity { get; set; }
 
         /// <summary>
+        /// 关键的业务参数标识，比如合并出资模式等
+        /// </summary>
+        [XmlElement("biz_info")]
+        public string BizInfo { get; set; }
+
+        /// <summary>
         /// 业务订单号-用于户号幂等，一个户号一个bizNo业务订单号
         /// </summary>
         [XmlElement("biz_no")]

@@ -21,6 +21,36 @@ namespace Aop.Api.Response
         public string CertType { get; set; }
 
         /// <summary>
+        /// 扩展信息
+        /// </summary>
+        [XmlElement("ext_info")]
+        public string ExtInfo { get; set; }
+
+        /// <summary>
+        /// 被保人证件编号
+        /// </summary>
+        [XmlElement("insured_cert_no")]
+        public string InsuredCertNo { get; set; }
+
+        /// <summary>
+        /// 被保人证件类型
+        /// </summary>
+        [XmlElement("insured_cert_type")]
+        public string InsuredCertType { get; set; }
+
+        /// <summary>
+        /// 被保人用户姓名
+        /// </summary>
+        [XmlElement("insured_name")]
+        public string InsuredName { get; set; }
+
+        /// <summary>
+        /// 手机号
+        /// </summary>
+        [XmlElement("mobile")]
+        public string Mobile { get; set; }
+
+        /// <summary>
         /// 用户真实姓名
         /// </summary>
         [XmlElement("name")]

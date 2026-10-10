@@ -53,6 +53,12 @@ namespace Aop.Api.Domain
         public string OrderId { get; set; }
 
         /// <summary>
+        /// 订单资商通类型
+        /// </summary>
+        [XmlElement("order_zst_type")]
+        public string OrderZstType { get; set; }
+
+        /// <summary>
         /// 商户订单号
         /// </summary>
         [XmlElement("out_order_id")]
@@ -64,6 +70,12 @@ namespace Aop.Api.Domain
         [XmlArray("plan_list")]
         [XmlArrayItem("rent_plan")]
         public List<RentPlan> PlanList { get; set; }
+
+        /// <summary>
+        /// 租赁单状态
+        /// </summary>
+        [XmlElement("rent_status")]
+        public string RentStatus { get; set; }
 
         /// <summary>
         /// 分账信息列表，每一期的分账详情

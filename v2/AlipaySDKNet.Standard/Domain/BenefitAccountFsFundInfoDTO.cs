@@ -22,6 +22,12 @@ namespace Aop.Api.Domain
         public string CurrentAmount { get; set; }
 
         /// <summary>
+        /// 资金渠道预算及出入金信息
+        /// </summary>
+        [XmlElement("fund_budget_info")]
+        public BenefitAccountFundBudgetInfoDTO FundBudgetInfo { get; set; }
+
+        /// <summary>
         /// 出资主体
         /// </summary>
         [XmlElement("fund_principal")]

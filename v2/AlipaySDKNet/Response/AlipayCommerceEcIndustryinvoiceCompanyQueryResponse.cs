@@ -24,6 +24,13 @@ namespace Aop.Api.Response
         public List<CompanyProductInfo> CompanyProductInfoList { get; set; }
 
         /// <summary>
+        /// 企业行业性质列表
+        /// </summary>
+        [XmlArray("industry_nature_list")]
+        [XmlArrayItem("industry_nature_info")]
+        public List<IndustryNatureInfo> IndustryNatureList { get; set; }
+
+        /// <summary>
         /// 企业开票员信息
         /// </summary>
         [XmlElement("invoice_clerk")]

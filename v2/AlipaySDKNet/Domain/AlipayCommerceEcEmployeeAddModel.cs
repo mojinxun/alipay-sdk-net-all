@@ -141,7 +141,7 @@ namespace Aop.Api.Domain
         public List<string> RoleList { get; set; }
 
         /// <summary>
-        /// 员工签约后回跳地址；支持 alipay scheme 协议地址，不传默认跳转企业码小程序首页
+        /// 签约或授权完成后回跳地址；支持 alipay scheme 协议地址，不传默认跳转企业码小程序首页
         /// </summary>
         [XmlElement("sign_return_url")]
         public string SignReturnUrl { get; set; }
@@ -153,7 +153,7 @@ namespace Aop.Api.Domain
         public bool SignUrlCarryInfo { get; set; }
 
         /// <summary>
-        /// 代扣签约字符串，员工需签约开通代扣时必传，否则无需传值
+        /// 代扣签约字符串，员工需签约开通代扣时必传，否则无需传值；另外，如需参与企业码针对代扣的营销活动的服务商，必须要将该字段上传
         /// </summary>
         [XmlElement("withholding_sign_str")]
         public string WithholdingSignStr { get; set; }

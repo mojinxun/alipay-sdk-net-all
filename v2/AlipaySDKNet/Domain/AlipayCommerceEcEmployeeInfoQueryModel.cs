@@ -58,6 +58,12 @@ namespace Aop.Api.Domain
         public string OpenId { get; set; }
 
         /// <summary>
+        /// 是否查询因公付代扣授权明细
+        /// </summary>
+        [XmlElement("query_pay_auth")]
+        public bool QueryPayAuth { get; set; }
+
+        /// <summary>
         /// 支付宝用户ID
         /// </summary>
         [XmlElement("user_id")]

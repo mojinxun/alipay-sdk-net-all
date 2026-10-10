@@ -23,10 +23,22 @@ namespace Aop.Api.Domain
         public ExaminationBookInfo BookInfo { get; set; }
 
         /// <summary>
+        /// 1 用户主动取消订单 2 未支付自动取消 3 商家超时未接单自动取消 4 用户补方超时自动取消 5 医生拒方取消订单 6 医生开方超时自动取消（处方侧） 7 医生开方超时自动取消（订单侧） 8 药店审方驳回取消订单 9 药店审方超时自动取消订单（处方侧） 10 药店审方超时自动取消订单（订单侧） 11 处方已作废
+        /// </summary>
+        [XmlElement("cancel_type")]
+        public long CancelType { get; set; }
+
+        /// <summary>
         /// 检测信息
         /// </summary>
         [XmlElement("check_info")]
         public ExaminationCheckInfo CheckInfo { get; set; }
+
+        /// <summary>
+        /// 履约单关闭类型：1-用户主动取消订单(未支付)、2-未支付超时自动取消(未支付)、3-结算失败（支付后）、4-用户主动退款（支付后）医嘱状态不动
+        /// </summary>
+        [XmlElement("close_type")]
+        public long CloseType { get; set; }
 
         /// <summary>
         /// 收货信息
@@ -48,10 +60,23 @@ namespace Aop.Api.Domain
         public List<ExaminationItemVO> Items { get; set; }
 
         /// <summary>
+        /// 订单金额信息
+        /// </summary>
+        [XmlElement("order_amount_info")]
+        public OrderAmountInfo OrderAmountInfo { get; set; }
+
+        /// <summary>
         /// SAAS的订单号
         /// </summary>
         [XmlElement("order_no")]
         public string OrderNo { get; set; }
+
+        /// <summary>
+        /// 就诊人信息
+        /// </summary>
+        [XmlArray("patient_infos")]
+        [XmlArrayItem("patient_info_for_fulfillment_list")]
+        public List<PatientInfoForFulfillmentList> PatientInfos { get; set; }
 
         /// <summary>
         /// 支付信息

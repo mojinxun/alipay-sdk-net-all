@@ -16,9 +16,21 @@ namespace Aop.Api.Domain
         public string ChannelType { get; set; }
 
         /// <summary>
+        /// 交易流水号
+        /// </summary>
+        [XmlElement("trade_biz_no")]
+        public string TradeBizNo { get; set; }
+
+        /// <summary>
         /// 订单交易号
         /// </summary>
         [XmlElement("trade_no")]
         public string TradeNo { get; set; }
+
+        /// <summary>
+        /// 交易产品
+        /// </summary>
+        [XmlElement("trade_product")]
+        public string TradeProduct { get; set; }
     }
 }

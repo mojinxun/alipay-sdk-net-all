@@ -1,5 +1,6 @@
 using System;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace Aop.Api.Domain
 {
@@ -28,15 +29,22 @@ namespace Aop.Api.Domain
         public string CategoryStatus { get; set; }
 
         /// <summary>
+        /// 类目级别。如3代表三级类目
+        /// </summary>
+        [XmlElement("level")]
+        public long Level { get; set; }
+
+        /// <summary>
         /// 父类目编码
         /// </summary>
         [XmlElement("parent_category_code")]
         public string ParentCategoryCode { get; set; }
 
         /// <summary>
-        /// 所需资质信息
+        /// null
         /// </summary>
-        [XmlElement("required_qualifications")]
-        public AxfItemCategoryQualificationVO RequiredQualifications { get; set; }
+        [XmlArray("required_qualifications")]
+        [XmlArrayItem("axf_item_category_qualification_v_o")]
+        public List<AxfItemCategoryQualificationVO> RequiredQualifications { get; set; }
     }
 }

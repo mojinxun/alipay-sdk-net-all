@@ -11,10 +11,23 @@ namespace Aop.Api.Domain
     public class AlipayCommerceEcIndustryinvoiceInvoiceapplyCreateModel : AopObject
     {
         /// <summary>
+        /// 附加要素列表
+        /// </summary>
+        [XmlArray("additional_element_list")]
+        [XmlArrayItem("industry_invoice_additional_element_info")]
+        public List<IndustryInvoiceAdditionalElementInfo> AdditionalElementList { get; set; }
+
+        /// <summary>
         /// 购买方地址
         /// </summary>
         [XmlElement("buyer_address")]
         public string BuyerAddress { get; set; }
+
+        /// <summary>
+        /// 购方支付宝登录id
+        /// </summary>
+        [XmlElement("buyer_alipay_login_id")]
+        public string BuyerAlipayLoginId { get; set; }
 
         /// <summary>
         /// 购买方银行账号
@@ -51,6 +64,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("buyer_tel")]
         public string BuyerTel { get; set; }
+
+        /// <summary>
+        /// 渠道场景相关信息
+        /// </summary>
+        [XmlElement("channel_info")]
+        public IndustryInvoiceChannelInfo ChannelInfo { get; set; }
 
         /// <summary>
         /// 复核人
@@ -102,6 +121,12 @@ namespace Aop.Api.Domain
         public string InvoiceType { get; set; }
 
         /// <summary>
+        /// 乐企开票模式代码：PAYMENT_INVOICE=乐企联用支付即开票（支付完成后开票，以支付单/账单为关联依据）、TRANSACTION_INVOICE=乐企联用交易即开票（交易发生时同步开票，以交易流水为关联依据，时效更高） 10月20日后要求必填，如需使用“联用交易即开票”请联系支付宝客户经理开通。
+        /// </summary>
+        [XmlElement("leqi_invoice_mode")]
+        public string LeqiInvoiceMode { get; set; }
+
+        /// <summary>
         /// 购买方自然人证件号码
         /// </summary>
         [XmlElement("nature_person_cert_no")]
@@ -132,10 +157,23 @@ namespace Aop.Api.Domain
         public string OuterApplyId { get; set; }
 
         /// <summary>
+        /// 旅客运输信息列表，包含乘车人信息、行程信息等
+        /// </summary>
+        [XmlArray("passenger_transport_list")]
+        [XmlArrayItem("industry_invoice_passenger_transport")]
+        public List<IndustryInvoicePassengerTransport> PassengerTransportList { get; set; }
+
+        /// <summary>
         /// 收款人
         /// </summary>
         [XmlElement("payee")]
         public string Payee { get; set; }
+
+        /// <summary>
+        /// 发票产品码，与productId二选一
+        /// </summary>
+        [XmlElement("product_code")]
+        public string ProductCode { get; set; }
 
         /// <summary>
         /// 发票产品ID
@@ -151,6 +189,12 @@ namespace Aop.Api.Domain
         public List<IndustryInvoiceRealPropertyBusiness> RealPropertyBusinessList { get; set; }
 
         /// <summary>
+        /// 加油站开票参数（含开票环节/加油卡发票号码列表/加油站特定要素明细）
+        /// </summary>
+        [XmlElement("refined_oil_gas_station")]
+        public IndustryInvoiceRefinedOilGasStation RefinedOilGasStation { get; set; }
+
+        /// <summary>
         /// 关联蓝票发票号码，开票类型为红票时必传，暂时仅支持全额红冲
         /// </summary>
         [XmlElement("related_blue_invoice_no")]
@@ -161,6 +205,12 @@ namespace Aop.Api.Domain
         /// </summary>
         [XmlElement("remark")]
         public string Remark { get; set; }
+
+        /// <summary>
+        /// 换开发票号码，仅加油站开票且开蓝票时传入，换开的蓝字发票填写换开前的蓝字发票号码
+        /// </summary>
+        [XmlElement("replace_invoice_no")]
+        public string ReplaceInvoiceNo { get; set; }
 
         /// <summary>
         /// 销售方地址
@@ -210,5 +260,11 @@ namespace Aop.Api.Domain
         [XmlArray("trade_list")]
         [XmlArrayItem("industry_invoice_trade_info")]
         public List<IndustryInvoiceTradeInfo> TradeList { get; set; }
+
+        /// <summary>
+        /// 交易信息来源渠道：ONLINE_TRADING_PLATFORM=线上交易平台（如1688、淘宝闪购）、ENTERPRISE_OWN_SYSTEM=企业自有业务系统（企业自有商城、ERP、门店收银等自有系统产生的交易）、ONLINE_PAYMENT_PLATFORM=线上支付平台（如支付宝）。
+        /// </summary>
+        [XmlElement("trade_source")]
+        public string TradeSource { get; set; }
     }
 }

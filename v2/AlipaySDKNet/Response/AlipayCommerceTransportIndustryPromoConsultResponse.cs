@@ -11,6 +11,12 @@ namespace Aop.Api.Response
     public class AlipayCommerceTransportIndustryPromoConsultResponse : AopResponse
     {
         /// <summary>
+        /// 收银台订单信息文案
+        /// </summary>
+        [XmlElement("cashier_order_info_text")]
+        public string CashierOrderInfoText { get; set; }
+
+        /// <summary>
         /// null
         /// </summary>
         [XmlArray("voucher_consult_list")]

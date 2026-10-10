@@ -23,7 +23,20 @@ namespace Aop.Api.Domain
         public string CompanySupplierId { get; set; }
 
         /// <summary>
-        /// 订单的备注字段,用于发票的备注显示
+        /// 创建订单时提供的佐证材料列表
+        /// </summary>
+        [XmlArray("corroboration_material_list")]
+        [XmlArrayItem("corroboration_materials")]
+        public List<CorroborationMaterials> CorroborationMaterialList { get; set; }
+
+        /// <summary>
+        /// 指定发票开具时的票种
+        /// </summary>
+        [XmlElement("invoice_kind")]
+        public string InvoiceKind { get; set; }
+
+        /// <summary>
+        /// 订单的备注字段,用于发票的备注显示；超过 200 字节,转账单凭证信息将自动裁剪
         /// </summary>
         [XmlElement("memo")]
         public string Memo { get; set; }
@@ -54,15 +67,39 @@ namespace Aop.Api.Domain
         public string ProductId { get; set; }
 
         /// <summary>
+        /// 商品经营地行政区划代码
+        /// </summary>
+        [XmlElement("product_origin_code")]
+        public string ProductOriginCode { get; set; }
+
+        /// <summary>
+        /// 代卖人收购单 ID
+        /// </summary>
+        [XmlElement("proxy_order_id")]
+        public string ProxyOrderId { get; set; }
+
+        /// <summary>
         /// 代卖人证件号码（身份证号码）
         /// </summary>
         [XmlElement("proxy_seller_cert_no")]
         public string ProxySellerCertNo { get; set; }
 
         /// <summary>
+        /// 收款方式
+        /// </summary>
+        [XmlElement("received_method")]
+        public string ReceivedMethod { get; set; }
+
+        /// <summary>
         /// 企业（商户）税号
         /// </summary>
         [XmlElement("tax_no")]
         public string TaxNo { get; set; }
+
+        /// <summary>
+        /// 指定发票开具时的税率。
+        /// </summary>
+        [XmlElement("tax_rate")]
+        public string TaxRate { get; set; }
     }
 }

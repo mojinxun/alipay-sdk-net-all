@@ -16,6 +16,12 @@ namespace Aop.Api.Domain
         public string Channel { get; set; }
 
         /// <summary>
+        /// 好大夫主医院ID
+        /// </summary>
+        [XmlElement("hdf_primary_hospital_id")]
+        public string HdfPrimaryHospitalId { get; set; }
+
+        /// <summary>
         /// 好大夫医生doctorId
         /// </summary>
         [XmlElement("hdf_space_code")]

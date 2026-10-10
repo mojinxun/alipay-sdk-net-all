@@ -22,6 +22,12 @@ namespace Aop.Api.Domain
         public string CreditRiskInfo { get; set; }
 
         /// <summary>
+        /// 是否先采后付垫资版,用于先采后付前置咨询
+        /// </summary>
+        [XmlElement("fund_loan_sign")]
+        public string FundLoanSign { get; set; }
+
+        /// <summary>
         /// 国家贴息
         /// </summary>
         [XmlElement("gov_subsidy")]
@@ -46,9 +52,21 @@ namespace Aop.Api.Domain
         public string RefuseCode { get; set; }
 
         /// <summary>
+        /// 芝麻对外部商户用户是否有意愿开通芝麻免密下单的意愿分级，1为高意愿用户，0为低意向用户
+        /// </summary>
+        [XmlElement("use_agreement_pay_willingness")]
+        public string UseAgreementPayWillingness { get; set; }
+
+        /// <summary>
         /// 用户是否已签约
         /// </summary>
         [XmlElement("user_has_sign")]
         public string UserHasSign { get; set; }
+
+        /// <summary>
+        /// "true"：芝麻分大于等于800分 "false":  芝麻分小于800分
+        /// </summary>
+        [XmlElement("zm_score_gte_800")]
+        public string ZmScoreGte800 { get; set; }
     }
 }

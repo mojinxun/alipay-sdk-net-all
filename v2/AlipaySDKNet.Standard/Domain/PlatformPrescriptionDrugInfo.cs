@@ -10,13 +10,19 @@ namespace Aop.Api.Domain
     public class PlatformPrescriptionDrugInfo : AopObject
     {
         /// <summary>
+        /// 给药途径，如"口服" 非枚举
+        /// </summary>
+        [XmlElement("administration_route")]
+        public string AdministrationRoute { get; set; }
+
+        /// <summary>
         /// 备注
         /// </summary>
         [XmlElement("comments")]
         public string Comments { get; set; }
 
         /// <summary>
-        /// 剂型
+        /// 剂型 非枚举
         /// </summary>
         [XmlElement("dosage_form")]
         public string DosageForm { get; set; }
@@ -46,16 +52,28 @@ namespace Aop.Api.Domain
         public string DrugUrl { get; set; }
 
         /// <summary>
+        /// 频次（单位允许不统一）
+        /// </summary>
+        [XmlElement("frequency")]
+        public string Frequency { get; set; }
+
+        /// <summary>
         /// 用药说明
         /// </summary>
         [XmlElement("instructions")]
         public string Instructions { get; set; }
 
         /// <summary>
-        /// 药品数量
+        /// 药品数量（单位允许不统一）
         /// </summary>
         [XmlElement("medicine_quantity")]
         public string MedicineQuantity { get; set; }
+
+        /// <summary>
+        /// 单次剂量（如"2片"）
+        /// </summary>
+        [XmlElement("single_dose")]
+        public string SingleDose { get; set; }
 
         /// <summary>
         /// 规格

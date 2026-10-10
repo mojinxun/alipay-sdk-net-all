@@ -22,7 +22,7 @@ namespace Aop.Api.Domain
         public string ExpressmanUserId { get; set; }
 
         /// <summary>
-        /// 1、startApp（商户是支付宝内小程序，打开小程序） 2、backApp（商户是支付宝内小程序，返回小程序） 3、startThirdApp（商户是其他应用，返回其他应用）
+        /// 1、已废弃，新商户请使用navigateToMiniProgram 2、backApp（商户是支付宝内小程序，返回小程序） 3、startThirdApp（商户是其他应用，返回其他应用） 4、navigateToMiniProgram（商户是支付宝内小程序，打开小程序）
         /// </summary>
         [XmlElement("jump_type")]
         public string JumpType { get; set; }

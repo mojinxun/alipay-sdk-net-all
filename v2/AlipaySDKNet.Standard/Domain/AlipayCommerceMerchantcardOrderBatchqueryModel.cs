@@ -28,7 +28,7 @@ namespace Aop.Api.Domain
         public string CardTemplateId { get; set; }
 
         /// <summary>
-        /// 默认的订单类型范围：TIMES_CARD、PERIOD_PAY、AXF_MERCHANT_PERIOD_PAY、AXF_PERIOD_PAY_INDIRECT
+        /// 默认的订单类型范围：TIMES_CARD、PERIOD_PAY、AXF_MERCHANT_PERIOD_PAY、AXF_PERIOD_PAY_INDIRECT、TAIL_PAYMENT
         /// </summary>
         [XmlElement("card_type")]
         public string CardType { get; set; }
